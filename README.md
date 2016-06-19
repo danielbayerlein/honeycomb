@@ -1,6 +1,6 @@
 # 🐮 CashCow
 
-**CashCow** is a common basis for @nodejs microservices.
+**CashCow** is a common basis for [Node.js](https://nodejs.org) microservices.
 
 ## Work in Progress
 
