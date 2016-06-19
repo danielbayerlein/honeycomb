@@ -33,7 +33,16 @@ module.exports = config => {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
+
+    // configuration for karma-coverage
+    coverageReporter: {
+      reporters: [
+        { type: 'lcov', dir: 'coverage/', subdir: '.' },
+        { type: 'json', dir: 'coverage/', subdir: '.' },
+        { type: 'text-summary' },
+      ],
+    },
 
     // web server port
     port: 9876,
@@ -60,5 +69,8 @@ module.exports = config => {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity,
+
+    // dont fail when not tests are specified
+    failOnEmptyTestSuite: false
   });
 };
