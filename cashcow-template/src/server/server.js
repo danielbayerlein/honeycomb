@@ -1,6 +1,7 @@
 const Hapi = require('hapi');
 const Hoek = require('hoek');
 const Vision = require('vision');
+const Inert = require('inert');
 const HapiReactViews = require('hapi-react-views');
 const HapiRouter = require('hapi-router');
 
@@ -12,6 +13,8 @@ server.connection({ port: process.env.PORT || 3000 });
 
 server.register([{
   register: Vision,
+}, {
+  register: Inert,
 }, {
   register: HapiRouter,
   options: {
