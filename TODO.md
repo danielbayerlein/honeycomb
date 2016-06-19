@@ -2,7 +2,6 @@
 
 * cashcow-template
  * README
- * Project Structure (src/, test/ vs config, ... => ?)
  * Styling for React Components
  * Logging
  * Service Discovery (Eureka)
