@@ -1,7 +1,7 @@
 {
   "apps": [{
     "name": "cashcow-template",
-    "script": "./app.js",
+    "script": "./server.js",
     "instances": 2,
     "exec_mode": "cluster",
     "env": {

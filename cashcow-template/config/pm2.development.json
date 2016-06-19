@@ -1,7 +1,7 @@
 {
   "apps": [{
     "name": "cashcow-template",
-    "script": "./app.js",
+    "script": "./server.js",
     "watch": ["./controllers", "./models", "./routers"],
     "env": {
       "NODE_ENV": "development"
