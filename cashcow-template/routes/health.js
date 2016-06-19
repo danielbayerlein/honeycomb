@@ -1,6 +1,6 @@
 import controller from '../controllers/health';
 
-module.exports = [
+export default [
   {
     method: 'GET',
     path: '/health',
