@@ -1,6 +1,7 @@
 const webpackEnv = { env: { test: true } };
 const webpackConfig = require('./webpack.config')(webpackEnv);
-const filesGlob = '../test/unit/**/*.spec.js';
+const testGlob = '../test/unit/**/*.spec.js';
+const srcGlob = '../src/client/**/*.js';
 const coverageDir = '../coverage/';
 
 process.env.BABEL_ENV = 'test';
@@ -15,7 +16,7 @@ module.exports = config => {
     frameworks: ['mocha'],
 
     // list of files / patterns to load in the browser
-    files: [filesGlob],
+    files: [testGlob, srcGlob],
 
     // list of files to exclude
     exclude: [],
@@ -23,7 +24,8 @@ module.exports = config => {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      [filesGlob]: ['webpack'],
+      [testGlob]: ['webpack'],
+      [srcGlob]: ['webpack'],
     },
 
     // webpack
