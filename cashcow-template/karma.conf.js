@@ -71,6 +71,6 @@ module.exports = config => {
     concurrency: Infinity,
 
     // dont fail when not tests are specified
-    failOnEmptyTestSuite: false
+    failOnEmptyTestSuite: false,
   });
 };
