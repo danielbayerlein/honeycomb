@@ -6,8 +6,8 @@
   "scripts": {
     "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
     "start": "node ./app.js",
-    "test": "npm run test-integration",
-    "test-integration": "chimp ./config/chimp-ci.js"
+    "test": "npm run test:integration",
+    "test:integration": "chimp ./config/chimp-ci.js"
   },
   "author": "Daniel Bayerlein",
   "license": "MIT",
