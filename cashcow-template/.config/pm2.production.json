@@ -1,15 +1,15 @@
 {
   "apps": [{
     "name": "cashcow-template",
-    "script": "./server.js",
+    "script": "src/server/server.js",
     "instances": 2,
     "exec_mode": "cluster",
     "env": {
       "NODE_ENV": "production"
     },
     "combine_logs": true,
-    "error_file": "./logs/cashcow-template.error.log",
-    "out_file": "./logs/cashcow-template.out.log",
-    "pid_file": "./pids/cashcow-template.pid"
+    "error_file": "logs/cashcow-template.error.log",
+    "out_file": "logs/cashcow-template.out.log",
+    "pid_file": "pids/cashcow-template.pid"
   }]
 }

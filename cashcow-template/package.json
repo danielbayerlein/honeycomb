@@ -2,7 +2,7 @@
   "name": "cashcow-template",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "source/server/server.js",
   "scripts": {
     "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
     "start": "npm run start:development",

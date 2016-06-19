@@ -1,14 +1,14 @@
 {
   "apps": [{
     "name": "cashcow-template",
-    "script": "./server.js",
-    "watch": ["./controllers", "./models", "./routers"],
+    "script": "src/server/server.js",
+    "watch": ["src/server"],
     "env": {
       "NODE_ENV": "development"
     },
     "combine_logs": true,
-    "error_file": "./logs/cashcow-template.error.log",
-    "out_file": "./logs/cashcow-template.out.log",
-    "pid_file": "./pids/cashcow-template.pid"
+    "error_file": "logs/cashcow-template.error.log",
+    "out_file": "logs/cashcow-template.out.log",
+    "pid_file": "pids/cashcow-template.pid"
   }]
 }

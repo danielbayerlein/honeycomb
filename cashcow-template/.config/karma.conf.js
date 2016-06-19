@@ -1,6 +1,6 @@
 const webpackEnv = { env: { test: true } };
 const webpackConfig = require('./webpack.config')(webpackEnv);
-const filesGlob = '../tests/unit/**/*.spec.js';
+const filesGlob = '../test/unit/**/*.spec.js';
 const coverageDir = '../coverage/';
 
 process.env.BABEL_ENV = 'test';

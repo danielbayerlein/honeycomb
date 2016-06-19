@@ -15,7 +15,7 @@ server.register([{
 }, {
   register: HapiRouter,
   options: {
-    routes: 'routes/**/*.js',
+    routes: 'source/server/routes/**/*.js',
   },
 }], (registerError) => {
   Hoek.assert(!registerError, registerError);

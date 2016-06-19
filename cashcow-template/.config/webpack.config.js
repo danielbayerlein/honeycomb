@@ -1,14 +1,15 @@
 const path = require('path');
+const clientDir = '../src/client/';
 
 module.exports = env => {
   return {
-    entry: path.resolve(__dirname, '../public/javascripts/client.js'),
+    entry: path.resolve(__dirname, clientDir, 'client.js'),
     output: {
       filename: 'bundle.js',
       path: path.resolve(__dirname, '../dist'),
       pathinfo: !env.prod,
     },
-    context: path.resolve(__dirname, '../public/javascripts'),
+    context: path.resolve(__dirname, clientDir),
     devtool: env.prod ? 'source-map' : 'eval',
     bail: env.prod,
     module: {

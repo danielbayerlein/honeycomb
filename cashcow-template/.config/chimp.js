@@ -1,5 +1,5 @@
 module.exports = {
-  path: './tests/integration/features',
+  path: 'test/integration/features',
   webdriverio: {
     // FIXME: Use current port
     baseUrl: 'http://localhost:3000',
