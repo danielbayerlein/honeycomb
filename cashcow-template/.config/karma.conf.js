@@ -1,5 +1,5 @@
 const webpackEnv = { env: { test: true } };
-const webpackConfig = require('../webpack.config')(webpackEnv);
+const webpackConfig = require('./webpack.config')(webpackEnv);
 const filesGlob = '../tests/unit/**/*.spec.js';
 const coverageDir = '../coverage/';
 

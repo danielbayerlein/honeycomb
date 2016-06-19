@@ -3,13 +3,13 @@ const path = require('path');
 
 module.exports = env => {
   return {
-    entry: path.resolve(__dirname, 'public/javascripts/client.js'),
+    entry: path.resolve(__dirname, '../public/javascripts/client.js'),
     output: {
       filename: 'bundle.js',
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, '../dist'),
       pathinfo: !env.prod,
     },
-    context: path.resolve(__dirname, 'public/javascripts'),
+    context: path.resolve(__dirname, '../public/javascripts'),
     devtool: env.prod ? 'source-map' : 'eval',
     bail: env.prod,
     module: {
