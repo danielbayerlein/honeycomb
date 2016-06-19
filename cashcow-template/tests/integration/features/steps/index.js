@@ -1,7 +1,4 @@
-/* global browser, expect */
-/* eslint new-cap: ["error", { "capIsNew": false }] */
-
-module.exports = function test() {
+module.exports = function() {
   this.Given(/^der Benutzer navigiert zur Seite "([^"]*)"$/, (path) => {
     browser.url(path);
   });
