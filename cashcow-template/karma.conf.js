@@ -2,6 +2,8 @@ const webpackEnv = { env: { test: true } };
 const webpackConfig = require('./webpack.config')(webpackEnv);
 const filesGlob = 'tests/unit/**/*.spec.js';
 
+process.env.BABEL_ENV = 'test';
+
 module.exports = config => {
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
