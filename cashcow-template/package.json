@@ -6,10 +6,10 @@
   "scripts": {
     "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
     "start": "npm run start:development",
-    "start:development": "pm2-dev start ./.config/pm2.development.json",
-    "start:production": "pm2 start ./.config/pm2.production.json",
+    "start:development": "pm2-dev start .config/pm2.development.json",
+    "start:production": "pm2 start .config/pm2.production.json",
     "test": "npm run test:integration && npm run test:unit",
-    "test:integration": "chimp ./.config/chimp-ci.js",
+    "test:integration": "chimp .config/chimp.js",
     "test:unit": "karma start",
     "test:unit:watch": "karma start --auto-watch --no-single-run",
     "build": "webpack --env.dev",
