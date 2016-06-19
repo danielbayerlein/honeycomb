@@ -1,0 +1,15 @@
+{
+  "name": "cashcow",
+  "version": "1.0.0",
+  "description": "CashCow is a common basis for @nodejs microservices.",
+  "scripts": {
+    "install": "npm-workspace install",
+    "clean": "npm-workspace clean",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Bayerlein",
+  "license": "MIT",
+  "devDependencies": {
+    "npm-workspace": "^0.6.2"
+  }
+}
