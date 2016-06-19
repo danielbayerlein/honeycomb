@@ -9,6 +9,9 @@ export default {
         description: pkg.description,
         author: pkg.author,
         contributors: pkg.contributors,
+        env: process.env.NODE_ENV,
+        uptime: process.uptime(),
+        memory: process.memoryUsage(),
       });
     },
   },
