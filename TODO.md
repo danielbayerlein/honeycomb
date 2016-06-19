@@ -13,11 +13,6 @@
  * Update package.json
  * Code Coverage
  * Latest Node.js - https://github.com/xolvio/chimp/pull/393
- * Status Page
-  * name
-  * version
-  * uptime
-  * loadavg
 * Name
  * honeypot
  * honeycomb
