@@ -1,6 +1,7 @@
 const webpackEnv = { env: { test: true } };
 const webpackConfig = require('../webpack.config')(webpackEnv);
 const filesGlob = '../tests/unit/**/*.spec.js';
+const coverageDir = '../coverage/';
 
 process.env.BABEL_ENV = 'test';
 
@@ -15,7 +16,6 @@ module.exports = config => {
 
     // list of files / patterns to load in the browser
     files: [filesGlob],
-
 
     // list of files to exclude
     exclude: [],
@@ -40,8 +40,8 @@ module.exports = config => {
     // configuration for karma-coverage
     coverageReporter: {
       reporters: [
-        { type: 'lcov', dir: '../coverage/', subdir: '.' },
-        { type: 'json', dir: '../coverage/', subdir: '.' },
+        { type: 'lcov', dir: coverageDir, subdir: '.' },
+        { type: 'json', dir: coverageDir, subdir: '.' },
         { type: 'text-summary' },
       ],
     },
