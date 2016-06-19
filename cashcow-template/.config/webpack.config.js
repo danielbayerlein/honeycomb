@@ -1,4 +1,3 @@
-/* eslint arrow-body-style: 0 */
 const path = require('path');
 
 module.exports = env => {
