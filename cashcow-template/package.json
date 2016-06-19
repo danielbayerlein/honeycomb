@@ -14,7 +14,7 @@
     "test:unit:watch": "karma start --auto-watch --no-single-run",
     "build": "webpack --config .config/webpack.config.js --env.dev",
     "build:prod": "webpack --config .config/webpack.config.js --env.prod -p",
-    "build:watch": "webpack-dev-server --config .config/webpack.config.js --env.dev --content-base dist"
+    "build:watch": "webpack-dev-server --config .config/webpack.config.js --env.dev --content-base dist/"
   },
   "author": "Daniel Bayerlein",
   "license": "MIT",
