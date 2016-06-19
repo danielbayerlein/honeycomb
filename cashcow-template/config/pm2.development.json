@@ -1,0 +1,14 @@
+{
+  "apps": [{
+    "name": "cashcow-template",
+    "script": "./app.js",
+    "watch": ["./controllers", "./models", "./routers"],
+    "env": {
+      "NODE_ENV": "development"
+    },
+    "combine_logs": true,
+    "error_file": "./logs/cashcow-template.error.log",
+    "out_file": "./logs/cashcow-template.out.log",
+    "pid_file": "./pids/cashcow-template.pid"
+  }]
+}
