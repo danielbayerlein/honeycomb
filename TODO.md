@@ -3,7 +3,7 @@
 * cashcow-template
  * README
  * Styling for React Components
- * Logging
+ * Logging (log4js :question:)
  * Service Discovery (Eureka)
  * Webpack
  * Unit Test
@@ -13,14 +13,14 @@
  * Code Coverage
  * Latest Node.js - https://github.com/xolvio/chimp/pull/393
 * Name
- * honeypot
- * honeycomb
- * bumblebee
- * quilt
- * tailor
- * squid
- * octopus
- * jellyfish
+ * honeypot (not available at npm)
+ * honeycomb (not available at npm)
+ * bumblebee (not available at npm)
+ * quilt (not available at npm)
+ * tailor (not available at npm)
+ * squid (not available at npm)
+ * octopus (not available at npm)
+ * jellyfish (not available at npm)
  * stuart
 * Logo
 * README
