@@ -1,11 +1,9 @@
-const Hapi = require('hapi');
-const Hoek = require('hoek');
-const Vision = require('vision');
-const Inert = require('inert');
-const HapiReactViews = require('hapi-react-views');
-const HapiRouter = require('hapi-router');
-
-require('babel-core/register');
+import Hapi from 'hapi';
+import Hoek from 'hoek';
+import Vision from 'vision';
+import Inert from 'inert';
+import HapiReactViews from 'hapi-react-views';
+import HapiRouter from 'hapi-router';
 
 const server = new Hapi.Server();
 
