@@ -1,7 +1,7 @@
 {
-  "name": "cashcow",
+  "name": "honeycomb",
   "version": "1.0.0",
-  "description": "CashCow is a common basis for @nodejs microservices.",
+  "description": "Honeycomb is a common basis for Node.js microservices.",
   "scripts": {
     "install": "npm-workspace install",
     "clean": "npm-workspace clean",

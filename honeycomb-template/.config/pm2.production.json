@@ -1,0 +1,15 @@
+{
+  "apps": [{
+    "name": "honeycomb-template",
+    "script": "index.js",
+    "instances": 2,
+    "exec_mode": "cluster",
+    "env": {
+      "NODE_ENV": "production"
+    },
+    "combine_logs": true,
+    "error_file": "logs/honeycomb-template.error.log",
+    "out_file": "logs/honeycomb-template.out.log",
+    "pid_file": "pids/honeycomb-template.pid"
+  }]
+}
