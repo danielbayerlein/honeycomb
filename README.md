@@ -1,6 +1,6 @@
-# Honeycomb 🐝
+# <img src="https://github.com/danielbayerlein/honeycomb/blob/master/logo.png" width="150"> Honeycomb 
 
-**Honeycomb** is a common basis for [Node.js](https://nodejs.org) microservices.
+**Honeycomb** is a common basis for [Node.js](https://nodejs.org) microservices 🐝
 
 ## Work in Progress
 
