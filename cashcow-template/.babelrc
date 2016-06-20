@@ -3,11 +3,7 @@
   "plugins": ["transform-class-properties", "transform-object-rest-spread"],
   "env": {
     "test": {
-      "plugins": [
-        "transform-class-properties",
-        "transform-object-rest-spread",
-        "__coverage__"
-      ]
+      "plugins": ["__coverage__"]
     }
   }
 }

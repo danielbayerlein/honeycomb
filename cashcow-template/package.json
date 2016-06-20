@@ -10,8 +10,9 @@
     "start:production": "pm2 start .config/pm2.production.json",
     "test": "npm run test:integration && npm run test:unit",
     "test:integration": "chimp .config/chimp.js",
-    "test:unit": "karma start",
-    "test:unit:watch": "karma start --auto-watch --no-single-run",
+    "test:unit": "ava",
+    "test:unit:watch": "npm run test:unit -- --watch",
+    "test:unit:coverage": "nyc --all report ava",
     "build": "webpack --config .config/webpack.config.js --env.dev",
     "build:prod": "webpack --config .config/webpack.config.js --env.prod -p",
     "build:watch": "webpack-dev-server --config .config/webpack.config.js --env.dev --content-base dist/"
@@ -35,9 +36,11 @@
     "vision": "^4.1.0"
   },
   "devDependencies": {
+    "ava": "^0.15.2",
     "babel-loader": "^6.2.4",
     "babel-plugin-__coverage__": "^11.0.0",
     "chimp": "^0.35.0",
+    "cross-env": "^1.0.8",
     "css-loader": "^0.23.1",
     "enzyme": "^2.3.0",
     "eslint": "^2.13.0",
@@ -46,15 +49,27 @@
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.5.3",
     "eslint-plugin-react": "^5.2.2",
-    "karma": "^0.13.22",
-    "karma-coverage": "^1.0.0",
-    "karma-mocha": "^1.0.1",
-    "karma-phantomjs-launcher": "^1.0.0",
-    "karma-webpack": "^1.7.0",
-    "mocha": "^2.5.3",
-    "phantomjs-prebuilt": "^2.1.7",
+    "jsdom": "^9.2.1",
+    "nyc": "^6.6.1",
     "style-loader": "^0.13.1",
     "webpack": "^2.1.0-beta.13",
     "webpack-dev-server": "^2.1.0-beta.0"
+  },
+  "ava": {
+    "files": [
+      "./test/unit/**/*.js"
+    ],
+    "require": [
+      "babel-core/register",
+      "./.config/browsersetup.js"
+    ]
+  },
+  "nyc": {
+    "include": ["src/*.js"],
+    "require": ["babel-core/register"],
+    "extension": ["jsx"],
+    "reporter": "lcov",
+    "sourceMap": false,
+    "instrument": false
   }
 }
