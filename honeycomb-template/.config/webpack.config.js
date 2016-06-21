@@ -1,4 +1,5 @@
 const path = require('path');
+var eslintFormatter = require('eslint-formatter-pretty');
 const clientDir = '../src/client/';
 
 module.exports = env => {
@@ -14,9 +15,12 @@ module.exports = env => {
     bail: env.prod,
     module: {
       loaders: [
-        { test: /\.js(x)$/, loader: 'babel!eslint', exclude: /node_modules/ },
+        { test: /\.(js|jsx)$/, loader: 'babel!eslint', exclude: /node_modules/ },
         { test: /\.css$/, loader: 'style!css' },
       ],
     },
+    eslint: {
+        formatter: eslintFormatter
+    }
   };
 };
