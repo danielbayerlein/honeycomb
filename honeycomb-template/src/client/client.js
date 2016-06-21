@@ -3,6 +3,6 @@ import { render } from 'react-dom';
 import Example from './components/Example.jsx';
 
 render(
-  <Example name="world" />,
+  <Example name="peter" />,
   document.querySelector('.js-app')
 );

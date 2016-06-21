@@ -1,6 +1,9 @@
 const path = require('path');
 const eslintFormatter = require('eslint-formatter-pretty');
 
+const withHotLoad = { test: /\.(js|jsx)$/, loader: 'react-hot!babel!eslint', exclude: /node_modules/ };
+const normal = { test: /\.(js|jsx)$/, loader: 'babel!eslint', exclude: /node_modules/ };
+
 module.exports = env => {
   return {
     entry: {
@@ -18,9 +21,10 @@ module.exports = env => {
     context: path.resolve(__dirname, '..'),
     devtool: env.prod ? 'source-map' : 'eval',
     bail: env.prod,
+    hot: !env.prod,
     module: {
       loaders: [
-        { test: /\.(js|jsx)$/, loader: 'babel!eslint', exclude: /node_modules/ },
+        env.prod ? normal : withHotLoad,
         { test: /\.css$/, loader: 'style!css' },
       ],
     },

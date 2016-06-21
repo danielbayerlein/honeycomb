@@ -54,6 +54,7 @@
     "jsdom": "^9.2.1",
     "nyc": "^6.6.1",
     "react-addons-test-utils": "^15.1.0",
+    "react-hot-loader": "^1.3.0",
     "style-loader": "^0.13.1",
     "webpack": "^2.1.0-beta.13",
     "webpack-dev-server": "^2.1.0-beta.0"
@@ -69,10 +70,19 @@
     "babel": "inherit"
   },
   "nyc": {
-    "include": ["src/**/*.(js|jsx)"],
-    "extension": ["jsx"],
-    "reporter": ["lcov", "text"],
-    "require": ["babel-core/register"],
+    "include": [
+      "src/**/*.(js|jsx)"
+    ],
+    "extension": [
+      "jsx"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "require": [
+      "babel-core/register"
+    ],
     "sourceMap": "inline",
     "instrument": false,
     "cache": false
