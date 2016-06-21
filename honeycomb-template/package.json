@@ -69,19 +69,10 @@
     "babel": "inherit"
   },
   "nyc": {
-    "include": [
-      "src/**/*.js"
-    ],
-    "extension": [
-      "jsx"
-    ],
-    "reporter": [
-      "lcov",
-      "text"
-    ],
-    "require": [
-      "babel-core/register"
-    ],
+    "include": ["src/**/*.(js|jsx)"],
+    "extension": ["jsx"],
+    "reporter": ["lcov", "text"],
+    "require": ["babel-core/register"],
     "sourceMap": "inline",
     "instrument": false,
     "cache": false
