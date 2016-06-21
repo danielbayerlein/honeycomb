@@ -7,11 +7,10 @@ import HapiRouter from 'hapi-router';
 
 const server = new Hapi.Server();
 
-const serverConnection = { port: process.env.PORT || 3000 };
-
-if (process.env.NODE_ENV !== 'production') {
-  serverConnection.routes = { cors: true };
-}
+const serverConnection = {
+  port: process.env.PORT || 3000,
+  routes: { cors: process.env.NODE_ENV !== 'production' },
+};
 
 server.connection(serverConnection);
 
