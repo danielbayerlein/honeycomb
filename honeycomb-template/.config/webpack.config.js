@@ -20,7 +20,7 @@ module.exports = env => {
       ],
     },
     eslint: {
-        formatter: eslintFormatter
+      formatter: eslintFormatter
     }
   };
 };
