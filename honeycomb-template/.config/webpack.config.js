@@ -1,16 +1,21 @@
 const path = require('path');
 const eslintFormatter = require('eslint-formatter-pretty');
-const clientDir = '../src/client/';
 
 module.exports = env => {
   return {
-    entry: path.resolve(__dirname, clientDir, 'client.js'),
+    entry: {
+      'app': './src/client/client.js',
+    },
     output: {
-      filename: 'bundle.js',
-      path: path.resolve(__dirname, '../dist'),
+      filename: '[name].bundle.js',
+      path: './public/javascripts',
+      publicPath: '/javascripts/',
       pathinfo: !env.prod,
     },
-    context: path.resolve(__dirname, clientDir),
+    devServer: {
+      contentBase: './public/javascripts',
+    },
+    context: path.resolve(__dirname, '..'),
     devtool: env.prod ? 'source-map' : 'eval',
     bail: env.prod,
     module: {
@@ -20,7 +25,7 @@ module.exports = env => {
       ],
     },
     eslint: {
-      formatter: eslintFormatter
-    }
+      formatter: eslintFormatter,
+    },
   };
 };

@@ -15,7 +15,7 @@
     "test:unit:coverage": "cross-env BABEL_ENV=test nyc --all npm run test:unit && nyc report",
     "build": "webpack --config .config/webpack.config.js --env.dev",
     "build:production": "webpack --config .config/webpack.config.js --env.prod -p",
-    "build:watch": "webpack-dev-server --config .config/webpack.config.js --env.dev --content-base dist/"
+    "build:watch": "webpack-dev-server --config .config/webpack.config.js --env.dev"
   },
   "author": "Daniel Bayerlein",
   "license": "MIT",
