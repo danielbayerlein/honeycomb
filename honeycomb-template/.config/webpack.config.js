@@ -1,5 +1,5 @@
 const path = require('path');
-var eslintFormatter = require('eslint-formatter-pretty');
+const eslintFormatter = require('eslint-formatter-pretty');
 const clientDir = '../src/client/';
 
 module.exports = env => {
