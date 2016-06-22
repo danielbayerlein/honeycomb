@@ -1,2 +1,2 @@
 require('babel-core/register');
-require('./server/controller/index.suite');
+require('./server/controllers/index.suite');
