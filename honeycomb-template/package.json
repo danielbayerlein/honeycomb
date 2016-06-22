@@ -13,6 +13,8 @@
     "test:unit": "ava",
     "test:unit:watch": "npm run test:unit -- --watch",
     "test:unit:coverage": "cross-env BABEL_ENV=test nyc --all npm run test:unit && nyc report",
+    "bench": "matcha test/benchmark/index.js",
+    "bench:csv": "matcha test/benchmark/index.js --reporter csv",
     "build": "webpack --config .config/webpack.config.js --env.dev",
     "build:production": "webpack --config .config/webpack.config.js --env.prod -p",
     "build:watch": "webpack-dev-server --config .config/webpack.config.js --env.dev --content-base dist/"
@@ -52,6 +54,7 @@
     "eslint-plugin-jsx-a11y": "^1.5.3",
     "eslint-plugin-react": "^5.2.2",
     "jsdom": "^9.2.1",
+    "matcha": "^0.7.0",
     "nyc": "^6.6.1",
     "react-addons-test-utils": "^15.1.0",
     "style-loader": "^0.13.1",
@@ -69,10 +72,19 @@
     "babel": "inherit"
   },
   "nyc": {
-    "include": ["src/**/*.(js|jsx)"],
-    "extension": ["jsx"],
-    "reporter": ["lcov", "text"],
-    "require": ["babel-core/register"],
+    "include": [
+      "src/**/*.(js|jsx)"
+    ],
+    "extension": [
+      "jsx"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "require": [
+      "babel-core/register"
+    ],
     "sourceMap": "inline",
     "instrument": false,
     "cache": false
