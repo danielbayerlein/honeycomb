@@ -5,8 +5,8 @@ const Hoek = require('hoek');
 
 const defaultConfig = {
   entry: {
-    'app': [
-      path.resolve(__dirname, '../src/client/client.js')
+    app: [
+      path.resolve(__dirname, '../src/client/client.js'),
     ],
   },
   output: {
@@ -33,8 +33,8 @@ const defaultConfig = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      }
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      },
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
   ],
@@ -43,7 +43,7 @@ const defaultConfig = {
 const developmentConfig = {
   devtool: 'eval',
   entry: {
-    'app': [
+    app: [
       'webpack-hot-middleware/client?reload=true&noInfo=true',
       'react-hot-loader/patch',
     ],
@@ -54,7 +54,7 @@ const developmentConfig = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-  ]
+  ],
 };
 
 const productionConfig = {
