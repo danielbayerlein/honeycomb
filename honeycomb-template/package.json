@@ -7,13 +7,11 @@
     "build": "npm run build:development",
     "build:development": "cross-env NODE_ENV=development webpack --config .config/webpack.config.js",
     "build:production": "cross-env NODE_ENV=production webpack --config .config/webpack.config.js",
-
+    "clean": "rimraf pids logs coverage .nyc_output public/javascripts/*.bundle.js*",
     "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
-
     "start": "npm run start:development",
     "start:development": "pm2-dev start .config/pm2.development.json",
     "start:production": "pm2 start .config/pm2.production.json",
-
     "test": "npm run test:integration && npm run test:unit",
     "test:integration": "chimp .config/chimp.js",
     "test:unit": "nyc --all --require=babel-core/register --include=src/ ava",
@@ -58,6 +56,7 @@
     "jsdom": "^9.2.1",
     "nyc": "^6.6.1",
     "react-addons-test-utils": "^15.1.0",
+    "rimraf": "^2.5.2",
     "style-loader": "^0.13.1",
     "webpack": "^2.1.0-beta.13",
     "webpack-dev-middleware": "^1.6.1",
