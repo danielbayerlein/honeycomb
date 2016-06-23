@@ -6,7 +6,7 @@ const Hoek = require('hoek');
 const defaultConfig = {
   entry: {
     app: [
-      path.resolve(__dirname, '../src/client/client.js'),
+      './src/client/client.js',
     ],
   },
   output: {
