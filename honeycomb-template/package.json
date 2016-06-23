@@ -4,18 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build:development",
+    "build:development": "cross-env NODE_ENV=development webpack --config .config/webpack.config.js",
+    "build:production": "cross-env NODE_ENV=production webpack --config .config/webpack.config.js",
+
     "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
+
     "start": "npm run start:development",
     "start:development": "pm2-dev start .config/pm2.development.json",
     "start:production": "pm2 start .config/pm2.production.json",
+
     "test": "npm run test:integration && npm run test:unit",
     "test:integration": "chimp .config/chimp.js",
     "test:unit": "nyc --all --require=babel-core/register --include=src/ ava",
-    "test:unit:watch": "ava -- --watch",
     "test:unit:report": "nyc report --reporter=lcov",
-    "build": "npm run build:development",
-    "build:development": "cross-env NODE_ENV=development webpack --config .config/webpack.config.js",
-    "build:production": "cross-env NODE_ENV=production webpack --config .config/webpack.config.js"
+    "test:unit:watch": "ava -- --watch"
   },
   "author": "Daniel Bayerlein",
   "license": "MIT",
