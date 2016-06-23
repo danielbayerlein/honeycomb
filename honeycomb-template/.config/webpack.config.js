@@ -60,6 +60,11 @@ const developmentConfig = {
 const productionConfig = {
   bail: true,
   devtool: 'source-map',
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+    }),
+  ],
 };
 
 module.exports = Hoek.merge(
