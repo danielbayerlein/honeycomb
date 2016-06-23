@@ -10,9 +10,9 @@
     "start:production": "pm2 start .config/pm2.production.json",
     "test": "npm run test:integration && npm run test:unit",
     "test:integration": "chimp .config/chimp.js",
-    "test:unit": "ava",
-    "test:unit:watch": "npm run test:unit -- --watch",
-    "test:unit:coverage": "cross-env BABEL_ENV=test nyc --all npm run test:unit && nyc report",
+    "test:unit": "nyc --all --require=babel-core/register --include=src/ ava",
+    "test:unit:watch": "ava -- --watch",
+    "test:unit:report": "nyc report --reporter=lcov",
     "bench": "matcha test/benchmark/index.js",
     "bench:csv": "matcha test/benchmark/index.js --reporter csv",
     "build": "webpack --config .config/webpack.config.js --env.dev",
@@ -41,9 +41,7 @@
   "devDependencies": {
     "ava": "^0.15.2",
     "babel-loader": "^6.2.4",
-    "babel-plugin-__coverage__": "^11.0.0",
     "chimp": "^0.35.0",
-    "cross-env": "^1.0.8",
     "css-loader": "^0.23.1",
     "enzyme": "^2.3.0",
     "eslint": "^2.13.1",
@@ -69,7 +67,9 @@
       "babel-core/register",
       "./.config/browsersetup.js"
     ],
+    "verbose": "true",
     "babel": "inherit"
+<<<<<<< HEAD
   },
   "nyc": {
     "include": [
@@ -88,5 +88,7 @@
     "sourceMap": "inline",
     "instrument": false,
     "cache": false
+=======
+>>>>>>> master
   }
 }

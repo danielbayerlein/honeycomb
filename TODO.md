@@ -12,5 +12,4 @@
  * UI Test (Galen or alternative?)
  * Split libs in own modules
  * Update package.json
- * Code Coverage (nyc - coverage report is not correct currently)
  * Latest Node.js - https://github.com/xolvio/chimp/pull/393
