@@ -1,29 +1,20 @@
 const path = require('path');
 const eslintFormatter = require('eslint-formatter-pretty');
 const webpack = require('webpack');
-const env = {
-  production: process.env.NODE_ENV === 'production',
-  development: process.env.NODE_ENV === 'development',
-  current: process.env.NODE_ENV,
-};
+const Hoek = require('hoek');
 
-module.exports = {
+const defaultConfig = {
   entry: {
     'app': [
-      'webpack-hot-middleware/client?reload=true&noInfo=true',
-      'react-hot-loader/patch',
-      path.resolve(__dirname, '../src/client/client.js'),
+      path.resolve(__dirname, '../src/client/client.js')
     ],
   },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, '../public/javascripts'),
     publicPath: '/javascripts/',
-    pathinfo: env.development,
   },
   context: path.resolve(__dirname, '..'),
-  devtool: env.production ? 'source-map' : 'eval',
-  bail: env.production,
   module: {
     loaders: [
       {
@@ -42,11 +33,36 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify(env.current),
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       }
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
   ],
 };
+
+const developmentConfig = {
+  devtool: 'eval',
+  entry: {
+    'app': [
+      'webpack-hot-middleware/client?reload=true&noInfo=true',
+      'react-hot-loader/patch',
+    ],
+  },
+  output: {
+    pathinfo: true,
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+  ]
+};
+
+const productionConfig = {
+  bail: true,
+  devtool: 'source-map',
+};
+
+module.exports = Hoek.merge(
+  process.env.NODE_ENV === 'development' ? developmentConfig : productionConfig,
+  defaultConfig
+);
