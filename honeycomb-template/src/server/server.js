@@ -27,6 +27,7 @@ server.register([{
   options: {
     webpack: WebpackConfig,
     webpackDev: {
+      noInfo: true,
       publicPath: WebpackConfig.output.publicPath,
     },
   },

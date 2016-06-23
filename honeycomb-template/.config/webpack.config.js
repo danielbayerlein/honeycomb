@@ -10,7 +10,7 @@ const env = {
 module.exports = {
   entry: {
     'app': [
-      'webpack-hot-middleware/client?reload=true',
+      'webpack-hot-middleware/client?reload=true&noInfo=true',
       'react-hot-loader/patch',
       path.resolve(__dirname, '../src/client/client.js'),
     ],
