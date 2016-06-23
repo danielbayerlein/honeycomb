@@ -10,9 +10,9 @@
     "start:production": "pm2 start .config/pm2.production.json",
     "test": "npm run test:integration && npm run test:unit",
     "test:integration": "chimp .config/chimp.js",
-    "test:unit": "ava",
-    "test:unit:watch": "npm run test:unit -- --watch",
-    "test:unit:coverage": "cross-env BABEL_ENV=test nyc --all npm run test:unit && nyc report",
+    "test:unit": "nyc --all --require=babel-core/register --include=src/ ava",
+    "test:unit:watch": "ava -- --watch",
+    "test:unit:report": "nyc report --reporter=lcov",
     "build": "npm run build:development",
     "build:development": "cross-env NODE_ENV=development webpack --config .config/webpack.config.js",
     "build:production": "cross-env NODE_ENV=production webpack --config .config/webpack.config.js"
@@ -38,9 +38,9 @@
     "vision": "^4.1.0"
   },
   "devDependencies": {
+    "@danielbayerlein/hapi-webpack-middleware": "^1.0.0",
     "ava": "^0.15.2",
     "babel-loader": "^6.2.4",
-    "babel-plugin-__coverage__": "^11.0.0",
     "chimp": "^0.35.0",
     "cross-env": "^1.0.8",
     "css-loader": "^0.23.1",
@@ -52,7 +52,6 @@
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.5.3",
     "eslint-plugin-react": "^5.2.2",
-    "@danielbayerlein/hapi-webpack-middleware": "^1.0.0",
     "jsdom": "^9.2.1",
     "nyc": "^6.6.1",
     "react-addons-test-utils": "^15.1.0",
@@ -69,24 +68,7 @@
       "babel-core/register",
       "./.config/browsersetup.js"
     ],
+    "verbose": "true",
     "babel": "inherit"
-  },
-  "nyc": {
-    "include": [
-      "src/**/*.(js|jsx)"
-    ],
-    "extension": [
-      "jsx"
-    ],
-    "reporter": [
-      "lcov",
-      "text"
-    ],
-    "require": [
-      "babel-core/register"
-    ],
-    "sourceMap": "inline",
-    "instrument": false,
-    "cache": false
   }
 }

@@ -11,9 +11,6 @@
   ],
   "env": {
     "test": {
-      "plugins": [
-        "__coverage__"
-      ],
       "sourceMaps": "inline"
     }
   }

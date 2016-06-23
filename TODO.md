@@ -9,8 +9,8 @@
  * Service Discovery (Eureka)
  * Webpack
  * Unit Test
- * UI Test
+ * UI Test (Galen or alternative?)
  * Split libs in own modules
  * Update package.json
- * Code Coverage
+ * Benchmark (benchmark.js chuhai, ...)
  * Latest Node.js - https://github.com/xolvio/chimp/pull/393
