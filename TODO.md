@@ -5,7 +5,7 @@
 * honeycomb-template
  * README
  * Styling for React Components
- * Logging (log4js, hapi-logger, https://github.com/tj/log.js, ... :question:)
+ * Logging (logstash integration for pm2 - open [issue](https://github.com/Unitech/pm2/issues/437))
  * Service Discovery (Eureka)
  * Webpack
  * Unit Test
