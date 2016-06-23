@@ -13,9 +13,9 @@
     "test:unit": "ava",
     "test:unit:watch": "npm run test:unit -- --watch",
     "test:unit:coverage": "cross-env BABEL_ENV=test nyc --all npm run test:unit && nyc report",
-    "build": "webpack --config .config/webpack.config.js --env.dev",
-    "build:production": "webpack --config .config/webpack.config.js --env.prod -p",
-    "build:watch": "webpack-dev-server --config .config/webpack.config.js --env.dev"
+    "build": "npm run build:development",
+    "build:development": "cross-env NODE_ENV=development webpack --config .config/webpack.config.js",
+    "build:production": "cross-env NODE_ENV=production webpack --config .config/webpack.config.js"
   },
   "author": "Daniel Bayerlein",
   "license": "MIT",
@@ -34,6 +34,7 @@
     "pm2": "^1.1.3",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "react-hot-loader": "^3.0.0-beta.1",
     "vision": "^4.1.0"
   },
   "devDependencies": {
@@ -51,13 +52,14 @@
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.5.3",
     "eslint-plugin-react": "^5.2.2",
+    "@danielbayerlein/hapi-webpack-middleware": "^1.0.0",
     "jsdom": "^9.2.1",
     "nyc": "^6.6.1",
     "react-addons-test-utils": "^15.1.0",
-    "react-hot-loader": "^1.3.0",
     "style-loader": "^0.13.1",
     "webpack": "^2.1.0-beta.13",
-    "webpack-dev-server": "^2.1.0-beta.0"
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.10.0"
   },
   "ava": {
     "files": [
