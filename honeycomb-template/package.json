@@ -80,26 +80,5 @@
     ],
     "verbose": "true",
     "babel": "inherit"
-<<<<<<< HEAD
-  },
-  "nyc": {
-    "include": [
-      "src/**/*.(js|jsx)"
-    ],
-    "extension": [
-      "jsx"
-    ],
-    "reporter": [
-      "lcov",
-      "text"
-    ],
-    "require": [
-      "babel-core/register"
-    ],
-    "sourceMap": "inline",
-    "instrument": false,
-    "cache": false
-=======
->>>>>>> master
   }
 }
