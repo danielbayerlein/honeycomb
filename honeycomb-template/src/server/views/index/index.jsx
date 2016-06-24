@@ -2,12 +2,12 @@ import React, { PropTypes } from 'react';
 
 const Index = ({ name }) => (
   <main>
-    <div className="qa-info">
+    <h1 className="qa-info">
       Hello {name}
-    </div>
+    </h1>
 
     <div className="js-app"></div>
-    <script src="/dist/bundle.js"></script>
+    <script src="/javascripts/app.bundle.js"></script>
   </main>
 );
 
