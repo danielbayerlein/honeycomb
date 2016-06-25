@@ -41,3 +41,6 @@ jspm_packages
 
 # webpack bundle
 *.bundle.js*
+
+# Babel output directory
+dist

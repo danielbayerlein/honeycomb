@@ -1,7 +1,7 @@
 {
   "apps": [{
     "name": "honeycomb-template",
-    "script": "index.js",
+    "script": "dist/server/server.js",
     "instances": 2,
     "exec_mode": "cluster",
     "env": {

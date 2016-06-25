@@ -1,11 +1,12 @@
 {
   "apps": [{
     "name": "honeycomb-template",
-    "script": "index.js",
+    "script": "src/server/server.js",
     "watch": ["src/server"],
     "env": {
       "NODE_ENV": "development"
     },
+    "exec_interpreter": "babel-node",
     "combine_logs": true,
     "error_file": "logs/honeycomb-template.error.log",
     "out_file": "logs/honeycomb-template.out.log",
