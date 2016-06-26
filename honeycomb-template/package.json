@@ -5,8 +5,8 @@
   "main": "src/server/server.js",
   "scripts": {
     "build": "npm run build:development",
-    "build:babel:development": "cross-env BABEL_ENV=development babel src/ -d dist/ -s inline",
-    "build:babel:production": "cross-env BABEL_ENV=production babel src/ -d dist/ -s",
+    "build:babel:development": "cross-env BABEL_ENV=development babel src/ --out-dir dist/ --source-maps inline",
+    "build:babel:production": "cross-env BABEL_ENV=production babel src/ --out-dir dist/ --source-maps --only src/server/",
     "build:development": "npm run build:babel:development && npm run build:webpack:development",
     "build:production": "npm run build:babel:production && npm run build:webpack:production",
     "build:webpack:development": "cross-env NODE_ENV=development webpack --config .config/webpack.config.js",
