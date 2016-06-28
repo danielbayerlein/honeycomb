@@ -4,18 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build:development",
+    "build:development": "cross-env NODE_ENV=development webpack --config .config/webpack.config.js",
+    "build:production": "cross-env NODE_ENV=production webpack --config .config/webpack.config.js",
+    "clean": "rimraf pids logs coverage .nyc_output public/javascripts/*.bundle.js*",
     "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
     "start": "npm run start:development",
     "start:development": "pm2-dev start .config/pm2.development.json",
     "start:production": "pm2 start .config/pm2.production.json",
     "test": "npm run test:integration && npm run test:unit",
     "test:integration": "chimp .config/chimp.js",
-    "test:unit": "ava",
-    "test:unit:watch": "npm run test:unit -- --watch",
-    "test:unit:coverage": "cross-env BABEL_ENV=test nyc --all npm run test:unit && nyc report",
-    "build": "webpack --config .config/webpack.config.js --env.dev",
-    "build:production": "webpack --config .config/webpack.config.js --env.prod -p",
-    "build:watch": "webpack-dev-server --config .config/webpack.config.js --env.dev --content-base dist/"
+    "test:unit": "nyc --all --require=babel-core/register --include=src/ ava",
+    "test:unit:report": "nyc report --reporter=lcov",
+    "test:unit:watch": "ava -- --watch"
   },
   "author": "Daniel Bayerlein",
   "license": "MIT",
@@ -36,12 +37,13 @@
     "pm2": "^1.1.3",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "react-hot-loader": "^3.0.0-beta.1",
     "vision": "^4.1.0"
   },
   "devDependencies": {
+    "@danielbayerlein/hapi-webpack-middleware": "^1.0.1",
     "ava": "^0.15.2",
     "babel-loader": "^6.2.4",
-    "babel-plugin-__coverage__": "^11.0.0",
     "chimp": "^0.35.0",
     "cross-env": "^1.0.8",
     "css-loader": "^0.23.1",
@@ -56,9 +58,11 @@
     "jsdom": "^9.2.1",
     "nyc": "^6.6.1",
     "react-addons-test-utils": "^15.1.0",
+    "rimraf": "^2.5.2",
     "style-loader": "^0.13.1",
     "webpack": "^2.1.0-beta.13",
-    "webpack-dev-server": "^2.1.0-beta.0"
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.10.0"
   },
   "ava": {
     "files": [
@@ -68,24 +72,7 @@
       "babel-core/register",
       "./.config/browsersetup.js"
     ],
+    "verbose": "true",
     "babel": "inherit"
-  },
-  "nyc": {
-    "include": [
-      "src/**/*.(js|jsx)"
-    ],
-    "extension": [
-      "jsx"
-    ],
-    "reporter": [
-      "lcov",
-      "text"
-    ],
-    "require": [
-      "babel-core/register"
-    ],
-    "sourceMap": "inline",
-    "instrument": false,
-    "cache": false
   }
 }

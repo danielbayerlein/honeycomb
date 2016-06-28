@@ -1,13 +1,16 @@
 {
-  "presets": ["es2015", "react"],
+  "presets": [
+    "es2015",
+    "react"
+  ],
   "plugins": [
-      "transform-runtime",
-      "transform-class-properties",
-      "transform-object-rest-spread"
+    "transform-runtime",
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    "react-hot-loader/babel"
   ],
   "env": {
     "test": {
-      "plugins": ["__coverage__"],
       "sourceMaps": "inline"
     }
   }

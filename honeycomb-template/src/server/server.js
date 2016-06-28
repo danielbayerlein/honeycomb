@@ -5,11 +5,20 @@ import Inert from 'inert';
 import good from 'good';
 import HapiReactViews from 'hapi-react-views';
 import HapiRouter from 'hapi-router';
+import WebpackPlugin from '@danielbayerlein/hapi-webpack-middleware';
+import WebpackConfig from '../../.config/webpack.config';
 import logConfig from '../../.config/log';
 
 const server = new Hapi.Server();
 
-server.connection({ port: process.env.PORT || 3000 });
+const serverConnection = {
+  port: process.env.PORT || 3000,
+  routes: {
+    cors: process.env.NODE_ENV === 'development',
+  },
+};
+
+server.connection(serverConnection);
 
 server.register([{
   register: Vision,
@@ -19,6 +28,15 @@ server.register([{
 {
   register: good,
   options: logConfig,
+}, {
+  register: WebpackPlugin,
+  options: {
+    webpack: WebpackConfig,
+    webpackDev: {
+      noInfo: true,
+      publicPath: WebpackConfig.output.publicPath,
+    },
+  },
 }, {
   register: HapiRouter,
   options: {
