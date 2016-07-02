@@ -26,6 +26,8 @@
   "license": "MIT",
   "dependencies": {
     "babel-runtime": "^6.9.2",
+    "confidence": "^3.0.1",
+    "glue": "^3.3.0",
     "hapi": "^13.4.1",
     "hapi-react-views": "^9.0.0",
     "hapi-router": "^3.5.0",
@@ -35,7 +37,8 @@
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-hot-loader": "^3.0.0-beta.1",
-    "vision": "^4.1.0"
+    "vision": "^4.1.0",
+    "visionary": "^6.0.0"
   },
   "devDependencies": {
     "@danielbayerlein/hapi-webpack-middleware": "^1.0.1",
