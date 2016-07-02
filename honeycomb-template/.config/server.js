@@ -15,7 +15,7 @@ const master = {
           cors: true,
         },
       },
-      production: {}
+      production: {},
     },
   ],
   registrations: [
