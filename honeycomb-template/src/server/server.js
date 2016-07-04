@@ -55,7 +55,7 @@ server.register([{
     Hoek.assert(!startError, startError);
 
     const { info } = server;
-    console.log('Server running at:', server.uri);
+    console.log('Server running at:', info.uri); // eslint-disable-line no-console
 
     // connect to eureka
     eureka.register(info.host, info.port);
