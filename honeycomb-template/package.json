@@ -46,7 +46,7 @@
     "vision": "^4.1.0"
   },
   "devDependencies": {
-    "@danielbayerlein/hapi-webpack-middleware": "^1.0.0",
+    "@danielbayerlein/hapi-webpack-middleware": "^1.0.1",
     "ava": "^0.15.2",
     "babel-loader": "^6.2.4",
     "chimp": "^0.35.0",
