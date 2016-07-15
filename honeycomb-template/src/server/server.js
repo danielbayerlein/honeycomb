@@ -7,6 +7,7 @@ import HapiReactViews from 'hapi-react-views';
 import HapiRouter from 'hapi-router';
 import WebpackPlugin from '@danielbayerlein/hapi-webpack-middleware';
 import WebpackConfig from '../../.config/webpack.config';
+import eureka from './utils/eureka';
 import logConfig from '../../.config/log';
 
 const server = new Hapi.Server();
@@ -59,6 +60,10 @@ server.register([{
   server.start((startError) => {
     Hoek.assert(!startError, startError);
 
-    console.info('Server running at:', server.info.uri); // eslint-disable-line no-console
+    const { info } = server;
+    console.info('Server running at:', info.uri); // eslint-disable-line no-console
+
+    // connect to eureka
+    eureka.register(info.host, info.port);
   });
 });
