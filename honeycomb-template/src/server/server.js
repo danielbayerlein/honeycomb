@@ -12,7 +12,7 @@ Glue.compose(manifest, options, (error, server) => {
     Hoek.assert(!startError, startError);
 
     const { info } = server;
-    console.log('Server running at:', info.uri); // eslint-disable-line no-console
+    console.info('Server running at:', info.uri); // eslint-disable-line no-console
 
     // connect to eureka
     eureka.register(info.host, info.port);
