@@ -2,11 +2,13 @@ import Hapi from 'hapi';
 import Hoek from 'hoek';
 import Vision from 'vision';
 import Inert from 'inert';
+import good from 'good';
 import HapiReactViews from 'hapi-react-views';
 import HapiRouter from 'hapi-router';
 import WebpackPlugin from '@danielbayerlein/hapi-webpack-middleware';
 import WebpackConfig from '../../.config/webpack.config';
 import eureka from './utils/eureka';
+import logConfig from '../../.config/log';
 
 const server = new Hapi.Server();
 
@@ -23,6 +25,10 @@ server.register([{
   register: Vision,
 }, {
   register: Inert,
+},
+{
+  register: good,
+  options: logConfig,
 }, {
   register: WebpackPlugin,
   options: {
@@ -55,7 +61,7 @@ server.register([{
     Hoek.assert(!startError, startError);
 
     const { info } = server;
-    console.log('Server running at:', info.uri); // eslint-disable-line no-console
+    console.info('Server running at:', info.uri); // eslint-disable-line no-console
 
     // connect to eureka
     eureka.register(info.host, info.port);
