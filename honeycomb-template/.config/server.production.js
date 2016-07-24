@@ -1,4 +1,5 @@
 const path = require('path');
+const logConfig = require('./log');
 
 module.exports = {
   connections: [
@@ -12,6 +13,12 @@ module.exports = {
     },
     {
       plugin: 'inert',
+    },
+    {
+      plugin: {
+        register: 'good',
+        options: logConfig,
+      },
     },
     {
       plugin: {

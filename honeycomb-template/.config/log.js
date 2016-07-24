@@ -1,11 +1,9 @@
-const log = {
+module.exports = {
   ops: false,
   reporters: {
     console: [{
       module: 'good-console',
-      args: [{ response: "*" }],
+      args: [{ response: '*' }],
     }, 'stdout'],
-  }
+  },
 };
-
-export default log;
