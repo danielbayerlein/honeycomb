@@ -1,8 +1,10 @@
 import Hoek from 'hoek';
 import Glue from 'glue';
-import manifest from '../../.config/server';
 
-Glue.compose(manifest, { relativeTo: __dirname }, (error, server) => {
+const manifest = require(`../../.config/server.${process.env.NODE_ENV}`);
+const options = { relativeTo: __dirname };
+
+Glue.compose(manifest, options, (error, server) => {
   Hoek.assert(!error, error);
 
   server.start((startError) => {
