@@ -61,7 +61,7 @@
     "react-addons-test-utils": "^15.1.0",
     "rimraf": "^2.5.2",
     "style-loader": "^0.13.1",
-    "webpack": "^2.1.0-beta.13",
+    "webpack": "^2.1.0-beta.20",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
   },
