@@ -11,4 +11,3 @@
  * Split libs in own modules
  * Update package.json
  * Benchmark (benchmark.js chuhai, ...)
- * Latest Node.js - https://github.com/xolvio/chimp/pull/393
