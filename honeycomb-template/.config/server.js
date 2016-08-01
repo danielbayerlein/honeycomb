@@ -1,8 +1,9 @@
 const path = require('path');
-const webpackConfig = require('./webpack.config');
 const logConfig = require('./log');
+const webpackConfig = require('./webpack.config');
+const Hoek = require('hoek');
 
-module.exports = {
+const defaultConfig = {
   connections: [
     {
       port: process.env.PORT || 3000,
@@ -21,6 +22,11 @@ module.exports = {
         options: logConfig,
       },
     },
+  ],
+};
+
+const developmentConfig = {
+  registrations: [
     {
       plugin: {
         register: 'hapi-router',
@@ -58,3 +64,36 @@ module.exports = {
     },
   ],
 };
+
+const productionConfig = {
+  registrations: [
+    {
+      plugin: {
+        register: 'hapi-router',
+        options: {
+          routes: 'dist/server/routes/*.js',
+        },
+      },
+    },
+    {
+      plugin: {
+        register: 'visionary',
+        options: {
+          compileOptions: {
+            doctype: '',
+          },
+          engines: {
+            js: 'hapi-react-views',
+          },
+          path: 'views',
+          relativeTo: path.resolve(__dirname, '../dist/server'),
+        },
+      },
+    },
+  ],
+};
+
+module.exports = Hoek.merge(
+  defaultConfig,
+  process.env.NODE_ENV === 'development' ? developmentConfig : productionConfig
+);
