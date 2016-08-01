@@ -6,9 +6,6 @@ module.exports = {
   connections: [
     {
       port: process.env.PORT || 3000,
-      routes: {
-        cors: true,
-      },
     },
   ],
   registrations: [
