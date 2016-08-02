@@ -6,7 +6,7 @@ const Hoek = require('hoek');
 const defaultConfig = {
   entry: {
     app: [
-      './src/client/client.js',
+      './src/client/client.jsx',
     ],
   },
   output: {
