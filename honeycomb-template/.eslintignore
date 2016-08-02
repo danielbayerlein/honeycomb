@@ -1,2 +1,4 @@
 /public/javascripts/*.bundle.js*
+/dist/**
 /coverage/**
+!.*

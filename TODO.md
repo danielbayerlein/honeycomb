@@ -11,6 +11,3 @@
  * Split libs in own modules
  * Update package.json
  * Benchmark (benchmark.js chuhai, ...)
- * It's not a good idea to use babel it in production
-  * https://github.com/babel/example-node-server/issues/13
-  * https://github.com/babel/example-node-server#getting-ready-for-production-use
