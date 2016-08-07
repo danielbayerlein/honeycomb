@@ -27,7 +27,7 @@
     "good": "^7.0.1",
     "good-console": "^6.1.2",
     "hapi": "^14.1.0",
-    "hapi-react-views": "^9.0.0",
+    "hapi-react-views": "^9.1.1",
     "hapi-router": "^3.5.0",
     "hoek": "^4.0.2",
     "inert": "^4.0.0",
