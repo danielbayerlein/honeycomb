@@ -30,7 +30,7 @@
     "hapi-react-views": "^9.1.1",
     "hapi-router": "^3.5.0",
     "hoek": "^4.0.2",
-    "inert": "^4.0.0",
+    "inert": "^4.0.1",
     "pm2": "^1.1.3",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
