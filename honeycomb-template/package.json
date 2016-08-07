@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@danielbayerlein/hapi-webpack-middleware": "^1.0.1",
-    "ava": "^0.15.2",
+    "ava": "^0.16.0",
     "babel-cli": "^6.11.4",
     "babel-core": "^6.13.2",
     "babel-loader": "^6.2.4",
