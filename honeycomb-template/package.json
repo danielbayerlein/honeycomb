@@ -22,7 +22,7 @@
   "license": "MIT",
   "dependencies": {
     "babel-runtime": "^6.11.6",
-    "eureka-js-client": "^3.1.1",
+    "eureka-js-client": "^3.1.2",
     "glue": "^3.3.0",
     "good": "^7.0.1",
     "good-console": "^6.1.2",
