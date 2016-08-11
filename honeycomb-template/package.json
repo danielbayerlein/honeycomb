@@ -60,7 +60,7 @@
     "eslint-plugin-import": "^1.13.0",
     "eslint-plugin-jsx-a11y": "^2.1.0",
     "eslint-plugin-react": "^6.0.0",
-    "jsdom": "^9.4.1",
+    "jsdom": "^9.4.2",
     "nyc": "^7.1.0",
     "react-addons-test-utils": "^15.3.0",
     "rimraf": "^2.5.4",
