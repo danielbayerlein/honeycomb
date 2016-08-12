@@ -75,7 +75,7 @@
     ],
     "require": [
       "babel-core/register",
-      "./.config/browsersetup.js"
+      "./.config/browsersetup"
     ],
     "verbose": "true",
     "babel": "inherit"
