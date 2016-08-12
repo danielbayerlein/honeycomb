@@ -1,7 +1,9 @@
 import controller from '../controllers/index';
 
-export default [{
+const routes = [{
   method: 'GET',
   path: '/',
   config: controller.index,
 }];
+
+export default routes;

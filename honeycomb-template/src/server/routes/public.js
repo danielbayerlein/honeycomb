@@ -1,4 +1,4 @@
-export default [{
+const routes = [{
   method: 'GET',
   path: '/{param*}',
   handler: {
@@ -7,3 +7,5 @@ export default [{
     },
   },
 }];
+
+export default routes;
