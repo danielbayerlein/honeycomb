@@ -1,3 +1,22 @@
+globals:
+  browser: false
+  expect: false
 rules:
-  import/no-extraneous-dependencies: [error, { devDependencies: true }]
-  react/jsx-filename-extension: [error, { extensions: [".js", ".jsx"] }]
+  import/no-extraneous-dependencies:
+    - error
+    - devDependencies: true
+  react/jsx-filename-extension:
+    - error
+    - extensions:
+      - .js
+      - .jsx
+  new-cap:
+    - error
+    - capIsNewExceptions:
+      - Feature
+      - Scenario
+      - Given
+      - When
+      - Then
+      - And
+      - But
