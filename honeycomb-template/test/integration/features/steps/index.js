@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function indexTest() {
   this.Given(/^der Benutzer navigiert zur Seite "([^"]*)"$/, (path) => {
     browser.url(path);
   });
