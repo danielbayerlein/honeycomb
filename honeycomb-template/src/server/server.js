@@ -1,7 +1,8 @@
 import Hoek from 'hoek';
 import Glue from 'glue';
-import eureka from './utils/eureka';
+import HoneycombRegistryClient from 'honeycomb-registry-client';
 import manifest from '../../.config/server';
+import pkg from '../../package';
 
 Glue.compose(manifest, { relativeTo: __dirname }, (error, server) => {
   Hoek.assert(!error, error);
@@ -12,7 +13,7 @@ Glue.compose(manifest, { relativeTo: __dirname }, (error, server) => {
     const { info } = server;
     console.info('Server running at:', info.uri); // eslint-disable-line no-console
 
-    // connect to eureka
-    eureka.register(info.host, info.port);
+    // Register server
+    HoneycombRegistryClient.register(pkg.name, info.host, info.port);
   });
 });
