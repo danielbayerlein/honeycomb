@@ -1,7 +1,9 @@
 import controller from '../controllers/health';
 
-export default [{
+const routes = [{
   method: 'GET',
   path: '/health',
   config: controller.health,
 }];
+
+export default routes;
