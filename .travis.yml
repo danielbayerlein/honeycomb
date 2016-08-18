@@ -9,5 +9,9 @@ env:
   - TEST_DIR=honeycomb-registry-client
   - TEST_DIR=honeycomb-template
 before_install:
-  - npm install
+  - |
+    if [ "$TEST_DIR" = honeycomb-template ]; then
+      # Linking local npm modules via npm-workspace
+      npm install
+    fi
   - cd $TEST_DIR
