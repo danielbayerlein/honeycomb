@@ -8,4 +8,6 @@ cache:
 env:
   - TEST_DIR=honeycomb-registry-client
   - TEST_DIR=honeycomb-template
-before_install: cd $TEST_DIR
+before_install:
+  - npm install
+  - cd $TEST_DIR
