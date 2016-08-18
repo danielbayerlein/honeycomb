@@ -12,7 +12,7 @@
     "start": "npm run start:development",
     "start:development": "pm2-dev start .config/pm2.development.json",
     "start:production": "pm2 start .config/pm2.production.json",
-    "test": "npm run test:integration && npm run test:unit",
+    "test": "npm run lint && npm run test:integration && npm run test:unit",
     "test:integration": "chimp .config/chimp.js",
     "test:unit": "nyc --all --require=babel-core/register --include=src/ ava",
     "test:unit:report": "nyc report --reporter=lcov",
