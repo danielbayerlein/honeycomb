@@ -15,3 +15,10 @@ before_install:
       npm install
     fi
   - cd $TEST_DIR
+before_script:
+  - |
+    if [ "$TEST_DIR" = honeycomb-template ]; then
+      # Integration test
+      npm run build
+      npm run start:production
+    fi
