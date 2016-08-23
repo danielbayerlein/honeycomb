@@ -1,5 +1,7 @@
 # Honeycomb
 
+[![Build Status](https://travis-ci.org/danielbayerlein/honeycomb.svg?branch=master)](https://travis-ci.org/danielbayerlein/honeycomb)
+
 <img src="./logo.png" width="150">
 
 **Honeycomb** is a common basis for [Node.js](https://nodejs.org) microservices 🐝
