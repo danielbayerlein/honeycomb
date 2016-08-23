@@ -1,4 +1,5 @@
 module.exports = {
+  browser: 'phantomjs',
   path: 'test/integration/features',
   webdriverio: {
     // FIXME: Use current port
