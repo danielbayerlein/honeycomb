@@ -2,6 +2,7 @@ language: node_js
 cache:
   directories:
     - node_modules
+    - honeycomb-template/node_modules
 env:
   - TEST_DIR=honeycomb-registry-client
   - TEST_DIR=honeycomb-template
