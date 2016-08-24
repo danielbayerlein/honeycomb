@@ -14,6 +14,6 @@ Glue.compose(manifest, { relativeTo: __dirname }, (error, server) => {
     console.info('Server running at:', info.uri); // eslint-disable-line no-console
 
     // Register server
-    // HoneycombRegistryClient.register(pkg.name, info.host, info.port);
+    HoneycombRegistryClient.register(pkg.name, info.host, info.port);
   });
 });
