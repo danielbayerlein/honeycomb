@@ -1,0 +1,23 @@
+language: node_js
+cache:
+  directories:
+    - node_modules
+    - honeycomb-registry-client/node_modules
+    - honeycomb-template/node_modules
+env:
+  - TEST_DIR=honeycomb-registry-client
+  - TEST_DIR=honeycomb-template
+before_install:
+  - |
+    if [ "$TEST_DIR" = honeycomb-template ]; then
+      # Linking local npm modules via npm-workspace
+      npm install
+    fi
+  - cd $TEST_DIR
+before_script:
+  - |
+    if [ "$TEST_DIR" = honeycomb-template ]; then
+      # Integration test
+      npm run build
+      npm run start:production
+    fi
