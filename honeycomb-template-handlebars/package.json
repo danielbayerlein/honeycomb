@@ -4,8 +4,9 @@
   "description": "",
   "main": "src/server/server.js",
   "scripts": {
-    "build": "npm run build:babel && npm run build:webpack",
+    "build": "npm run build:babel && npm run build:views && npm run build:webpack",
     "build:babel": "cross-env BABEL_ENV=production babel src/ --out-dir dist/ --source-maps --only src/server/",
+    "build:views": "ncp src/server/views dist/server/views",
     "build:webpack": "cross-env NODE_ENV=production webpack --config .config/webpack.config.js",
     "clean": "rimraf pids logs coverage .nyc_output dist public/javascripts/*.bundle.js*",
     "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
@@ -54,6 +55,7 @@
     "eslint-loader": "^1.5.0",
     "eslint-plugin-import": "^1.13.0",
     "jsdom": "^9.4.2",
+    "ncp": "^2.0.0",
     "nyc": "^8.1.0",
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
