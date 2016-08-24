@@ -2,13 +2,13 @@
 
 [![Build Status](https://travis-ci.org/danielbayerlein/honeycomb.svg?branch=master)](https://travis-ci.org/danielbayerlein/honeycomb)
 
-<img src="./logo.png" width="150">
+<img src="./docs/images/logo.png" width="150">
 
 **Honeycomb** is a common basis for [Node.js](https://nodejs.org) microservices 🐝
 
 ## Work in Progress
 
-<img src="./work_in_progress.gif" width="100">
+<img src="./docs/images/work_in_progress.gif" width="100">
 
 Busy bees are working hard to get things done. This project is not ready for prime time.
 
