@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 const Index = ({ name }) => (
   <main>
     <h1 className="qa-info">
-      Hello {name}
+      Hello from {name}
     </h1>
 
     <div className="js-app"></div>

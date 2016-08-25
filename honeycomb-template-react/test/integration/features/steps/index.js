@@ -5,6 +5,6 @@ module.exports = function indexTest() {
 
   this.Given(/^soll der Benutzer einen Begrüßungstext sehen$/, () => {
     const text = browser.getText('.qa-info');
-    expect(text).toBe('Hello World');
+    expect(text).toBe('Hello from React');
   });
 };

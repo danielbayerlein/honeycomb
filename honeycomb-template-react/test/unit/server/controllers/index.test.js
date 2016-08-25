@@ -8,7 +8,7 @@ test('controller.index.handler', t => {
     view: (template, config) => {
       t.is(template, 'index/index');
       t.true(typeof config === 'object');
-      t.is(config.name, 'World');
+      t.is(config.name, 'React');
     },
   };
 
