@@ -30,7 +30,7 @@
     "hapi-router": "^3.5.0",
     "hoek": "^4.0.2",
     "honeycomb-registry-client": "^1.0.0",
-    "inert": "^4.0.1",
+    "inert": "^4.0.2",
     "pm2": "^1.1.3",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
