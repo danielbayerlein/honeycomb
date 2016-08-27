@@ -10,7 +10,7 @@
   "author": "Daniel Bayerlein",
   "license": "MIT",
   "dependencies": {
-    "eureka-js-client": "^3.1.2"
+    "eureka-js-client": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "^3.4.0",
