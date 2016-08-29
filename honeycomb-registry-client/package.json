@@ -10,12 +10,12 @@
   "author": "Daniel Bayerlein",
   "license": "MIT",
   "dependencies": {
-    "eureka-js-client": "^3.1.2"
+    "eureka-js-client": "^4.0.0"
   },
   "devDependencies": {
-    "eslint": "^3.3.0",
-    "eslint-config-airbnb-base": "^5.0.2",
+    "eslint": "^3.4.0",
+    "eslint-config-airbnb-base": "^5.0.3",
     "eslint-formatter-pretty": "^0.3.1",
-    "eslint-plugin-import": "^1.13.0"
+    "eslint-plugin-import": "^1.14.0"
   }
 }
