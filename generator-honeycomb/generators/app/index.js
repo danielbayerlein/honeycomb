@@ -4,9 +4,8 @@ const yosay = require('yosay');
 
 module.exports = yeoman.Base.extend({
   prompting: function prompting() {
-    // Have Yeoman greet the user.
     this.log(yosay(
-      `Welcome to the fine ${chalk.red('generator-honeycomb')} generator!`
+      `Welcome to the ${chalk.red('generator-honeycomb')} generator!`
     ));
 
     const prompts = [{
@@ -16,10 +15,10 @@ module.exports = yeoman.Base.extend({
       default: true,
     }];
 
-    return this.prompt(prompts).then(function (props) {
+    return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
       this.props = props;
-    }.bind(this));
+    });
   },
 
   writing: function writing() {
