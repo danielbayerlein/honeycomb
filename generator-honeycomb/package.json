@@ -1,0 +1,28 @@
+{
+  "name": "generator-honeycomb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generators/index.js",
+  "scripts": {
+    "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
+    "test": "npm run lint"
+  },
+  "author": "Daniel Bayerlein",
+  "license": "MIT",
+  "files": [
+    "generators"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^0.23.0",
+    "chalk": "^1.0.0",
+    "yosay": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.3.0",
+    "eslint-config-airbnb-base": "^5.0.2",
+    "eslint-formatter-pretty": "^0.3.1",
+    "eslint-plugin-import": "^1.13.0",
+    "yeoman-test": "^1.0.0",
+    "yeoman-assert": "^2.0.0"
+  }
+}
