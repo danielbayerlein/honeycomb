@@ -1,16 +1,16 @@
 FROM node:latest
 
 # Create app directory
-RUN mkdir -p /code/honeycomb-template
-WORKDIR /code/honeycomb-template
+RUN mkdir -p /code/<%= dir %>
+WORKDIR /code/<%= dir %>
 
 # Install app dependencies
-COPY package.json /code/honeycomb-template/
+COPY package.json /code/<%= dir %>/
 
 RUN npm install
 
 # Bundle app source
-COPY . /code/honeycomb-template
+COPY . /code/<%= dir %>
 
 # build assets
 RUN npm run build:production

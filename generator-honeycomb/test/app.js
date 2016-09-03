@@ -17,7 +17,10 @@ describe('generator-honeycomb', () => {
   });
 
   it('creates expected files', () => {
-    assert.file(['package.json']);
+    assert.file([
+      'package.json',
+      'Dockerfile',
+    ]);
   });
 
   describe('package.json', () => {
@@ -27,6 +30,17 @@ describe('generator-honeycomb', () => {
         ['package.json', '"name": "honeycomb-example",'],
         ['package.json', '"description": "Example package",'],
         ['package.json', '"version": "1.0.0",'],
+      ]);
+    });
+  });
+
+  describe('Dockerfile', () => {
+    it('should have expected content', () => {
+      assert.fileContent([
+        ['Dockerfile', 'RUN mkdir -p /code/honeycomb-example'],
+        ['Dockerfile', 'WORKDIR /code/honeycomb-example'],
+        ['Dockerfile', 'COPY package.json /code/honeycomb-example/'],
+        ['Dockerfile', 'COPY . /code/honeycomb-example'],
       ]);
     });
   });

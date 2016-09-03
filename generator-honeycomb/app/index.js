@@ -67,6 +67,14 @@ module.exports = yeoman.Base.extend({
         }
       );
     },
+
+    docker: function docker() {
+      this.fs.copyTpl(
+        this.templatePath('_Dockerfile'),
+        this.destinationPath('Dockerfile'),
+        { dir: this.packageName }
+      );
+    },
   },
 
   install: function install() {
