@@ -8,7 +8,12 @@ test('controller.index.handler', t => {
     view: (template, config) => {
       t.is(template, 'index/index');
       t.true(typeof config === 'object');
+      <%_ if (includeReact) { _%>
+      t.is(config.name, 'React');
+      <%_ } _%>
+      <%_ if (includeHandlebars) { _%>
       t.is(config.name, 'Handlebars');
+      <%_ } _%>
     },
   };
 

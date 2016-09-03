@@ -105,7 +105,7 @@ module.exports = yeoman.Base.extend({
       );
     },
 
-    config: function config() {
+    configDir: function configDir() {
       this.copy(
         this.templatePath('.config/browsersetup.js'),
         this.destinationPath('.config/browsersetup.js')
@@ -143,6 +143,40 @@ module.exports = yeoman.Base.extend({
       this.template(
         this.templatePath('.config/_webpack.config.js'),
         this.destinationPath('.config/webpack.config.js'),
+        {
+          includeReact: this.includeReact,
+          includeHandlebars: this.includeHandlebars,
+        }
+      );
+    },
+
+    testDir: function testDir() {
+      this.template(
+        this.templatePath('test/_.eslintrc.yml'),
+        this.destinationPath('test/.eslintrc.yml'),
+        { includeReact: this.includeReact }
+      );
+
+      this.directory(
+        this.templatePath('test/integration'),
+        this.destinationPath('test/integration')
+      );
+
+      this.directory(
+        this.templatePath('test/ui'),
+        this.destinationPath('test/ui')
+      );
+
+      if (this.includeReact) {
+        this.directory(
+          this.templatePath('test/unit/client'),
+          this.destinationPath('test/unit/client')
+        );
+      }
+
+      this.template(
+        this.templatePath('test/unit/server/controllers/_index.test.js'),
+        this.destinationPath('test/unit/server/controllers/index.test.js'),
         {
           includeReact: this.includeReact,
           includeHandlebars: this.includeHandlebars,

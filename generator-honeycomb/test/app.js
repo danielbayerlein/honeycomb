@@ -33,6 +33,12 @@ describe('generator-honeycomb', () => {
       '.config/pm2.production.json',
       '.config/server.js',
       '.config/webpack.config.js',
+      'test/integration/features/steps/index.js',
+      'test/integration/features/support/.gitkeep',
+      'test/integration/features/index.feature',
+      'test/ui/.gitkeep',
+      'test/unit/server/controllers/index.test.js',
+      'test/.eslintrc.yml',
     ]);
   });
 
@@ -100,6 +106,15 @@ describe('generator-honeycomb', () => {
         ]);
       });
     });
+
+    describe('test/unit/server/controllers/index.test.js', () => {
+      it('should have expected content', () => {
+        assert.fileContent(
+          'test/unit/server/controllers/index.test.js',
+          "t.is(config.name, 'Handlebars');"
+        );
+      });
+    });
   });
 
   describe('with react templates', () => {
@@ -107,6 +122,10 @@ describe('generator-honeycomb', () => {
       helpers.run(path.join(__dirname, '../app'))
         .withPrompts({ template: 'react' })
         .on('end', done);
+    });
+
+    it('creates expected files', () => {
+      assert.file('test/unit/client/components/Example.test.js');
     });
 
     describe('package.json', () => {
@@ -155,6 +174,21 @@ describe('generator-honeycomb', () => {
           ['.config/webpack.config.js', 'test: /\\.(js|jsx)$/,'],
           ['.config/webpack.config.js', "'react-hot-loader/patch',"],
         ]);
+      });
+    });
+
+    describe('test/.eslintrc.yml', () => {
+      it('should have expected content', () => {
+        assert.fileContent('test/.eslintrc.yml', 'react/jsx-filename-extension:');
+      });
+    });
+
+    describe('test/unit/server/controllers/index.test.js', () => {
+      it('should have expected content', () => {
+        assert.fileContent(
+          'test/unit/server/controllers/index.test.js',
+          "t.is(config.name, 'React');"
+        );
       });
     });
   });
