@@ -36,11 +36,13 @@ function register(name, host, port) {
   });
 
   client.on('started', () => {
-    console.info(`${name} registered to eureka on "${eureka.host}:${eureka.port}"`); // eslint-disable-line
+    // eslint-disable-next-line no-console
+    console.info(`${name} registered to eureka on "${eureka.host}:${eureka.port}"`);
   });
 
   client.on('deregistered', () => {
-    console.info(`${name} deregistered from eureka`); // eslint-disable-line
+    // eslint-disable-next-line no-console
+    console.info(`${name} deregistered from eureka`);
   });
 
   client.start();
