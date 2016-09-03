@@ -49,6 +49,7 @@ module.exports = yeoman.Base.extend({
       this.packageVersion = props.packageVersion;
       this.includeReact = props.template === 'react';
       this.includeHandlebars = props.template === 'handlebars';
+      this.eslintConfiguration = props.template === 'react' ? 'airbnb' : '"airbnb-base"';
     });
   },
 
@@ -73,6 +74,19 @@ module.exports = yeoman.Base.extend({
         this.templatePath('_Dockerfile'),
         this.destinationPath('Dockerfile'),
         { dir: this.packageName }
+      );
+    },
+
+    eslint: function eslint() {
+      this.fs.copy(
+        this.templatePath('.eslintignore'),
+        this.destinationPath('.eslintignore')
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('_.eslintrc.yml'),
+        this.destinationPath('.eslintrc.yml'),
+        { configuration: this.eslintConfiguration }
       );
     },
   },

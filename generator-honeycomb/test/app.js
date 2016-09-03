@@ -20,6 +20,8 @@ describe('generator-honeycomb', () => {
     assert.file([
       'package.json',
       'Dockerfile',
+      '.eslintignore',
+      '.eslintrc.yml',
     ]);
   });
 
@@ -66,6 +68,14 @@ describe('generator-honeycomb', () => {
         ]);
       });
     });
+
+    describe('.eslintrc.yml', () => {
+      it('should have expected content', () => {
+        assert.fileContent([
+          ['.eslintrc.yml', 'airbnb-base'],
+        ]);
+      });
+    });
   });
 
   describe('with react templates', () => {
@@ -89,6 +99,14 @@ describe('generator-honeycomb', () => {
           ['package.json', /"eslint-plugin-jsx-a11y": ".*",/],
           ['package.json', /"eslint-plugin-react": ".*",/],
           ['package.json', /"react-addons-test-utils": ".*",/],
+        ]);
+      });
+    });
+
+    describe('.eslintrc.yml', () => {
+      it('should have expected content', () => {
+        assert.fileContent([
+          ['.eslintrc.yml', 'airbnb'],
         ]);
       });
     });
