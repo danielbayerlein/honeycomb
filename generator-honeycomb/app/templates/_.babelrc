@@ -1,6 +1,6 @@
 {
   "presets": [
-    <%_ if (includeReact) { _%>,
+    <%_ if (includeReact) { _%>
     "react",
     <%_ } _%>
     "es2015"
