@@ -22,6 +22,9 @@ describe('generator-honeycomb', () => {
       'Dockerfile',
       '.eslintignore',
       '.eslintrc.yml',
+      'public/images/.gitkeep',
+      'public/javascripts/.gitkeep',
+      'public/stylesheets/.gitkeep',
     ]);
   });
 

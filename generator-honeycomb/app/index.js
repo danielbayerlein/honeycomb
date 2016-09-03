@@ -89,6 +89,13 @@ module.exports = yeoman.Base.extend({
         { configuration: this.eslintConfiguration }
       );
     },
+
+    publicDir: function publicDir() {
+      this.directory(
+        this.templatePath('public'),
+        this.destinationPath('public')
+      );
+    },
   },
 
   install: function install() {
