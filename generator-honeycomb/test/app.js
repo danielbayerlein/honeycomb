@@ -18,13 +18,6 @@ describe('generator-honeycomb', () => {
 
   it('creates expected files', () => {
     assert.file([
-      'package.json',
-      'Dockerfile',
-      '.eslintignore',
-      '.eslintrc.yml',
-      'public/images/.gitkeep',
-      'public/javascripts/.gitkeep',
-      'public/stylesheets/.gitkeep',
       '.babelrc',
       '.config/browsersetup.js',
       '.config/chimp.js',
@@ -33,12 +26,13 @@ describe('generator-honeycomb', () => {
       '.config/pm2.production.json',
       '.config/server.js',
       '.config/webpack.config.js',
-      'test/integration/features/steps/index.js',
-      'test/integration/features/support/.gitkeep',
-      'test/integration/features/index.feature',
-      'test/ui/.gitkeep',
-      'test/unit/server/controllers/index.test.js',
-      'test/.eslintrc.yml',
+      '.eslintignore',
+      '.eslintrc.yml',
+      'Dockerfile',
+      'package.json',
+      'public/images/.gitkeep',
+      'public/javascripts/.gitkeep',
+      'public/stylesheets/.gitkeep',
       'src/shared/.gitkeep',
       'src/server/controllers/health.js',
       'src/server/controllers/index.js',
@@ -49,6 +43,12 @@ describe('generator-honeycomb', () => {
       'src/server/routes/public.js',
       'src/server/routes/status.js',
       'src/server/server.js',
+      'test/.eslintrc.yml',
+      'test/integration/features/steps/index.js',
+      'test/integration/features/support/.gitkeep',
+      'test/integration/features/index.feature',
+      'test/ui/.gitkeep',
+      'test/unit/server/controllers/index.test.js',
     ]);
   });
 
@@ -152,10 +152,10 @@ describe('generator-honeycomb', () => {
 
     it('creates expected files', () => {
       assert.file([
-        'test/unit/client/components/Example.test.js',
         'src/client/components/Example.jsx',
         'src/client/client.jsx',
         'src/server/views/index/index.jsx',
+        'test/unit/client/components/Example.test.js',
       ]);
     });
 
