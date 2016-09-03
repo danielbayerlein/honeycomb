@@ -55,7 +55,7 @@ module.exports = yeoman.Base.extend({
 
   writing: {
     packageJSON: function packageJSON() {
-      this.fs.copyTpl(
+      this.template(
         this.templatePath('_package.json'),
         this.destinationPath('package.json'),
         {
@@ -70,7 +70,7 @@ module.exports = yeoman.Base.extend({
     },
 
     docker: function docker() {
-      this.fs.copyTpl(
+      this.template(
         this.templatePath('_Dockerfile'),
         this.destinationPath('Dockerfile'),
         { dir: this.packageName }
@@ -78,12 +78,12 @@ module.exports = yeoman.Base.extend({
     },
 
     eslint: function eslint() {
-      this.fs.copy(
+      this.copy(
         this.templatePath('.eslintignore'),
         this.destinationPath('.eslintignore')
       );
 
-      this.fs.copyTpl(
+      this.template(
         this.templatePath('_.eslintrc.yml'),
         this.destinationPath('.eslintrc.yml'),
         { configuration: this.eslintConfiguration }
