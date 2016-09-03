@@ -56,8 +56,8 @@ module.exports = yeoman.Base.extend({
   writing: {
     packageJSON: function packageJSON() {
       this.template(
-        this.templatePath('_package.json'),
-        this.destinationPath('package.json'),
+        '_package.json',
+        'package.json',
         {
           packageAuthor: this.packageAuthor,
           packageName: this.packageName,
@@ -71,69 +71,44 @@ module.exports = yeoman.Base.extend({
 
     docker: function docker() {
       this.template(
-        this.templatePath('_Dockerfile'),
-        this.destinationPath('Dockerfile'),
+        '_Dockerfile',
+        'Dockerfile',
         { dir: this.packageName }
       );
     },
 
     eslint: function eslint() {
-      this.copy(
-        this.templatePath('.eslintignore'),
-        this.destinationPath('.eslintignore')
-      );
+      this.copy('.eslintignore');
 
       this.template(
-        this.templatePath('_.eslintrc.yml'),
-        this.destinationPath('.eslintrc.yml'),
+        '_.eslintrc.yml',
+        '.eslintrc.yml',
         { configuration: this.eslintConfiguration }
       );
     },
 
     publicDir: function publicDir() {
-      this.directory(
-        this.templatePath('public'),
-        this.destinationPath('public')
-      );
+      this.directory('public');
     },
 
     babel: function babel() {
       this.template(
-        this.templatePath('_.babelrc'),
-        this.destinationPath('.babelrc'),
+        '_.babelrc',
+        '.babelrc',
         { includeReact: this.includeReact }
       );
     },
 
     configDir: function configDir() {
-      this.copy(
-        this.templatePath('.config/browsersetup.js'),
-        this.destinationPath('.config/browsersetup.js')
-      );
-
-      this.copy(
-        this.templatePath('.config/chimp.js'),
-        this.destinationPath('.config/chimp.js')
-      );
-
-      this.copy(
-        this.templatePath('.config/log.js'),
-        this.destinationPath('.config/log.js')
-      );
-
-      this.copy(
-        this.templatePath('.config/pm2.development.json'),
-        this.destinationPath('.config/pm2.development.json')
-      );
-
-      this.copy(
-        this.templatePath('.config/pm2.production.json'),
-        this.destinationPath('.config/pm2.production.json')
-      );
+      this.copy('.config/browsersetup.js');
+      this.copy('.config/chimp.js');
+      this.copy('.config/log.js');
+      this.copy('.config/pm2.development.json');
+      this.copy('.config/pm2.production.json');
 
       this.template(
-        this.templatePath('.config/_server.js'),
-        this.destinationPath('.config/server.js'),
+        '.config/_server.js',
+        '.config/server.js',
         {
           includeReact: this.includeReact,
           includeHandlebars: this.includeHandlebars,
@@ -141,8 +116,8 @@ module.exports = yeoman.Base.extend({
       );
 
       this.template(
-        this.templatePath('.config/_webpack.config.js'),
-        this.destinationPath('.config/webpack.config.js'),
+        '.config/_webpack.config.js',
+        '.config/webpack.config.js',
         {
           includeReact: this.includeReact,
           includeHandlebars: this.includeHandlebars,
@@ -152,31 +127,21 @@ module.exports = yeoman.Base.extend({
 
     testDir: function testDir() {
       this.template(
-        this.templatePath('test/_.eslintrc.yml'),
-        this.destinationPath('test/.eslintrc.yml'),
+        'test/_.eslintrc.yml',
+        'test/.eslintrc.yml',
         { includeReact: this.includeReact }
       );
 
-      this.directory(
-        this.templatePath('test/integration'),
-        this.destinationPath('test/integration')
-      );
-
-      this.directory(
-        this.templatePath('test/ui'),
-        this.destinationPath('test/ui')
-      );
+      this.directory('test/integration');
+      this.directory('test/ui');
 
       if (this.includeReact) {
-        this.directory(
-          this.templatePath('test/unit/client'),
-          this.destinationPath('test/unit/client')
-        );
+        this.directory('test/unit/client');
       }
 
       this.template(
-        this.templatePath('test/unit/server/controllers/_index.test.js'),
-        this.destinationPath('test/unit/server/controllers/index.test.js'),
+        'test/unit/server/controllers/_index.test.js',
+        'test/unit/server/controllers/index.test.js',
         {
           includeReact: this.includeReact,
           includeHandlebars: this.includeHandlebars,
@@ -185,81 +150,39 @@ module.exports = yeoman.Base.extend({
     },
 
     srcDir: function srcDir() {
-      this.directory(
-        this.templatePath('src/shared'),
-        this.destinationPath('src/shared')
-      );
+      this.directory('src/shared');
 
       if (this.includeReact) {
-        this.copy(
-          this.templatePath('src/client/components/Example.jsx'),
-          this.destinationPath('src/client/components/Example.jsx')
-        );
-
-        this.copy(
-          this.templatePath('src/client/client.jsx'),
-          this.destinationPath('src/client/client.jsx')
-        );
+        this.copy('src/client/components/Example.jsx');
+        this.copy('src/client/client.jsx');
       }
 
       if (this.includeHandlebars) {
-        this.copy(
-          this.templatePath('src/client/client.js'),
-          this.destinationPath('src/client/client.js')
-        );
+        this.copy('src/client/client.js');
       }
 
       this.template(
-        this.templatePath('src/server/controllers/_index.js'),
-        this.destinationPath('src/server/controllers/index.js'),
+        'src/server/controllers/_index.js',
+        'src/server/controllers/index.js',
         {
           includeReact: this.includeReact,
           includeHandlebars: this.includeHandlebars,
         }
       );
 
-      this.copy(
-        this.templatePath('src/server/controllers/health.js'),
-        this.destinationPath('src/server/controllers/health.js')
-      );
-
-      this.copy(
-        this.templatePath('src/server/controllers/status.js'),
-        this.destinationPath('src/server/controllers/status.js')
-      );
-
-      this.directory(
-        this.templatePath('src/server/models'),
-        this.destinationPath('src/server/models')
-      );
-
-      this.directory(
-        this.templatePath('src/server/models'),
-        this.destinationPath('src/server/models')
-      );
-
-      this.directory(
-        this.templatePath('src/server/routes'),
-        this.destinationPath('src/server/routes')
-      );
-
-      this.copy(
-        this.templatePath('src/server/server.js'),
-        this.destinationPath('src/server/server.js')
-      );
+      this.copy('src/server/controllers/health.js');
+      this.copy('src/server/controllers/status.js');
+      this.directory('src/server/models');
+      this.directory('src/server/models');
+      this.directory('src/server/routes');
+      this.copy('src/server/server.js');
 
       if (this.includeHandlebars) {
-        this.copy(
-          this.templatePath('src/server/views/index/index.html'),
-          this.destinationPath('src/server/views/index/index.html')
-        );
+        this.copy('src/server/views/index/index.html');
       }
 
       if (this.includeReact) {
-        this.copy(
-          this.templatePath('src/server/views/index/index.jsx'),
-          this.destinationPath('src/server/views/index/index.jsx')
-        );
+        this.copy('src/server/views/index/index.jsx');
       }
     },
   },
