@@ -39,6 +39,16 @@ describe('generator-honeycomb', () => {
       'test/ui/.gitkeep',
       'test/unit/server/controllers/index.test.js',
       'test/.eslintrc.yml',
+      'src/shared/.gitkeep',
+      'src/server/controllers/health.js',
+      'src/server/controllers/index.js',
+      'src/server/controllers/status.js',
+      'src/server/models/.gitkeep',
+      'src/server/routes/health.js',
+      'src/server/routes/index.js',
+      'src/server/routes/public.js',
+      'src/server/routes/status.js',
+      'src/server/server.js',
     ]);
   });
 
@@ -69,6 +79,13 @@ describe('generator-honeycomb', () => {
       helpers.run(path.join(__dirname, '../app'))
         .withPrompts({ template: 'handlebars' })
         .on('end', done);
+    });
+
+    it('creates expected files', () => {
+      assert.file([
+        'src/client/client.js',
+        'src/server/views/index/index.html',
+      ]);
     });
 
     describe('package.json', () => {
@@ -115,6 +132,15 @@ describe('generator-honeycomb', () => {
         );
       });
     });
+
+    describe('src/server/controllers/index.js', () => {
+      it('should have expected content', () => {
+        assert.fileContent(
+          'src/server/controllers/index.js',
+          "name: 'Handlebars',"
+        );
+      });
+    });
   });
 
   describe('with react templates', () => {
@@ -125,7 +151,12 @@ describe('generator-honeycomb', () => {
     });
 
     it('creates expected files', () => {
-      assert.file('test/unit/client/components/Example.test.js');
+      assert.file([
+        'test/unit/client/components/Example.test.js',
+        'src/client/components/Example.jsx',
+        'src/client/client.jsx',
+        'src/server/views/index/index.jsx',
+      ]);
     });
 
     describe('package.json', () => {
@@ -188,6 +219,15 @@ describe('generator-honeycomb', () => {
         assert.fileContent(
           'test/unit/server/controllers/index.test.js',
           "t.is(config.name, 'React');"
+        );
+      });
+    });
+
+    describe('src/server/controllers/index.js', () => {
+      it('should have expected content', () => {
+        assert.fileContent(
+          'src/server/controllers/index.js',
+          "name: 'React',"
         );
       });
     });

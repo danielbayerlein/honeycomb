@@ -183,6 +183,85 @@ module.exports = yeoman.Base.extend({
         }
       );
     },
+
+    srcDir: function srcDir() {
+      this.directory(
+        this.templatePath('src/shared'),
+        this.destinationPath('src/shared')
+      );
+
+      if (this.includeReact) {
+        this.copy(
+          this.templatePath('src/client/components/Example.jsx'),
+          this.destinationPath('src/client/components/Example.jsx')
+        );
+
+        this.copy(
+          this.templatePath('src/client/client.jsx'),
+          this.destinationPath('src/client/client.jsx')
+        );
+      }
+
+      if (this.includeHandlebars) {
+        this.copy(
+          this.templatePath('src/client/client.js'),
+          this.destinationPath('src/client/client.js')
+        );
+      }
+
+      this.template(
+        this.templatePath('src/server/controllers/_index.js'),
+        this.destinationPath('src/server/controllers/index.js'),
+        {
+          includeReact: this.includeReact,
+          includeHandlebars: this.includeHandlebars,
+        }
+      );
+
+      this.copy(
+        this.templatePath('src/server/controllers/health.js'),
+        this.destinationPath('src/server/controllers/health.js')
+      );
+
+      this.copy(
+        this.templatePath('src/server/controllers/status.js'),
+        this.destinationPath('src/server/controllers/status.js')
+      );
+
+      this.directory(
+        this.templatePath('src/server/models'),
+        this.destinationPath('src/server/models')
+      );
+
+      this.directory(
+        this.templatePath('src/server/models'),
+        this.destinationPath('src/server/models')
+      );
+
+      this.directory(
+        this.templatePath('src/server/routes'),
+        this.destinationPath('src/server/routes')
+      );
+
+      this.copy(
+        this.templatePath('src/server/server.js'),
+        this.destinationPath('src/server/server.js')
+      );
+
+      if (this.includeHandlebars) {
+        this.copy(
+          this.templatePath('src/server/views/index/index.html'),
+          this.destinationPath('src/server/views/index/index.html')
+        );
+      }
+
+      if (this.includeReact) {
+        this.copy(
+          this.templatePath('src/server/views/index/index.jsx'),
+          this.destinationPath('src/server/views/index/index.jsx')
+        );
+      }
+    },
   },
 
   install: function install() {
