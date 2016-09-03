@@ -1,7 +1,9 @@
 {
   "presets": [
-    "es2015",
-    "react"
+    <%_ if (includeReact) { _%>,
+    "react",
+    <%_ } _%>
+    "es2015"
   ],
   "plugins": [
     "transform-runtime",

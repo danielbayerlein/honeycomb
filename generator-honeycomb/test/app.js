@@ -25,6 +25,7 @@ describe('generator-honeycomb', () => {
       'public/images/.gitkeep',
       'public/javascripts/.gitkeep',
       'public/stylesheets/.gitkeep',
+      '.babelrc',
     ]);
   });
 
@@ -74,9 +75,7 @@ describe('generator-honeycomb', () => {
 
     describe('.eslintrc.yml', () => {
       it('should have expected content', () => {
-        assert.fileContent([
-          ['.eslintrc.yml', 'airbnb-base'],
-        ]);
+        assert.fileContent('.eslintrc.yml', 'airbnb-base');
       });
     });
   });
@@ -108,9 +107,13 @@ describe('generator-honeycomb', () => {
 
     describe('.eslintrc.yml', () => {
       it('should have expected content', () => {
-        assert.fileContent([
-          ['.eslintrc.yml', 'airbnb'],
-        ]);
+        assert.fileContent('.eslintrc.yml', 'airbnb');
+      });
+    });
+
+    describe('.babelrc', () => {
+      it('should have expected content', () => {
+        assert.fileContent('.babelrc', '"react"');
       });
     });
   });

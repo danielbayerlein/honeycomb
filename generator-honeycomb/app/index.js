@@ -96,6 +96,14 @@ module.exports = yeoman.Base.extend({
         this.destinationPath('public')
       );
     },
+
+    babel: function babel() {
+      this.template(
+        this.templatePath('_.babelrc'),
+        this.destinationPath('.babelrc'),
+        { includeReact: this.includeReact }
+      );
+    },
   },
 
   install: function install() {
