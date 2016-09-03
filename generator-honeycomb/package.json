@@ -10,9 +10,6 @@
   },
   "author": "Daniel Bayerlein",
   "license": "MIT",
-  "files": [
-    "generators"
-  ],
   "dependencies": {
     "yeoman-generator": "^0.24.1",
     "chalk": "^1.1.3",
