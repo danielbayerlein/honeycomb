@@ -104,6 +104,51 @@ module.exports = yeoman.Base.extend({
         { includeReact: this.includeReact }
       );
     },
+
+    config: function config() {
+      this.copy(
+        this.templatePath('.config/browsersetup.js'),
+        this.destinationPath('.config/browsersetup.js')
+      );
+
+      this.copy(
+        this.templatePath('.config/chimp.js'),
+        this.destinationPath('.config/chimp.js')
+      );
+
+      this.copy(
+        this.templatePath('.config/log.js'),
+        this.destinationPath('.config/log.js')
+      );
+
+      this.copy(
+        this.templatePath('.config/pm2.development.json'),
+        this.destinationPath('.config/pm2.development.json')
+      );
+
+      this.copy(
+        this.templatePath('.config/pm2.production.json'),
+        this.destinationPath('.config/pm2.production.json')
+      );
+
+      this.template(
+        this.templatePath('.config/_server.js'),
+        this.destinationPath('.config/server.js'),
+        {
+          includeReact: this.includeReact,
+          includeHandlebars: this.includeHandlebars,
+        }
+      );
+
+      this.template(
+        this.templatePath('.config/_webpack.config.js'),
+        this.destinationPath('.config/webpack.config.js'),
+        {
+          includeReact: this.includeReact,
+          includeHandlebars: this.includeHandlebars,
+        }
+      );
+    },
   },
 
   install: function install() {

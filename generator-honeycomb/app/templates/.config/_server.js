@@ -55,7 +55,12 @@ const developmentConfig = {
             doctype: '',
           },
           engines: {
+            <%_ if (includeReact) { _%>
             jsx: 'hapi-react-views',
+            <%_ } _%>
+            <%_ if (includeHandlebars) { _%>
+            html: 'handlebars',
+            <%_ } _%>
           },
           path: 'views',
           relativeTo: path.resolve(__dirname, '../src/server'),
@@ -83,7 +88,12 @@ const productionConfig = {
             doctype: '',
           },
           engines: {
+            <%_ if (includeReact) { _%>
             js: 'hapi-react-views',
+            <%_ } _%>
+            <%_ if (includeHandlebars) { _%>
+            html: 'handlebars',
+            <%_ } _%>
           },
           path: 'views',
           relativeTo: path.resolve(__dirname, '../dist/server'),

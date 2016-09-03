@@ -26,6 +26,13 @@ describe('generator-honeycomb', () => {
       'public/javascripts/.gitkeep',
       'public/stylesheets/.gitkeep',
       '.babelrc',
+      '.config/browsersetup.js',
+      '.config/chimp.js',
+      '.config/log.js',
+      '.config/pm2.development.json',
+      '.config/pm2.production.json',
+      '.config/server.js',
+      '.config/webpack.config.js',
     ]);
   });
 
@@ -78,6 +85,21 @@ describe('generator-honeycomb', () => {
         assert.fileContent('.eslintrc.yml', 'airbnb-base');
       });
     });
+
+    describe('.config/server.js', () => {
+      it('should have expected content', () => {
+        assert.fileContent('.config/server.js', "html: 'handlebars',");
+      });
+    });
+
+    describe('.config/webpack.config.js', () => {
+      it('should have expected content', () => {
+        assert.fileContent([
+          ['.config/webpack.config.js', "'./src/client/client.js',"],
+          ['.config/webpack.config.js', 'test: /\\.js$/,'],
+        ]);
+      });
+    });
   });
 
   describe('with react templates', () => {
@@ -114,6 +136,25 @@ describe('generator-honeycomb', () => {
     describe('.babelrc', () => {
       it('should have expected content', () => {
         assert.fileContent('.babelrc', '"react"');
+      });
+    });
+
+    describe('.config/server.js', () => {
+      it('should have expected content', () => {
+        assert.fileContent([
+          ['.config/server.js', "jsx: 'hapi-react-views',"],
+          ['.config/server.js', "js: 'hapi-react-views',"],
+        ]);
+      });
+    });
+
+    describe('.config/webpack.config.js', () => {
+      it('should have expected content', () => {
+        assert.fileContent([
+          ['.config/webpack.config.js', "'./src/client/client.jsx',"],
+          ['.config/webpack.config.js', 'test: /\\.(js|jsx)$/,'],
+          ['.config/webpack.config.js', "'react-hot-loader/patch',"],
+        ]);
       });
     });
   });
