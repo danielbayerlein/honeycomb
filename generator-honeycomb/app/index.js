@@ -188,7 +188,7 @@ module.exports = yeoman.Base.extend({
   },
 
   install: function install() {
-    // this.npmInstall();
+    this.npmInstall();
   },
 
   end: function end() {
