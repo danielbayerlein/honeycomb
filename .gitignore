@@ -44,3 +44,6 @@ jspm_packages
 
 # Babel output directory
 dist
+
+# Jest-Snapshots
+*.snap

@@ -1,17 +1,10 @@
-import test from 'ava';
+/* global it */
 import React from 'react';
-import { shallow } from 'enzyme';
-import Example from '../../../../src/client/components/Example';
+import renderer from 'react-test-renderer';
+import Example from '../../../../src/client/components/Example.jsx';
 
-test('Example should exists', t => {
-  const el = shallow(<Example />);
-
-  t.not(el.html(), null);
-});
-
-test('Example should render the given name', t => {
-  const name = 'bee';
-  const el = shallow(<Example name={name} />);
-
-  t.true(el.html().indexOf(name) !== -1);
+it('should render correctly', () => {
+  const tree = renderer.create(<Example />).toJSON();
+  // https://facebook.github.io/jest/#react-react-native-and-snapshot-testing
+  expect(tree).toMatchSnapshot();
 });
