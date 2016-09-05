@@ -14,8 +14,8 @@
     "start:production": "pm2 start .config/pm2.production.json",
     "test": "npm run lint && npm run test:integration && npm run test:unit",
     "test:integration": "chimp .config/chimp.js",
-    "test:unit": "jest  --coverage",
-    "test:unit:watch": "jest --watch --coverage"
+    "test:unit": "jest",
+    "test:unit:watch": "jest --watch"
   },
   "author": "Daniel Bayerlein",
   "license": "MIT",
@@ -69,6 +69,18 @@
   },
   "jest": {
     "cacheDirectory": "./node_modules/.cache",
-    "testRegex": "\\.test\\.js$"
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "testRegex": ".*\\.test\\.js",
+    "collectCoverage": "true",
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "**/src/**/*.js"
+    ],
+    "testPathIgnorePatterns": [
+      "\\.snap$"
+    ]
   }
 }
