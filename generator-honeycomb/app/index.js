@@ -15,7 +15,7 @@ module.exports = yeoman.Base.extend({
     this.option('name', {
       desc: 'Name of the service',
       type: String,
-      required: false,
+      required: true,
       // defaults: this.appname,
     });
 
