@@ -3,6 +3,51 @@ const chalk = require('chalk');
 const yosay = require('yosay');
 
 module.exports = yeoman.Base.extend({
+  constructor: function constructor(...args) {
+    yeoman.Base.apply(this, args);
+
+    this.option('author', {
+      desc: 'Author of the service',
+      type: String,
+      required: true,
+    });
+
+    this.option('name', {
+      desc: 'Name of the service',
+      type: String,
+      required: false,
+      // defaults: this.appname,
+    });
+
+    this.option('description', {
+      desc: 'Description of the service',
+      type: String,
+      required: true,
+    });
+
+    this.option('version', {
+      desc: 'Version of the service',
+      type: String,
+      required: false,
+      defaults: '1.0.0',
+    });
+
+    this.option('template', {
+      desc: 'Template system of the service (react|handlebars)',
+      type: String,
+      required: true,
+    });
+
+    this.packageAuthor = this.options.author;
+    this.packageName = this.options.name;
+    this.packageDescription = this.options.description;
+    this.packageVersion = this.options.version;
+    this.templateEngine = this.options.template;
+    this.includeReact = this.options.template === 'react';
+    this.includeHandlebars = this.options.template === 'handlebars';
+    this.eslintConfiguration = this.options.template === 'react' ? 'airbnb' : '"airbnb-base"';
+  },
+
   prompting: function prompting() {
     this.log(yosay(
       `Welcome to the ${chalk.yellow('honeycomb')} generator!`
@@ -12,23 +57,28 @@ module.exports = yeoman.Base.extend({
       type: 'input',
       name: 'packageAuthor',
       message: 'Your name',
+      store: true,
+      when: () => this.packageAuthor === undefined,
     }, {
       type: 'input',
       name: 'packageName',
       message: 'Your service name',
-      default: this.appname,
+      // default: this.appname,
+      when: () => this.packageName === undefined,
     }, {
       type: 'input',
       name: 'packageDescription',
       message: 'Your service description',
+      when: () => this.packageDescription === undefined,
     }, {
       type: 'input',
       name: 'packageVersion',
       message: 'Your service version',
       default: '1.0.0',
+      when: () => this.packageVersion === undefined,
     }, {
       type: 'list',
-      name: 'template',
+      name: 'templateEngine',
       message: 'Which template system do you want?',
       choices: [
         {
@@ -40,16 +90,31 @@ module.exports = yeoman.Base.extend({
           value: 'handlebars',
         },
       ],
+      when: () => this.templateEngine === undefined,
     }];
 
     return this.prompt(prompts).then(props => {
-      this.packageAuthor = props.packageAuthor;
-      this.packageName = props.packageName;
-      this.packageDescription = props.packageDescription;
-      this.packageVersion = props.packageVersion;
-      this.includeReact = props.template === 'react';
-      this.includeHandlebars = props.template === 'handlebars';
-      this.eslintConfiguration = props.template === 'react' ? 'airbnb' : '"airbnb-base"';
+      if (props.packageAuthor) {
+        this.packageAuthor = props.packageAuthor;
+      }
+
+      if (props.packageName) {
+        this.packageName = props.packageName;
+      }
+
+      if (props.packageDescription) {
+        this.packageDescription = props.packageDescription;
+      }
+
+      if (props.packageVersion) {
+        this.packageVersion = props.packageVersion;
+      }
+
+      if (props.templateEngine) {
+        this.includeReact = props.templateEngine === 'react';
+        this.includeHandlebars = props.templateEngine === 'handlebars';
+        this.eslintConfiguration = props.templateEngine === 'react' ? 'airbnb' : '"airbnb-base"';
+      }
     });
   },
 
