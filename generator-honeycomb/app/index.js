@@ -16,7 +16,6 @@ module.exports = yeoman.Base.extend({
       desc: 'Name of the service',
       type: String,
       required: true,
-      // defaults: this.appname,
     });
 
     this.option('description', {
@@ -63,7 +62,7 @@ module.exports = yeoman.Base.extend({
       type: 'input',
       name: 'packageName',
       message: 'Your service name',
-      // default: this.appname,
+      default: this.appname,
       when: () => this.packageName === undefined,
     }, {
       type: 'input',
