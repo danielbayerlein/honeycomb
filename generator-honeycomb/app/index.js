@@ -199,55 +199,29 @@ module.exports = yeoman.Base.extend({
 
       this.directory('test/integration');
       this.directory('test/ui');
+      this.directory('test/unit/server/controllers');
 
       if (this.includeReact) {
         this.directory('test/unit/client');
       }
-
-      this.template(
-        'test/unit/server/controllers/_index.test.js',
-        'test/unit/server/controllers/index.test.js',
-        {
-          includeReact: this.includeReact,
-          includeHandlebars: this.includeHandlebars,
-        }
-      );
     },
 
     srcDir: function srcDir() {
       this.directory('src/shared');
+      this.directory('src/server/controllers');
+      this.directory('src/server/models');
+      this.directory('src/server/routes');
+      this.copy('src/server/server.js');
 
       if (this.includeReact) {
         this.copy('src/client/components/Example.jsx');
+        this.copy('src/server/views/index/index.jsx');
         this.copy('src/client/client.jsx');
       }
 
       if (this.includeHandlebars) {
         this.copy('src/client/client.js');
-      }
-
-      this.template(
-        'src/server/controllers/_index.js',
-        'src/server/controllers/index.js',
-        {
-          includeReact: this.includeReact,
-          includeHandlebars: this.includeHandlebars,
-        }
-      );
-
-      this.copy('src/server/controllers/health.js');
-      this.copy('src/server/controllers/status.js');
-      this.directory('src/server/models');
-      this.directory('src/server/models');
-      this.directory('src/server/routes');
-      this.copy('src/server/server.js');
-
-      if (this.includeHandlebars) {
         this.copy('src/server/views/index/index.html');
-      }
-
-      if (this.includeReact) {
-        this.copy('src/server/views/index/index.jsx');
       }
     },
   },

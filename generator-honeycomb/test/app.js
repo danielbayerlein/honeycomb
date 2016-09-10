@@ -140,24 +140,6 @@ describe('generator-honeycomb', () => {
             ]);
           });
         });
-
-        describe('test/unit/server/controllers/index.test.js', () => {
-          it('should have expected content', () => {
-            assert.fileContent(
-              'test/unit/server/controllers/index.test.js',
-              "t.is(config.name, 'Handlebars');"
-            );
-          });
-        });
-
-        describe('src/server/controllers/index.js', () => {
-          it('should have expected content', () => {
-            assert.fileContent(
-              'src/server/controllers/index.js',
-              "name: 'Handlebars',"
-            );
-          });
-        });
       });
 
       describe('and react templates', () => {
@@ -230,24 +212,6 @@ describe('generator-honeycomb', () => {
         describe('test/.eslintrc.yml', () => {
           it('should have expected content', () => {
             assert.fileContent('test/.eslintrc.yml', 'react/jsx-filename-extension:');
-          });
-        });
-
-        describe('test/unit/server/controllers/index.test.js', () => {
-          it('should have expected content', () => {
-            assert.fileContent(
-              'test/unit/server/controllers/index.test.js',
-              "t.is(config.name, 'React');"
-            );
-          });
-        });
-
-        describe('src/server/controllers/index.js', () => {
-          it('should have expected content', () => {
-            assert.fileContent(
-              'src/server/controllers/index.js',
-              "name: 'React',"
-            );
           });
         });
       });
