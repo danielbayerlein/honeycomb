@@ -62,7 +62,6 @@ module.exports = yeoman.Base.extend({
       type: 'input',
       name: 'packageName',
       message: 'Your service name',
-      default: this.appname,
       when: () => this.packageName === undefined,
     }, {
       type: 'input',
