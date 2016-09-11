@@ -44,7 +44,7 @@ module.exports = yeoman.Base.extend({
     this.templateEngine = this.options.template;
     this.includeReact = this.options.template === 'react';
     this.includeHandlebars = this.options.template === 'handlebars';
-    this.eslintConfiguration = this.options.template === 'react' ? 'airbnb' : '"airbnb-base"';
+    this.eslintConfiguration = this.options.template === 'react' ? 'airbnb' : 'airbnb-base';
   },
 
   prompting: function prompting() {
@@ -111,7 +111,7 @@ module.exports = yeoman.Base.extend({
       if (props.templateEngine) {
         this.includeReact = props.templateEngine === 'react';
         this.includeHandlebars = props.templateEngine === 'handlebars';
-        this.eslintConfiguration = props.templateEngine === 'react' ? 'airbnb' : '"airbnb-base"';
+        this.eslintConfiguration = props.templateEngine === 'react' ? 'airbnb' : 'airbnb-base';
       }
     });
   },
