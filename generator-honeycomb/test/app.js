@@ -187,6 +187,7 @@ describe('generator-honeycomb', () => {
         describe('.babelrc', () => {
           it('should have expected content', () => {
             assert.fileContent('.babelrc', '"react"');
+            assert.fileContent('.babelrc', '"react-hot-loader/babel"');
           });
         });
 

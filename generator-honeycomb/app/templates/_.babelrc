@@ -6,10 +6,12 @@
     "es2015"
   ],
   "plugins": [
+    <%_ if (includeReact) { _%>
+    "react-hot-loader/babel",
+    <%_ } _%>
     "transform-runtime",
     "transform-class-properties",
-    "transform-object-rest-spread",
-    "react-hot-loader/babel"
+    "transform-object-rest-spread"
   ],
   "env": {
     "test": {
