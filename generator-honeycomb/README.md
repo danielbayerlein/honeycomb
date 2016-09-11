@@ -1,6 +1,6 @@
 # generator-honeycomb
 
-> Generate a honeycomb service
+> Yeoman generator for Honeycomb services
 
 ## Installation
 

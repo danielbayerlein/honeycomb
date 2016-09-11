@@ -1,7 +1,7 @@
 {
   "name": "generator-honeycomb",
   "version": "1.0.0",
-  "description": "",
+  "description": "Yeoman generator for Honeycomb services",
   "main": "app/index.js",
   "scripts": {
     "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
