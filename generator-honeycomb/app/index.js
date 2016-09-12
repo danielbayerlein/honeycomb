@@ -2,6 +2,9 @@ const yeoman = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
 
+const TEMPLATE_ENGINE_REACT = 'react';
+const TEMPLATE_ENGINE_HANDLEBARS = 'handlebars';
+
 module.exports = yeoman.Base.extend({
   constructor: function constructor(...args) {
     yeoman.Base.apply(this, args);
@@ -42,9 +45,8 @@ module.exports = yeoman.Base.extend({
     this.packageDescription = this.options.description;
     this.packageVersion = this.options.version;
     this.templateEngine = this.options.template;
-    this.includeReact = this.options.template === 'react';
-    this.includeHandlebars = this.options.template === 'handlebars';
-    this.eslintConfiguration = this.options.template === 'react' ? 'airbnb' : 'airbnb-base';
+    this.includeReact = this.options.template === TEMPLATE_ENGINE_REACT;
+    this.includeHandlebars = this.options.template === TEMPLATE_ENGINE_HANDLEBARS;
   },
 
   prompting: function prompting() {
@@ -81,17 +83,20 @@ module.exports = yeoman.Base.extend({
       choices: [
         {
           name: 'React',
-          value: 'react',
+          value: TEMPLATE_ENGINE_REACT,
         },
         {
           name: 'Handlebars',
-          value: 'handlebars',
+          value: TEMPLATE_ENGINE_HANDLEBARS,
         },
       ],
-      when: () => this.templateEngine === undefined,
+      when: () => {
+        const templateEngines = [TEMPLATE_ENGINE_REACT, TEMPLATE_ENGINE_HANDLEBARS];
+        return templateEngines.indexOf(this.templateEngine) === -1;
+      },
     }];
 
-    return this.prompt(prompts).then(props => {
+    return this.prompt(prompts).then((props) => {
       if (props.packageAuthor) {
         this.packageAuthor = props.packageAuthor;
       }
@@ -109,9 +114,8 @@ module.exports = yeoman.Base.extend({
       }
 
       if (props.templateEngine) {
-        this.includeReact = props.templateEngine === 'react';
-        this.includeHandlebars = props.templateEngine === 'handlebars';
-        this.eslintConfiguration = props.templateEngine === 'react' ? 'airbnb' : 'airbnb-base';
+        this.includeReact = props.templateEngine === TEMPLATE_ENGINE_REACT;
+        this.includeHandlebars = props.templateEngine === TEMPLATE_ENGINE_HANDLEBARS;
       }
     });
   },
@@ -146,7 +150,7 @@ module.exports = yeoman.Base.extend({
       this.template(
         '_.eslintrc.yml',
         '.eslintrc.yml',
-        { configuration: this.eslintConfiguration }
+        { includeReact: this.includeReact }
       );
     },
 

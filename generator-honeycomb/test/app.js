@@ -122,7 +122,7 @@ describe('generator-honeycomb', () => {
 
         describe('.eslintrc.yml', () => {
           it('should have expected content', () => {
-            assert.fileContent('.eslintrc.yml', 'airbnb-base');
+            assert.fileContent('.eslintrc.yml', '"airbnb-base"');
           });
         });
 

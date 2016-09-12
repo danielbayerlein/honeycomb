@@ -1,2 +1,6 @@
 extends:
-  "<%= configuration %>"
+  <%_ if (includeReact) { _%>
+  airbnb
+  <%_ } else { _%>
+  "airbnb-base"
+  <%_ } _%>
