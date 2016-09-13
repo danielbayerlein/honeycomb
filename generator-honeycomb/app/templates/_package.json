@@ -64,7 +64,7 @@
     <%_ if (includeReact) { _%>
     "babel-preset-react": "^6.11.1",
     <%_ } _%>
-    "chimp": "^0.40.4",
+    "chimp": "^0.40.6",
     "cross-env": "^2.0.0",
     "css-loader": "^0.24.0",
     <%_ if (includeReact) { _%>
