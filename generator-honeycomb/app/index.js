@@ -167,7 +167,6 @@ module.exports = yeoman.Base.extend({
     },
 
     configDir: function configDir() {
-      this.copy('.config/browsersetup.js');
       this.copy('.config/chimp.js');
       this.copy('.config/log.js');
       this.copy('.config/pm2.development.json');

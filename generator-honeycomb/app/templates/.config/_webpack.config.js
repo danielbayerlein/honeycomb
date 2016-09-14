@@ -1,6 +1,8 @@
 const path = require('path');
+/* eslint-disable import/no-extraneous-dependencies */
 const eslintFormatter = require('eslint-formatter-pretty');
 const webpack = require('webpack');
+/* eslint-enable import/no-extraneous-dependencies */
 const Hoek = require('hoek');
 
 const defaultConfig = {
