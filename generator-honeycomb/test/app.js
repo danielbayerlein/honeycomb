@@ -34,7 +34,6 @@ describe('generator-honeycomb', () => {
       it('creates expected files', () => {
         assert.file([
           '.babelrc',
-          '.config/browsersetup.js',
           '.config/chimp.js',
           '.config/log.js',
           '.config/pm2.development.json',
@@ -169,11 +168,10 @@ describe('generator-honeycomb', () => {
               ['package.json', /"react-dom": ".*",/],
               ['package.json', /"react-hot-loader": ".*",/],
               ['package.json', /"babel-preset-react": ".*",/],
-              ['package.json', /"enzyme": ".*",/],
               ['package.json', /"eslint-config-airbnb": ".*",/],
               ['package.json', /"eslint-plugin-jsx-a11y": ".*",/],
               ['package.json', /"eslint-plugin-react": ".*",/],
-              ['package.json', /"react-addons-test-utils": ".*",/],
+              ['package.json', /"react-test-renderer": ".*",/],
             ]);
           });
         });
