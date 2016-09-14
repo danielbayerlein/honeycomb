@@ -152,9 +152,9 @@ describe('generator-honeycomb', () => {
 
         it('creates expected files', () => {
           assert.file([
-            'src/client/components/Example.jsx',
-            'src/client/client.jsx',
-            'src/server/views/index/index.jsx',
+            'src/client/components/Example.js',
+            'src/client/client.js',
+            'src/server/views/index/index.js',
             'test/unit/client/components/Example.test.js',
             'test/unit/client/components/__snapshots__/Example.test.js.snap',
           ]);
@@ -193,7 +193,6 @@ describe('generator-honeycomb', () => {
         describe('.config/server.js', () => {
           it('should have expected content', () => {
             assert.fileContent([
-              ['.config/server.js', "jsx: 'hapi-react-views',"],
               ['.config/server.js', "js: 'hapi-react-views',"],
             ]);
           });
@@ -202,16 +201,10 @@ describe('generator-honeycomb', () => {
         describe('.config/webpack.config.js', () => {
           it('should have expected content', () => {
             assert.fileContent([
-              ['.config/webpack.config.js', "'./src/client/client.jsx',"],
-              ['.config/webpack.config.js', 'test: /\\.(js|jsx)$/,'],
+              ['.config/webpack.config.js', "'./src/client/client.js',"],
+              ['.config/webpack.config.js', 'test: /\\.js$/,'],
               ['.config/webpack.config.js', "'react-hot-loader/patch',"],
             ]);
-          });
-        });
-
-        describe('test/.eslintrc.yml', () => {
-          it('should have expected content', () => {
-            assert.fileContent('test/.eslintrc.yml', 'react/jsx-filename-extension:');
           });
         });
       });

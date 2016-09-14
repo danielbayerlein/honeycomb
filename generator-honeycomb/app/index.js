@@ -213,15 +213,18 @@ module.exports = yeoman.Base.extend({
       this.directory('src/server/models');
       this.directory('src/server/routes');
       this.copy('src/server/server.js');
+      this.template(
+        'src/client/_.client.js',
+        'src/client/client.js',
+        { includeReact: this.includeReact }
+      );
 
       if (this.includeReact) {
-        this.copy('src/client/components/Example.jsx');
-        this.copy('src/server/views/index/index.jsx');
-        this.copy('src/client/client.jsx');
+        this.copy('src/client/components/Example.js');
+        this.copy('src/server/views/index/index.js');
       }
 
       if (this.includeHandlebars) {
-        this.copy('src/client/client.js');
         this.copy('src/server/views/index/index.html');
       }
     },

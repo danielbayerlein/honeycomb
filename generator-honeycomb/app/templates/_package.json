@@ -98,7 +98,6 @@
     "cacheDirectory": "./node_modules/.cache",
     "moduleFileExtensions": [
       "js",
-      "jsx"
     ],
     "testRegex": ".*\\.test\\.js",
     "collectCoverage": "true",

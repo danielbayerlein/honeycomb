@@ -3,6 +3,15 @@ const logConfig = require('./log');
 const webpackConfig = require('./webpack.config');
 const Hoek = require('hoek');
 
+const viewEngines = {
+  <%_ if (includeReact) { _%>
+  js: 'hapi-react-views',
+  <%_ } _%>
+  <%_ if (includeHandlebars) { _%>
+  html: 'handlebars',
+  <%_ } _%>
+};
+
 const defaultConfig = {
   connections: [
     {
@@ -54,14 +63,7 @@ const developmentConfig = {
           compileOptions: {
             doctype: '',
           },
-          engines: {
-            <%_ if (includeReact) { _%>
-            jsx: 'hapi-react-views',
-            <%_ } _%>
-            <%_ if (includeHandlebars) { _%>
-            html: 'handlebars',
-            <%_ } _%>
-          },
+          engines: viewEngines,
           path: 'views',
           relativeTo: path.resolve(__dirname, '../src/server'),
         },
@@ -87,14 +89,7 @@ const productionConfig = {
           compileOptions: {
             doctype: '',
           },
-          engines: {
-            <%_ if (includeReact) { _%>
-            js: 'hapi-react-views',
-            <%_ } _%>
-            <%_ if (includeHandlebars) { _%>
-            html: 'handlebars',
-            <%_ } _%>
-          },
+          engines: viewEngines,
           path: 'views',
           relativeTo: path.resolve(__dirname, '../dist/server'),
         },
