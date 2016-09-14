@@ -156,6 +156,7 @@ describe('generator-honeycomb', () => {
             'src/client/client.jsx',
             'src/server/views/index/index.jsx',
             'test/unit/client/components/Example.test.js',
+            'test/unit/client/components/__snapshots__/Example.test.js.snap',
           ]);
         });
 
