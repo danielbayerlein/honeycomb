@@ -184,10 +184,7 @@ module.exports = yeoman.Base.extend({
       this.template(
         '.config/_webpack.config.js',
         '.config/webpack.config.js',
-        {
-          includeReact: this.includeReact,
-          includeHandlebars: this.includeHandlebars,
-        }
+        { includeReact: this.includeReact }
       );
     },
 
@@ -216,7 +213,10 @@ module.exports = yeoman.Base.extend({
       this.template(
         'src/client/_.client.js',
         'src/client/client.js',
-        { includeReact: this.includeReact }
+        {
+          includeReact: this.includeReact,
+          includeHandlebars: this.includeHandlebars,
+        }
       );
 
       if (this.includeReact) {

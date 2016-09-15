@@ -5,6 +5,12 @@ rules:
   import/no-extraneous-dependencies:
     - error
     - devDependencies: true
+  <%_ if (includeReact) { _%>
+  react/jsx-filename-extension:
+    - error
+    - extensions:
+      - js
+  <%_ } _%>
   new-cap:
     - error
     - capIsNewExceptions:

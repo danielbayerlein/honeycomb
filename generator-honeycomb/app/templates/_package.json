@@ -80,7 +80,7 @@
     <%_ if (includeReact) { _%>
     "eslint-plugin-jsx-a11y": "^2.2.0",
     "eslint-plugin-react": "^6.1.2",
-	<%_ } %>
+    <%_ } _%>
     "jest-cli": "^15.1.1",
     <%_ if (includeHandlebars) { _%>
     "ncp": "^2.0.0",
@@ -97,7 +97,7 @@
   "jest": {
     "cacheDirectory": "./node_modules/.cache",
     "moduleFileExtensions": [
-      "js",
+      "js"
     ],
     "testRegex": ".*\\.test\\.js",
     "collectCoverage": "true",

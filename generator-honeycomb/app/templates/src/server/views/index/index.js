@@ -6,8 +6,8 @@ const Index = ({ name }) => (
       Hello {name}
     </h1>
 
-    <div className="js-app"></div>
-    <script src="/javascripts/app.bundle.js"></script>
+    <div className="js-app" />
+    <script src="/javascripts/app.bundle.js" />
   </main>
 );
 
