@@ -9,25 +9,32 @@ describe('generator-honeycomb', () => {
   const author = 'Chuck Norris';
   const name = 'honeycomb-example';
   const description = 'Example package';
-  const version = '1.0.0';
+  const version = '1.2.3';
+  const port = 3001;
+
+  const options = {
+    author,
+    name,
+    description,
+    version,
+    port,
+  };
+
+  const prompts = {
+    packageAuthor: author,
+    packageName: name,
+    packageDescription: description,
+    packageVersion: version,
+    applicationPort: port,
+  };
 
   ['prompts', 'options'].forEach((type) => {
     describe(`with ${type}`, () => {
       before((done) => {
         if (type === 'prompts') {
-          helpers.run(appPath).withPrompts({
-            packageAuthor: author,
-            packageName: name,
-            packageDescription: description,
-            packageVersion: version,
-          }).on('end', done);
+          helpers.run(appPath).withPrompts(prompts).on('end', done);
         } else if (type === 'options') {
-          helpers.run(appPath).withOptions({
-            author,
-            name,
-            description,
-            version,
-          }).on('end', done);
+          helpers.run(appPath).withOptions(options).on('end', done);
         }
       });
 
@@ -72,7 +79,7 @@ describe('generator-honeycomb', () => {
             ['package.json', '"author": "Chuck Norris",'],
             ['package.json', '"name": "honeycomb-example",'],
             ['package.json', '"description": "Example package",'],
-            ['package.json', '"version": "1.0.0",'],
+            ['package.json', '"version": "1.2.3",'],
           ]);
         });
       });
@@ -84,16 +91,31 @@ describe('generator-honeycomb', () => {
             ['Dockerfile', 'WORKDIR /code/honeycomb-example'],
             ['Dockerfile', 'COPY package.json /code/honeycomb-example/'],
             ['Dockerfile', 'COPY . /code/honeycomb-example'],
+            ['Dockerfile', 'EXPOSE 3001'],
           ]);
+        });
+      });
+
+      describe('.config/chimp.js', () => {
+        it('should have expected content', () => {
+          assert.fileContent('.config/chimp.js', "baseUrl: 'http://localhost:3001',");
+        });
+      });
+
+      describe('.config/server.js', () => {
+        it('should have expected content', () => {
+          assert.fileContent('.config/server.js', 'port: process.env.PORT || 3001,');
         });
       });
 
       describe('and handlebars templates', () => {
         before((done) => {
           if (type === 'prompts') {
-            helpers.run(appPath).withPrompts({ templateEngine: 'handlebars' }).on('end', done);
+            prompts.templateEngine = 'handlebars';
+            helpers.run(appPath).withPrompts(prompts).on('end', done);
           } else if (type === 'options') {
-            helpers.run(appPath).withOptions({ template: 'handlebars' }).on('end', done);
+            options.template = 'handlebars';
+            helpers.run(appPath).withOptions(options).on('end', done);
           }
         });
 
@@ -144,9 +166,11 @@ describe('generator-honeycomb', () => {
       describe('and react templates', () => {
         before((done) => {
           if (type === 'prompts') {
-            helpers.run(appPath).withPrompts({ templateEngine: 'react' }).on('end', done);
+            prompts.templateEngine = 'react';
+            helpers.run(appPath).withPrompts(prompts).on('end', done);
           } else if (type === 'options') {
-            helpers.run(appPath).withOptions({ template: 'react' }).on('end', done);
+            options.template = 'react';
+            helpers.run(appPath).withOptions(options).on('end', done);
           }
         });
 
