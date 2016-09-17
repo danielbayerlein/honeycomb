@@ -1,6 +1,6 @@
 {
   "apps": [{
-    "name": "honeycomb-template",
+    "name": "<%= name %>",
     "script": "dist/server/server.js",
     "instances": 2,
     "exec_mode": "cluster",
@@ -8,8 +8,8 @@
       "NODE_ENV": "production"
     },
     "combine_logs": true,
-    "error_file": "logs/honeycomb-template.error.log",
-    "out_file": "logs/honeycomb-template.out.log",
-    "pid_file": "pids/honeycomb-template.pid"
+    "error_file": "logs/<%= name %>.error.log",
+    "out_file": "logs/<%= name %>.out.log",
+    "pid_file": "pids/<%= name %>.pid"
   }]
 }

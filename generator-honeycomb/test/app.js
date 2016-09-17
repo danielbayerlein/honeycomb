@@ -88,6 +88,28 @@ describe('generator-honeycomb', () => {
         });
       });
 
+      describe('.config/pm2.development.json', () => {
+        it('should have expected content', () => {
+          assert.fileContent([
+            ['.config/pm2.development.json', '"name": "honeycomb-example"'],
+            ['.config/pm2.development.json', '"error_file": "logs/honeycomb-example.error.log"'],
+            ['.config/pm2.development.json', '"out_file": "logs/honeycomb-example.out.log"'],
+            ['.config/pm2.development.json', '"pid_file": "pids/honeycomb-example.pid"'],
+          ]);
+        });
+      });
+
+      describe('.config/pm2.production.json', () => {
+        it('should have expected content', () => {
+          assert.fileContent([
+            ['.config/pm2.production.json', '"name": "honeycomb-example"'],
+            ['.config/pm2.production.json', '"error_file": "logs/honeycomb-example.error.log"'],
+            ['.config/pm2.production.json', '"out_file": "logs/honeycomb-example.out.log"'],
+            ['.config/pm2.production.json', '"pid_file": "pids/honeycomb-example.pid"'],
+          ]);
+        });
+      });
+
       describe('and handlebars templates', () => {
         before((done) => {
           if (type === 'prompts') {

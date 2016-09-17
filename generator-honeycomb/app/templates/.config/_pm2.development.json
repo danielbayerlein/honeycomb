@@ -1,6 +1,6 @@
 {
   "apps": [{
-    "name": "honeycomb-template",
+    "name": "<%= name %>",
     "script": "src/server/server.js",
     "watch": ["src/server"],
     "env": {
@@ -8,8 +8,8 @@
     },
     "exec_interpreter": "babel-node",
     "combine_logs": true,
-    "error_file": "logs/honeycomb-template.error.log",
-    "out_file": "logs/honeycomb-template.out.log",
-    "pid_file": "pids/honeycomb-template.pid"
+    "error_file": "logs/<%= name %>.error.log",
+    "out_file": "logs/<%= name %>.out.log",
+    "pid_file": "pids/<%= name %>.pid"
   }]
 }
