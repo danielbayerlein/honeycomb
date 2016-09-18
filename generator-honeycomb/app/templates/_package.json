@@ -27,12 +27,12 @@
   "license": "MIT",
   "dependencies": {
     "babel-runtime": "^6.11.6",
-    "glue": "^3.4.0",
+    "glue": "^4.0.0",
     "good": "^7.0.2",
     "good-console": "^6.1.2",
-    "hapi": "^15.0.1",
+    "hapi": "^15.0.3",
     <%_ if (includeReact) { _%>
-    "hapi-react-views": "^9.1.1",
+    "hapi-react-views": "^9.1.2",
     <%_ } _%>
     "hapi-router": "^3.5.0",
     <%_ if (includeHandlebars) { _%>
@@ -45,10 +45,10 @@
     <%_ if (includeReact) { _%>
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
-    "react-hot-loader": "^3.0.0-beta.2",
+    "react-hot-loader": "^3.0.0-beta.4",
     <%_ } _%>
     "vision": "^4.1.0",
-    "visionary": "^6.0.1"
+    "visionary": "^6.0.2"
   },
   "devDependencies": {
     "@danielbayerlein/hapi-webpack-middleware": "^1.0.1",
@@ -64,23 +64,23 @@
     <%_ if (includeReact) { _%>
     "babel-preset-react": "^6.11.1",
     <%_ } _%>
-    "chimp": "^0.40.6",
-    "cross-env": "^2.0.0",
-    "css-loader": "^0.24.0",
-    "eslint": "^3.4.0",
+    "chimp": "^0.40.7",
+    "cross-env": "^2.0.1",
+    "css-loader": "^0.25.0",
+    "eslint": "^3.5.0",
     <%_ if (includeReact) { _%>
-    "eslint-config-airbnb": "^10.0.1",
+    "eslint-config-airbnb": "^11.1.0",
     <%_ } _%>
     <%_ if (includeHandlebars) { _%>
-    "eslint-config-airbnb-base": "^5.0.2",
+    "eslint-config-airbnb-base": "^7.1.0",
     <%_ } _%>
-    "eslint-formatter-pretty": "^0.3.1",
+    "eslint-formatter-pretty": "^1.0.0",
     "eslint-loader": "^1.5.0",
-    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-import": "^1.15.0",
     <%_ if (includeReact) { _%>
-    "eslint-plugin-jsx-a11y": "^2.2.0",
-    "eslint-plugin-react": "^6.1.2",
-	<%_ } %>
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.2.2",
+    <%_ } _%>
     "jest-cli": "^15.1.1",
     <%_ if (includeHandlebars) { _%>
     "ncp": "^2.0.0",
@@ -90,8 +90,8 @@
     <%_ } _%>
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
-    "webpack": "^2.1.0-beta.21",
-    "webpack-dev-middleware": "^1.6.1",
+    "webpack": "^2.1.0-beta.22",
+    "webpack-dev-middleware": "^1.7.0",
     "webpack-hot-middleware": "^2.12.2"
   },
   "jest": {
