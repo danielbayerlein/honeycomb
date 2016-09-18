@@ -17,7 +17,9 @@ function register(name, host, port) {
     app: name,
     hostName: host,
     vipAddress: process.env.EUREKA_VIP || host,
-    statusPageUrl: `http://${host}:${port}`,
+    statusPageUrl: `http://${host}:${port}/info`,
+    healthCheckUrl: `http://${host}:${port}/health`,
+    homePageUrl: `http://${host}:${port}/`,
     dataCenterInfo: {
       '@class': 'com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo',
       name: 'MyOwn',
@@ -26,7 +28,7 @@ function register(name, host, port) {
 
   const eureka = {
     host: process.env.EUREKA_HOST || 'localhost',
-    port: process.env.EUREKA_PORT || '1111',
+    port: process.env.EUREKA_PORT || '8761',
     servicePath: '/eureka/apps/',
   };
 
