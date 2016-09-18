@@ -171,15 +171,21 @@ module.exports = yeoman.Base.extend({
       this.copy('.config/log.js');
 
       this.template(
-        '.config/_pm2.development.json',
+        '.config/_pm2.json',
         '.config/pm2.development.json',
-        { name: this.packageName }
+        {
+          name: this.packageName,
+          env: 'development',
+        }
       );
 
       this.template(
-        '.config/_pm2.production.json',
+        '.config/_pm2.json',
         '.config/pm2.production.json',
-        { name: this.packageName }
+        {
+          name: this.packageName,
+          env: 'production',
+        }
       );
 
       this.template(
