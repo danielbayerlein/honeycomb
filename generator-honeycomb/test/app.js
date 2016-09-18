@@ -15,19 +15,25 @@ describe('generator-honeycomb', () => {
     describe(`with ${type}`, () => {
       before((done) => {
         if (type === 'prompts') {
-          helpers.run(appPath).withPrompts({
-            packageAuthor: author,
-            packageName: name,
-            packageDescription: description,
-            packageVersion: version,
-          }).on('end', done);
+          helpers
+            .run(appPath)
+            .withPrompts({
+              packageAuthor: author,
+              packageName: name,
+              packageDescription: description,
+              packageVersion: version,
+            })
+            .on('end', done);
         } else if (type === 'options') {
-          helpers.run(appPath).withOptions({
-            author,
-            name,
-            description,
-            version,
-          }).on('end', done);
+          helpers
+            .run(appPath)
+            .withOptions({
+              author,
+              name,
+              description,
+              version,
+            })
+            .on('end', done);
         }
       });
 
@@ -88,6 +94,17 @@ describe('generator-honeycomb', () => {
         });
       });
 
+      describe('global .babelrc', () => {
+        it('should have expected content', () => {
+          assert.fileContent([
+            ['.babelrc', '"es2015'],
+            ['.babelrc', '"transform-runtime"'],
+            ['.babelrc', '"transform-class-properties"'],
+            ['.babelrc', '"transform-object-rest-spread"'],
+          ]);
+        });
+      });
+
       describe('and handlebars templates', () => {
         before((done) => {
           if (type === 'prompts') {
@@ -144,9 +161,15 @@ describe('generator-honeycomb', () => {
       describe('and react templates', () => {
         before((done) => {
           if (type === 'prompts') {
-            helpers.run(appPath).withPrompts({ templateEngine: 'react' }).on('end', done);
+            helpers
+              .run(appPath)
+              .withPrompts({ templateEngine: 'react' })
+              .on('end', done);
           } else if (type === 'options') {
-            helpers.run(appPath).withOptions({ template: 'react' }).on('end', done);
+            helpers
+              .run(appPath)
+              .withOptions({ template: 'react' })
+              .on('end', done);
           }
         });
 
