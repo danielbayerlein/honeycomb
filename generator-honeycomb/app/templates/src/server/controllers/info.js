@@ -1,7 +1,7 @@
 import pkg from '../../../package';
 
 export default {
-  status: {
+  info: {
     handler: (request, reply) => {
       reply({
         name: pkg.name,
@@ -12,6 +12,8 @@ export default {
         env: process.env.NODE_ENV,
         uptime: process.uptime(),
         memory: process.memoryUsage(),
+        cpu: process.cpuUsage(),
+        node: process.version,
       });
     },
   },
