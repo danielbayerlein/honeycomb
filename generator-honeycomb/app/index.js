@@ -55,8 +55,8 @@ module.exports = yeoman.Base.extend({
     this.templateEngine = this.options.template;
 
     if (this.templateEngine) {
-      this.includeReact = this.options.template === TEMPLATE_ENGINE_REACT;
-      this.includeHandlebars = this.options.template === TEMPLATE_ENGINE_HANDLEBARS;
+      this.includeReact = this.templateEngine === TEMPLATE_ENGINE_REACT;
+      this.includeHandlebars = this.templateEngine === TEMPLATE_ENGINE_HANDLEBARS;
     }
 
     // Set defaults if options are used
