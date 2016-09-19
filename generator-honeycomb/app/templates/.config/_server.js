@@ -22,6 +22,14 @@ const defaultConfig = {
         options: logConfig,
       },
     },
+    {
+      plugin: {
+        register: 'hapijs-status-monitor',
+        options: {
+          title: 'Status',
+        },
+      },
+    },
   ],
 };
 

@@ -57,12 +57,12 @@ describe('generator-honeycomb', () => {
           'src/shared/.gitkeep',
           'src/server/controllers/health.js',
           'src/server/controllers/index.js',
-          'src/server/controllers/status.js',
+          'src/server/controllers/info.js',
           'src/server/models/.gitkeep',
           'src/server/routes/health.js',
           'src/server/routes/index.js',
+          'src/server/routes/info.js',
           'src/server/routes/public.js',
-          'src/server/routes/status.js',
           'src/server/server.js',
           'test/.eslintrc.yml',
           'test/integration/features/steps/index.js',
@@ -105,6 +105,36 @@ describe('generator-honeycomb', () => {
       describe('.config/server.js', () => {
         it('should have expected content', () => {
           assert.fileContent('.config/server.js', 'port: process.env.PORT || 3001,');
+        });
+      });
+
+      describe('.config/pm2.development.json', () => {
+        it('should have expected content', () => {
+          assert.fileContent([
+            ['.config/pm2.development.json', '"name": "honeycomb-example"'],
+            ['.config/pm2.development.json', '"script": "src/server/server.js"'],
+            ['.config/pm2.development.json', '"watch": ["src/server"]'],
+            ['.config/pm2.development.json', '"exec_interpreter": "babel-node"'],
+            ['.config/pm2.development.json', '"NODE_ENV": "development"'],
+            ['.config/pm2.development.json', '"error_file": "logs/honeycomb-example.error.log"'],
+            ['.config/pm2.development.json', '"out_file": "logs/honeycomb-example.out.log"'],
+            ['.config/pm2.development.json', '"pid_file": "pids/honeycomb-example.pid"'],
+          ]);
+        });
+      });
+
+      describe('.config/pm2.production.json', () => {
+        it('should have expected content', () => {
+          assert.fileContent([
+            ['.config/pm2.production.json', '"name": "honeycomb-example"'],
+            ['.config/pm2.production.json', '"script": "dist/server/server.js"'],
+            ['.config/pm2.production.json', '"instances": 2'],
+            ['.config/pm2.production.json', '"exec_mode": "cluster"'],
+            ['.config/pm2.production.json', '"NODE_ENV": "production"'],
+            ['.config/pm2.production.json', '"error_file": "logs/honeycomb-example.error.log"'],
+            ['.config/pm2.production.json', '"out_file": "logs/honeycomb-example.out.log"'],
+            ['.config/pm2.production.json', '"pid_file": "pids/honeycomb-example.pid"'],
+          ]);
         });
       });
 

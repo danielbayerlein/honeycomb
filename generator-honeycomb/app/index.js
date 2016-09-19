@@ -198,8 +198,24 @@ module.exports = yeoman.Base.extend({
 
     configDir: function configDir() {
       this.copy('.config/log.js');
-      this.copy('.config/pm2.development.json');
-      this.copy('.config/pm2.production.json');
+
+      this.template(
+        '.config/_pm2.json',
+        '.config/pm2.development.json',
+        {
+          name: this.packageName,
+          env: 'development',
+        }
+      );
+
+      this.template(
+        '.config/_pm2.json',
+        '.config/pm2.production.json',
+        {
+          name: this.packageName,
+          env: 'production',
+        }
+      );
 
       this.template(
         '.config/_chimp.js',
