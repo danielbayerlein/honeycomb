@@ -15,7 +15,7 @@ const viewEngines = {
 const defaultConfig = {
   connections: [
     {
-      port: process.env.PORT || 3000,
+      port: process.env.PORT || <%= port %>,
     },
   ],
   registrations: [
@@ -29,6 +29,14 @@ const defaultConfig = {
       plugin: {
         register: 'good',
         options: logConfig,
+      },
+    },
+    {
+      plugin: {
+        register: 'hapijs-status-monitor',
+        options: {
+          title: 'Status',
+        },
       },
     },
   ],

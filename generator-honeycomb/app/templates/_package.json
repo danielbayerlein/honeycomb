@@ -35,6 +35,7 @@
     "hapi-react-views": "^9.1.2",
     <%_ } _%>
     "hapi-router": "^3.5.0",
+    "hapijs-status-monitor": "^0.3.0",
     <%_ if (includeHandlebars) { _%>
     "handlebars": "^4.0.5",
     <%_ } _%>

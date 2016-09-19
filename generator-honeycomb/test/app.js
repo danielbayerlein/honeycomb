@@ -9,7 +9,24 @@ describe('generator-honeycomb', () => {
   const author = 'Chuck Norris';
   const name = 'honeycomb-example';
   const description = 'Example package';
-  const version = '1.0.0';
+  const version = '1.2.3';
+  const port = 3001;
+
+  const options = {
+    author,
+    name,
+    description,
+    version,
+    port,
+  };
+
+  const prompts = {
+    packageAuthor: author,
+    packageName: name,
+    packageDescription: description,
+    packageVersion: version,
+    applicationPort: port,
+  };
 
   ['prompts', 'options'].forEach((type) => {
     describe(`with ${type}`, () => {
@@ -17,22 +34,12 @@ describe('generator-honeycomb', () => {
         if (type === 'prompts') {
           helpers
             .run(appPath)
-            .withPrompts({
-              packageAuthor: author,
-              packageName: name,
-              packageDescription: description,
-              packageVersion: version,
-            })
+            .withPrompts(prompts)
             .on('end', done);
         } else if (type === 'options') {
           helpers
             .run(appPath)
-            .withOptions({
-              author,
-              name,
-              description,
-              version,
-            })
+            .withOptions(options)
             .on('end', done);
         }
       });
@@ -56,12 +63,12 @@ describe('generator-honeycomb', () => {
           'src/shared/.gitkeep',
           'src/server/controllers/health.js',
           'src/server/controllers/index.js',
-          'src/server/controllers/status.js',
+          'src/server/controllers/info.js',
           'src/server/models/.gitkeep',
           'src/server/routes/health.js',
           'src/server/routes/index.js',
+          'src/server/routes/info.js',
           'src/server/routes/public.js',
-          'src/server/routes/status.js',
           'src/server/server.js',
           'test/.eslintrc.yml',
           'test/integration/features/steps/index.js',
@@ -78,7 +85,7 @@ describe('generator-honeycomb', () => {
             ['package.json', '"author": "Chuck Norris",'],
             ['package.json', '"name": "honeycomb-example",'],
             ['package.json', '"description": "Example package",'],
-            ['package.json', '"version": "1.0.0",'],
+            ['package.json', '"version": "1.2.3",'],
           ]);
         });
       });
@@ -90,6 +97,49 @@ describe('generator-honeycomb', () => {
             ['Dockerfile', 'WORKDIR /code/honeycomb-example'],
             ['Dockerfile', 'COPY package.json /code/honeycomb-example/'],
             ['Dockerfile', 'COPY . /code/honeycomb-example'],
+            ['Dockerfile', 'EXPOSE 3001'],
+          ]);
+        });
+      });
+
+      describe('.config/chimp.js', () => {
+        it('should have expected content', () => {
+          assert.fileContent('.config/chimp.js', "baseUrl: 'http://localhost:3001',");
+        });
+      });
+
+      describe('.config/server.js', () => {
+        it('should have expected content', () => {
+          assert.fileContent('.config/server.js', 'port: process.env.PORT || 3001,');
+        });
+      });
+
+      describe('.config/pm2.development.json', () => {
+        it('should have expected content', () => {
+          assert.fileContent([
+            ['.config/pm2.development.json', '"name": "honeycomb-example"'],
+            ['.config/pm2.development.json', '"script": "src/server/server.js"'],
+            ['.config/pm2.development.json', '"watch": ["src/server"]'],
+            ['.config/pm2.development.json', '"exec_interpreter": "babel-node"'],
+            ['.config/pm2.development.json', '"NODE_ENV": "development"'],
+            ['.config/pm2.development.json', '"error_file": "logs/honeycomb-example.error.log"'],
+            ['.config/pm2.development.json', '"out_file": "logs/honeycomb-example.out.log"'],
+            ['.config/pm2.development.json', '"pid_file": "pids/honeycomb-example.pid"'],
+          ]);
+        });
+      });
+
+      describe('.config/pm2.production.json', () => {
+        it('should have expected content', () => {
+          assert.fileContent([
+            ['.config/pm2.production.json', '"name": "honeycomb-example"'],
+            ['.config/pm2.production.json', '"script": "dist/server/server.js"'],
+            ['.config/pm2.production.json', '"instances": 2'],
+            ['.config/pm2.production.json', '"exec_mode": "cluster"'],
+            ['.config/pm2.production.json', '"NODE_ENV": "production"'],
+            ['.config/pm2.production.json', '"error_file": "logs/honeycomb-example.error.log"'],
+            ['.config/pm2.production.json', '"out_file": "logs/honeycomb-example.out.log"'],
+            ['.config/pm2.production.json', '"pid_file": "pids/honeycomb-example.pid"'],
           ]);
         });
       });
@@ -108,9 +158,11 @@ describe('generator-honeycomb', () => {
       describe('and handlebars templates', () => {
         before((done) => {
           if (type === 'prompts') {
-            helpers.run(appPath).withPrompts({ templateEngine: 'handlebars' }).on('end', done);
+            prompts.templateEngine = 'handlebars';
+            helpers.run(appPath).withPrompts(prompts).on('end', done);
           } else if (type === 'options') {
-            helpers.run(appPath).withOptions({ template: 'handlebars' }).on('end', done);
+            options.template = 'handlebars';
+            helpers.run(appPath).withOptions(options).on('end', done);
           }
         });
 
@@ -161,14 +213,16 @@ describe('generator-honeycomb', () => {
       describe('and react templates', () => {
         before((done) => {
           if (type === 'prompts') {
+            prompts.templateEngine = 'react';
             helpers
               .run(appPath)
-              .withPrompts({ templateEngine: 'react' })
+              .withPrompts(prompts)
               .on('end', done);
           } else if (type === 'options') {
+            options.template = 'react';
             helpers
               .run(appPath)
-              .withOptions({ template: 'react' })
+              .withOptions(options)
               .on('end', done);
           }
         });

@@ -2,6 +2,8 @@ const yeoman = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
 
+const DEFAULT_PORT = 3000;
+const DEFAULT_VERSION = '1.0.0';
 const TEMPLATE_ENGINE_REACT = 'react';
 const TEMPLATE_ENGINE_HANDLEBARS = 'handlebars';
 
@@ -30,8 +32,15 @@ module.exports = yeoman.Base.extend({
     this.option('version', {
       desc: 'Version of the service',
       type: String,
-      required: false,
-      defaults: '1.0.0',
+      optional: true,
+      defaults: DEFAULT_VERSION,
+    });
+
+    this.option('port', {
+      desc: 'Port of the service',
+      type: Number,
+      optional: true,
+      defaults: DEFAULT_PORT,
     });
 
     this.option('template', {
@@ -43,10 +52,18 @@ module.exports = yeoman.Base.extend({
     this.packageAuthor = this.options.author;
     this.packageName = this.options.name;
     this.packageDescription = this.options.description;
-    this.packageVersion = this.options.version;
     this.templateEngine = this.options.template;
-    this.includeReact = this.options.template === TEMPLATE_ENGINE_REACT;
-    this.includeHandlebars = this.options.template === TEMPLATE_ENGINE_HANDLEBARS;
+
+    if (this.templateEngine) {
+      this.includeReact = this.templateEngine === TEMPLATE_ENGINE_REACT;
+      this.includeHandlebars = this.templateEngine === TEMPLATE_ENGINE_HANDLEBARS;
+    }
+
+    // Set defaults if options are used
+    if (this.packageAuthor || this.packageName || this.packageDescription || this.templateEngine) {
+      this.packageVersion = this.options.version;
+      this.applicationPort = this.options.port;
+    }
   },
 
   prompting: function prompting() {
@@ -74,8 +91,14 @@ module.exports = yeoman.Base.extend({
       type: 'input',
       name: 'packageVersion',
       message: 'Your service version',
-      default: '1.0.0',
+      default: DEFAULT_VERSION,
       when: () => this.packageVersion === undefined,
+    }, {
+      type: 'input',
+      name: 'applicationPort',
+      message: 'Your service port',
+      default: DEFAULT_PORT,
+      when: () => this.applicationPort === undefined,
     }, {
       type: 'list',
       name: 'templateEngine',
@@ -113,6 +136,10 @@ module.exports = yeoman.Base.extend({
         this.packageVersion = props.packageVersion;
       }
 
+      if (props.applicationPort) {
+        this.applicationPort = props.applicationPort;
+      }
+
       if (props.templateEngine) {
         this.includeReact = props.templateEngine === TEMPLATE_ENGINE_REACT;
         this.includeHandlebars = props.templateEngine === TEMPLATE_ENGINE_HANDLEBARS;
@@ -140,7 +167,10 @@ module.exports = yeoman.Base.extend({
       this.template(
         '_Dockerfile',
         'Dockerfile',
-        { dir: this.packageName }
+        {
+          dir: this.packageName,
+          port: this.applicationPort,
+        }
       );
     },
 
@@ -167,10 +197,31 @@ module.exports = yeoman.Base.extend({
     },
 
     configDir: function configDir() {
-      this.copy('.config/chimp.js');
       this.copy('.config/log.js');
-      this.copy('.config/pm2.development.json');
-      this.copy('.config/pm2.production.json');
+
+      this.template(
+        '.config/_pm2.json',
+        '.config/pm2.development.json',
+        {
+          name: this.packageName,
+          env: 'development',
+        }
+      );
+
+      this.template(
+        '.config/_pm2.json',
+        '.config/pm2.production.json',
+        {
+          name: this.packageName,
+          env: 'production',
+        }
+      );
+
+      this.template(
+        '.config/_chimp.js',
+        '.config/chimp.js',
+        { port: this.applicationPort }
+      );
 
       this.template(
         '.config/_server.js',
@@ -178,6 +229,7 @@ module.exports = yeoman.Base.extend({
         {
           includeReact: this.includeReact,
           includeHandlebars: this.includeHandlebars,
+          port: this.applicationPort,
         }
       );
 
