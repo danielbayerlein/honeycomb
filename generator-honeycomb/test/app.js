@@ -204,6 +204,9 @@ describe('generator-honeycomb', () => {
         describe('.eslintrc.yml', () => {
           it('should have expected content', () => {
             assert.fileContent('.eslintrc.yml', 'airbnb');
+            assert.fileContent('.eslintrc.yml', '"react/jsx-filename-extension":');
+            assert.fileContent('.eslintrc.yml', 'extensions');
+            assert.fileContent('.eslintrc.yml', '.js');
           });
         });
 
