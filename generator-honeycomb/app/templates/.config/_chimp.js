@@ -2,8 +2,7 @@ module.exports = {
   browser: 'phantomjs',
   path: 'test/integration/features',
   webdriverio: {
-    // FIXME: Use current port
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'http://localhost:<%= port %>',
     waitforTimeout: 10000,
     waitforInterval: 1000,
   },
