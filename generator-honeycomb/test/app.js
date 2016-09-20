@@ -60,6 +60,7 @@ describe('generator-honeycomb', () => {
           'public/images/.gitkeep',
           'public/javascripts/.gitkeep',
           'public/stylesheets/.gitkeep',
+          'src/client/client.js',
           'src/shared/.gitkeep',
           'src/server/controllers/health.js',
           'src/server/controllers/index.js',
@@ -168,7 +169,6 @@ describe('generator-honeycomb', () => {
 
         it('creates expected files', () => {
           assert.file([
-            'src/client/client.js',
             'src/server/views/index/index.html',
           ]);
         });
@@ -230,7 +230,6 @@ describe('generator-honeycomb', () => {
         it('creates expected files', () => {
           assert.file([
             'src/client/components/Example.js',
-            'src/client/client.js',
             'src/server/views/index/index.js',
             'test/unit/client/components/Example.test.js',
             'test/unit/client/components/__snapshots__/Example.test.js.snap',
