@@ -233,7 +233,6 @@ describe('generator-honeycomb', () => {
             'src/server/views/index/index.js',
             'test/unit/client/components/Example.test.js',
             'test/unit/client/components/__snapshots__/Example.test.js.snap',
-            'test/.eslintrc.yml',
           ]);
         });
 
