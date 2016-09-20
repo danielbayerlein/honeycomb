@@ -278,6 +278,12 @@ describe('generator-honeycomb', () => {
             assert.fileContent('.config/webpack.config.js', "'react-hot-loader/patch',");
           });
         });
+
+        describe('test/.eslintrc.yml', () => {
+          it('should have expected content', () => {
+            assert.fileContent('test/.eslintrc.yml', 'react/jsx-filename-extension:');
+          });
+        });
       });
     });
   });
