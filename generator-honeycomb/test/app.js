@@ -144,7 +144,7 @@ describe('generator-honeycomb', () => {
         });
       });
 
-      describe('global .babelrc', () => {
+      describe('.babelrc', () => {
         it('should have expected content', () => {
           assert.fileContent([
             ['.babelrc', '"es2015'],
