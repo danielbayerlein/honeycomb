@@ -156,6 +156,15 @@ describe('generator-honeycomb', () => {
         });
       });
 
+      describe('.config/webpack.config.js', () => {
+        it('should have expected content', () => {
+          assert.fileContent([
+            ['.config/webpack.config.js', "'./src/client/client.js',"],
+            ['.config/webpack.config.js', 'test: /\\.js$/,'],
+          ]);
+        });
+      });
+
       describe('and handlebars templates', () => {
         before((done) => {
           if (type === 'prompts') {
@@ -197,15 +206,6 @@ describe('generator-honeycomb', () => {
         describe('.config/server.js', () => {
           it('should have expected content', () => {
             assert.fileContent('.config/server.js', "html: 'handlebars',");
-          });
-        });
-
-        describe('.config/webpack.config.js', () => {
-          it('should have expected content', () => {
-            assert.fileContent([
-              ['.config/webpack.config.js', "'./src/client/client.js',"],
-              ['.config/webpack.config.js', 'test: /\\.js$/,'],
-            ]);
           });
         });
       });
@@ -275,11 +275,7 @@ describe('generator-honeycomb', () => {
 
         describe('.config/webpack.config.js', () => {
           it('should have expected content', () => {
-            assert.fileContent([
-              ['.config/webpack.config.js', "'./src/client/client.js',"],
-              ['.config/webpack.config.js', 'test: /\\.js$/,'],
-              ['.config/webpack.config.js', "'react-hot-loader/patch',"],
-            ]);
+            assert.fileContent('.config/webpack.config.js', "'react-hot-loader/patch',");
           });
         });
       });
