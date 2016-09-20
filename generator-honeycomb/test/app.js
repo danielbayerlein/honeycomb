@@ -269,9 +269,7 @@ describe('generator-honeycomb', () => {
 
         describe('.config/server.js', () => {
           it('should have expected content', () => {
-            assert.fileContent([
-              ['.config/server.js', "js: 'hapi-react-views',"],
-            ]);
+            assert.fileContent('.config/server.js', "js: 'hapi-react-views'");
           });
         });
 
