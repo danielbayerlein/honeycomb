@@ -145,26 +145,6 @@ describe('generator-honeycomb', () => {
         });
       });
 
-      describe('.babelrc', () => {
-        it('should have expected content', () => {
-          assert.fileContent([
-            ['.babelrc', '"es2015'],
-            ['.babelrc', '"transform-runtime"'],
-            ['.babelrc', '"transform-class-properties"'],
-            ['.babelrc', '"transform-object-rest-spread"'],
-          ]);
-        });
-      });
-
-      describe('.config/webpack.config.js', () => {
-        it('should have expected content', () => {
-          assert.fileContent([
-            ['.config/webpack.config.js', "'./src/client/client.js',"],
-            ['.config/webpack.config.js', 'test: /\\.js$/,'],
-          ]);
-        });
-      });
-
       describe('and handlebars templates', () => {
         before((done) => {
           if (type === 'prompts') {
@@ -177,9 +157,7 @@ describe('generator-honeycomb', () => {
         });
 
         it('creates expected files', () => {
-          assert.file([
-            'src/server/views/index/index.html',
-          ]);
+          assert.file('src/server/views/index/index.html');
         });
 
         describe('package.json', () => {
@@ -206,6 +184,12 @@ describe('generator-honeycomb', () => {
         describe('.config/server.js', () => {
           it('should have expected content', () => {
             assert.fileContent('.config/server.js', "html: 'handlebars',");
+          });
+        });
+
+        describe('src/client/client.js', () => {
+          it('should have expected content', () => {
+            assert.fileContent('src/client/client.js', "console.log('DOM has been loaded');");
           });
         });
       });
@@ -276,6 +260,12 @@ describe('generator-honeycomb', () => {
         describe('.config/webpack.config.js', () => {
           it('should have expected content', () => {
             assert.fileContent('.config/webpack.config.js', "'react-hot-loader/patch',");
+          });
+        });
+
+        describe('src/client/client.js', () => {
+          it('should have expected content', () => {
+            assert.fileContent('src/client/client.js', "import React from 'react';");
           });
         });
 
