@@ -11,7 +11,9 @@
   "devDependencies": {
     "ghooks": "^1.3.2"
   },
-  "ghooks": {
-    "pre-commit": "npm test"
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm test"
+    }
   }
 }
