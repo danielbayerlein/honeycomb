@@ -1,4 +1,4 @@
 const executeAll = require('./helper/executeAll');
-const packages = require('./helper/packages');
+const projects = require('./helper/projects');
 
-executeAll('npm install', packages);
+executeAll('npm install', projects);
