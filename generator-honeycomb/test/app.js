@@ -32,9 +32,15 @@ describe('generator-honeycomb', () => {
     describe(`with ${type}`, () => {
       before((done) => {
         if (type === 'prompts') {
-          helpers.run(appPath).withPrompts(prompts).on('end', done);
+          helpers
+            .run(appPath)
+            .withPrompts(prompts)
+            .on('end', done);
         } else if (type === 'options') {
-          helpers.run(appPath).withOptions(options).on('end', done);
+          helpers
+            .run(appPath)
+            .withOptions(options)
+            .on('end', done);
         }
       });
 
@@ -54,6 +60,7 @@ describe('generator-honeycomb', () => {
           'public/images/.gitkeep',
           'public/javascripts/.gitkeep',
           'public/stylesheets/.gitkeep',
+          'src/client/client.js',
           'src/shared/.gitkeep',
           'src/server/controllers/health.js',
           'src/server/controllers/index.js',
@@ -150,10 +157,7 @@ describe('generator-honeycomb', () => {
         });
 
         it('creates expected files', () => {
-          assert.file([
-            'src/client/client.js',
-            'src/server/views/index/index.html',
-          ]);
+          assert.file('src/server/views/index/index.html');
         });
 
         describe('package.json', () => {
@@ -183,12 +187,9 @@ describe('generator-honeycomb', () => {
           });
         });
 
-        describe('.config/webpack.config.js', () => {
+        describe('src/client/client.js', () => {
           it('should have expected content', () => {
-            assert.fileContent([
-              ['.config/webpack.config.js', "'./src/client/client.js',"],
-              ['.config/webpack.config.js', 'test: /\\.js$/,'],
-            ]);
+            assert.fileContent('src/client/client.js', "console.log('DOM has been loaded');");
           });
         });
       });
@@ -197,18 +198,23 @@ describe('generator-honeycomb', () => {
         before((done) => {
           if (type === 'prompts') {
             prompts.templateEngine = 'react';
-            helpers.run(appPath).withPrompts(prompts).on('end', done);
+            helpers
+              .run(appPath)
+              .withPrompts(prompts)
+              .on('end', done);
           } else if (type === 'options') {
             options.template = 'react';
-            helpers.run(appPath).withOptions(options).on('end', done);
+            helpers
+              .run(appPath)
+              .withOptions(options)
+              .on('end', done);
           }
         });
 
         it('creates expected files', () => {
           assert.file([
-            'src/client/components/Example.jsx',
-            'src/client/client.jsx',
-            'src/server/views/index/index.jsx',
+            'src/client/components/Example.js',
+            'src/server/views/index/index.js',
             'test/unit/client/components/Example.test.js',
             'test/unit/client/components/__snapshots__/Example.test.js.snap',
           ]);
@@ -234,6 +240,7 @@ describe('generator-honeycomb', () => {
         describe('.eslintrc.yml', () => {
           it('should have expected content', () => {
             assert.fileContent('.eslintrc.yml', 'airbnb');
+            assert.fileContent('.eslintrc.yml', '"react/jsx-filename-extension"');
           });
         });
 
@@ -246,20 +253,19 @@ describe('generator-honeycomb', () => {
 
         describe('.config/server.js', () => {
           it('should have expected content', () => {
-            assert.fileContent([
-              ['.config/server.js', "jsx: 'hapi-react-views',"],
-              ['.config/server.js', "js: 'hapi-react-views',"],
-            ]);
+            assert.fileContent('.config/server.js', "js: 'hapi-react-views'");
           });
         });
 
         describe('.config/webpack.config.js', () => {
           it('should have expected content', () => {
-            assert.fileContent([
-              ['.config/webpack.config.js', "'./src/client/client.jsx',"],
-              ['.config/webpack.config.js', 'test: /\\.(js|jsx)$/,'],
-              ['.config/webpack.config.js', "'react-hot-loader/patch',"],
-            ]);
+            assert.fileContent('.config/webpack.config.js', "'react-hot-loader/patch',");
+          });
+        });
+
+        describe('src/client/client.js', () => {
+          it('should have expected content', () => {
+            assert.fileContent('src/client/client.js', "import React from 'react';");
           });
         });
 

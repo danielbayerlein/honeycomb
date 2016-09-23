@@ -98,8 +98,7 @@
   "jest": {
     "cacheDirectory": "./node_modules/.cache",
     "moduleFileExtensions": [
-      "js",
-      "jsx"
+      "js"
     ],
     "testRegex": ".*\\.test\\.js",
     "collectCoverage": "true",

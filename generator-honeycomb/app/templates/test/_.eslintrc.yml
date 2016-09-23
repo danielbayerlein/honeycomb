@@ -9,8 +9,7 @@ rules:
   react/jsx-filename-extension:
     - error
     - extensions:
-      - .js
-      - .jsx
+      - js
   <%_ } _%>
   new-cap:
     - error

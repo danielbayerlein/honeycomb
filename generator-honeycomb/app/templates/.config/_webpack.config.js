@@ -8,12 +8,7 @@ const Hoek = require('hoek');
 const defaultConfig = {
   entry: {
     app: [
-      <%_ if (includeReact) { _%>
-      './src/client/client.jsx',
-      <%_ } _%>
-      <%_ if (includeHandlebars) { _%>
       './src/client/client.js',
-      <%_ } _%>
     ],
   },
   output: {
@@ -25,12 +20,7 @@ const defaultConfig = {
   module: {
     loaders: [
       {
-        <%_ if (includeReact) { _%>
-        test: /\.(js|jsx)$/,
-        <%_ } _%>
-        <%_ if (includeHandlebars) { _%>
         test: /\.js$/,
-        <%_ } _%>
         loader: 'babel!eslint',
         exclude: /node_modules/,
       }, {
