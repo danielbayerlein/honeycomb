@@ -3,8 +3,17 @@
   "version": "1.0.0",
   "description": "Honeycomb is a common basis for Node.js microservices.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node scripts/test.js",
+    "postinstall": "node scripts/install.js"
   },
   "author": "Daniel Bayerlein",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "ghooks": "^1.3.2"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm test"
+    }
+  }
 }
