@@ -4,8 +4,3 @@ cache:
     - node_modules
     - honeycomb-registry-client/node_modules
     - generator-honeycomb/node_modules
-env:
-  - TEST_DIR=honeycomb-registry-client
-  - TEST_DIR=generator-honeycomb
-before_install:
-  - cd $TEST_DIR
