@@ -1,30 +1,49 @@
-const proc = require('child_process');
+const spawn = require('child_process').spawn;
 const path = require('path');
 
-let errors = false;
+let error = false;
 
 /**
- * Execute the given command for the given project
- * relative from the root-folder.
- * if an error occurs it set true to the global error-variable
+ * creates a promise-wrapper arount the child_process.spawn-API
+ * calls the command with args for the project-name
  *
- * @param  {string} command shell-command
- * @param  {string} project project-name
- * @return {void}
+ * @param  {string}  command shell command (example: npm)
+ * @param  {array}   args    arguments for the command (example: test)
+ * @param  {string}  project project-name (folder)
+ * @return {promise}         resolvable promise
  */
-function executeCommand(command, project) {
-  console.log(`start ${command} for ${project}`);
+function spawnPromise(command, args, project) {
+  console.log(`start ${command} ${args} for ${project}`);
   process.chdir(path.join(__dirname, '..', '..', project));
 
-  try {
-    const result = proc.execSync(`${command}`);
-    console.log(result.toString());
-  } catch (error) {
-    console.error(`${command} for ${project} failed`);
-    errors = true;
-  }
+  // creates a promise wrapper around the stream
+  return new Promise((resolve) => {
+    const proc = spawn(command, args);
 
-  console.log(`finished ${command} for ${project}`);
+    proc.stdout.on('data', (data) => {
+      console.log(data.toString());
+    });
+
+    proc.stderr.on('data', (data) => {
+      console.error(data.toString());
+      error = true;
+    });
+
+    proc.on('close', () => {
+      console.log(`finished ${command} ${args} for ${project}`);
+      resolve();
+    });
+  });
+}
+
+/**
+ * Generator to iteratate over the the projects
+ *
+ * @param  {array}      projects array with all projects
+ * @return {generator}           generator with all projects
+ */
+function* genProjects(projects) {
+    yield* projects;
 }
 
 /**
@@ -35,15 +54,24 @@ function executeCommand(command, project) {
  * @param  {array}  projects project-names
  * @return {void}
  */
-function executeAll(command, projects) {
-  projects.forEach(project => executeCommand(command, project));
+function executeAll(command, args, projects) {
+  const it = genProjects(projects);
+  let currentProject;
 
-  if (errors) {
-    console.error(`${command} failed`);
-    process.exit(1);
-  } else {
-    console.log(`${command} successful`);
-  }
+  (function iterate() {
+    currentProject = it.next();
+
+    if (currentProject.done) {
+      if (error) {
+        console.error(`${command} ${args} failed`);
+        process.exit(1);
+      } else {
+        console.log(`${command} ${args} successful`);
+      }
+    } else {
+      spawnPromise(command, args, currentProject.value).then(() => iterate());
+    }
+  })();
 }
 
 module.exports = executeAll;
