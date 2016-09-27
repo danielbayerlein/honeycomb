@@ -4,6 +4,20 @@ const path = require('path');
 let error = false;
 
 /**
+ * check if the error-message is as npm-warning
+ * to prevent build-break
+ *
+ * @param  {string}   msg  error-message
+ * @return {boolean}       is npm warning
+ */
+function isNPMWarning(msg) {
+  return msg.indexOf('npm') !== -1
+    || msg.indexOf('WARN') !== -1
+    || msg.indexOf('no description') !== -1
+    || msg.indexOf('no repository') !== -1;
+}
+
+/**
  * creates a promise-wrapper arount the child_process.spawn-API
  * calls the command with args for the project-name
  *
@@ -25,8 +39,14 @@ function spawnPromise(command, args, project) {
     });
 
     proc.stderr.on('data', (data) => {
-      console.error(data.toString());
-      error = true;
+      const dataString = data.toString();
+
+      // Filter empty stderr or npm WARN messages
+      if (dataString.trim().length && !isNPMWarning(dataString)) {
+        error = true;
+      }
+
+      console.error(dataString);
     });
 
     proc.on('close', () => {
