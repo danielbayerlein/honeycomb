@@ -12,9 +12,10 @@ let error = false;
  */
 function isNPMWarning(msg) {
   return msg.indexOf('npm') !== -1
+    || msg.indexOf('deprecated') !== -1
     || msg.indexOf('WARN') !== -1
-    || msg.indexOf('no description') !== -1
-    || msg.indexOf('no repository') !== -1;
+    || msg.indexOf('No description') !== -1
+    || msg.indexOf('No repository') !== -1;
 }
 
 /**
@@ -32,6 +33,7 @@ function spawnPromise(command, args, project) {
 
   // creates a promise wrapper around the stream
   return new Promise((resolve) => {
+    let localError = false;
     const proc = spawn(command, args);
 
     proc.stdout.on('data', (data) => {
@@ -43,14 +45,20 @@ function spawnPromise(command, args, project) {
 
       // Filter empty stderr or npm WARN messages
       if (dataString.trim().length && !isNPMWarning(dataString)) {
-        error = true;
+        localError = true;
       }
 
-      console.error(dataString);
+      console.error('error:', dataString);
     });
 
     proc.on('close', () => {
-      console.log(`finished ${command} ${args} for ${project}`);
+      if (localError) {
+        console.log(`finished ${command} ${args} for ${project} with errors`);
+        error = true;
+      } else {
+        console.log(`finished ${command} ${args} for ${project} successfully`);
+      }
+
       resolve();
     });
   });
