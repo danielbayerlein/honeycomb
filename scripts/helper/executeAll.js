@@ -3,23 +3,27 @@ const path = require('path');
 
 let error = false;
 
+const NPM_WARNINGS = [
+  'npm',
+  'deprecated',
+  'WARN',
+  'No description',
+  'No repository'
+];
+
 /**
- * check if the error-message is as npm-warning
+ * Check if the error-message is a npm-warning
  * to prevent build-break
  *
  * @param  {string}   msg  error-message
  * @return {boolean}       is npm warning
  */
 function isNPMWarning(msg) {
-  return msg.indexOf('npm') !== -1
-    || msg.indexOf('deprecated') !== -1
-    || msg.indexOf('WARN') !== -1
-    || msg.indexOf('No description') !== -1
-    || msg.indexOf('No repository') !== -1;
+  return NPM_WARNINGS.filter(el => msg.indexOf(el) !== -1).length > 0;
 }
 
 /**
- * creates a promise-wrapper arount the child_process.spawn-API
+ * Creates a promise-wrapper around the child_process.spawn-API
  * calls the command with args for the project-name
  *
  * @param  {string}  command shell command (example: npm)
@@ -28,7 +32,9 @@ function isNPMWarning(msg) {
  * @return {promise}         resolvable promise
  */
 function spawnPromise(command, args, project) {
-  console.log(`start ${command} ${args} for ${project}`);
+  const commandForProject = `${command} ${args} for ${project}`;
+
+  console.log(`start ${commandForProject}`);
   process.chdir(path.join(__dirname, '..', '..', project));
 
   // creates a promise wrapper around the stream
@@ -48,15 +54,15 @@ function spawnPromise(command, args, project) {
         localError = true;
       }
 
-      console.error('error:', dataString);
+      console.error(dataString);
     });
 
     proc.on('close', () => {
       if (localError) {
-        console.log(`finished ${command} ${args} for ${project} with errors`);
+        console.log(`finished ${commandForProject} with errors`);
         error = true;
       } else {
-        console.log(`finished ${command} ${args} for ${project} successfully`);
+        console.log(`finished ${commandForProject} successfully`);
       }
 
       resolve();
@@ -65,7 +71,7 @@ function spawnPromise(command, args, project) {
 }
 
 /**
- * Generator to iteratate over the the projects
+ * Generator to iterate over the projects
  *
  * @param  {array}      projects array with all projects
  * @return {generator}           generator with all projects
@@ -78,7 +84,8 @@ function* genProjects(projects) {
  * Executes the given command for all projects
  * calls process.exit(1) if an error occurs
  *
- * @param  {string} command  shell-command
+ * @param  {string} command  shell-command (example: npm)
+ * @param  {string} args     arguments for the command (example: test)
  * @param  {array}  projects project-names
  * @return {void}
  */
