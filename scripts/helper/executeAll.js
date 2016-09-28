@@ -8,7 +8,7 @@ const NPM_WARNINGS = [
   'deprecated',
   'WARN',
   'No description',
-  'No repository'
+  'No repository',
 ];
 
 /**
@@ -77,7 +77,7 @@ function spawnPromise(command, args, project) {
  * @return {generator}           generator with all projects
  */
 function* genProjects(projects) {
-    yield* projects;
+  yield* projects;
 }
 
 /**
@@ -106,7 +106,7 @@ function executeAll(command, args, projects) {
     } else {
       spawnPromise(command, args, currentProject.value).then(() => iterate());
     }
-  })();
+  }());
 }
 
 module.exports = executeAll;
