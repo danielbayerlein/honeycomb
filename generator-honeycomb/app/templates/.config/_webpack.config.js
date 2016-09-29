@@ -18,7 +18,7 @@ const defaultConfig = {
   },
   context: path.resolve(__dirname, '..'),
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         loader: 'babel!eslint',
@@ -29,9 +29,6 @@ const defaultConfig = {
       },
     ],
   },
-  eslint: {
-    formatter: eslintFormatter,
-  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
@@ -39,6 +36,13 @@ const defaultConfig = {
       },
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        eslint: {
+          formatter: eslintFormatter,
+        },
+      },
+    }),
   ],
 };
 
