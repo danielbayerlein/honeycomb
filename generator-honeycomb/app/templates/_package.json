@@ -91,7 +91,7 @@
     <%_ } _%>
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
-    "webpack": "^2.1.0-beta.22",
+    "webpack": "^2.1.0-beta.25",
     "webpack-dev-middleware": "^1.7.0",
     "webpack-hot-middleware": "^2.12.2"
   },
