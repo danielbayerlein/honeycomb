@@ -4,7 +4,8 @@
   "description": "Honeycomb is a common basis for Node.js microservices.",
   "scripts": {
     "test": "node scripts/test.js",
-    "postinstall": "node scripts/install.js"
+    "postinstall": "node scripts/install.js",
+    "generate": "node scripts/generate.js"
   },
   "author": "Daniel Bayerlein",
   "license": "MIT",
