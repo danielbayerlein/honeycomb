@@ -10,7 +10,8 @@
   "author": "Daniel Bayerlein",
   "license": "MIT",
   "devDependencies": {
-    "ghooks": "^1.3.2"
+    "ghooks": "^1.3.2",
+    "yo": "^1.8.5"
   },
   "config": {
     "ghooks": {

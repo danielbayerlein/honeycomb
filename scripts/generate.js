@@ -6,9 +6,6 @@ const variations = ['handlebars', 'react'];
 
 console.log('setup for all honeycomb-combinations');
 
-console.log('install yeoman');
-childProcess.execSync('npm install yo');
-
 console.log('link actual version of generator-honeycomb');
 childProcess.execSync('npm link generator-honeycomb');
 
@@ -24,8 +21,7 @@ variations.forEach(variation => {
   }
 
   process.chdir(folder);
-  childProcess.execSync('npm link ../honeycomb-registry-client');
-  childProcess.execSync(`node ../node_modules/yo/lib/cli.js honeycomb --author test --name test-${variation} --description "testsetup for ${variation}" --template "${variation}"`);
+  childProcess.execSync(`node ../node_modules/yo/lib/cli.js honeycomb --author test --name test-${variation} --description "testsetup for ${variation}" --template "${variation}" --skip-install`);
 
   console.log(`created ${variation}-microservice successfully`);
 });
