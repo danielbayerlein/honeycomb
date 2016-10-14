@@ -3,13 +3,20 @@
   "version": "1.0.0",
   "description": "Honeycomb is a common basis for Node.js microservices.",
   "scripts": {
-    "install": "npm-workspace install",
-    "clean": "npm-workspace clean",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node scripts/test.js",
+    "postinstall": "node scripts/install.js",
+    "generate": "node scripts/generate.js"
   },
   "author": "Daniel Bayerlein",
   "license": "MIT",
   "devDependencies": {
-    "npm-workspace": "^0.6.2"
+    "ghooks": "^1.3.2",
+    "rimraf": "^2.5.4",
+    "yo": "^1.8.5"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm test"
+    }
   }
 }

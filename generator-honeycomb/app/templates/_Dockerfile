@@ -1,0 +1,22 @@
+FROM node:latest
+
+# Create app directory
+RUN mkdir -p /code/<%= dir %>
+WORKDIR /code/<%= dir %>
+
+# Install app dependencies
+COPY package.json /code/<%= dir %>/
+
+RUN npm install
+
+# Bundle app source
+COPY . /code/<%= dir %>
+
+# build assets
+RUN npm run build:production
+
+# access-port
+EXPOSE <%= port %>
+
+# start-command
+CMD [ "npm", "start:production" ]
