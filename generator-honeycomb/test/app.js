@@ -72,6 +72,8 @@ describe('generator-honeycomb', () => {
           'src/server/routes/public.js',
           'src/server/server.js',
           'test/.eslintrc.yml',
+          'test/bench/cases.js',
+          'test/bench/server/controllers/info.js',
           'test/integration/features/steps/index.js',
           'test/integration/features/support/.gitkeep',
           'test/integration/features/index.feature',

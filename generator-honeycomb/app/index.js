@@ -247,6 +247,7 @@ module.exports = yeoman.Base.extend({
         { includeReact: this.includeReact }
       );
 
+      this.directory('test/bench');
       this.directory('test/integration');
       this.directory('test/ui');
       this.directory('test/unit/server/controllers');
