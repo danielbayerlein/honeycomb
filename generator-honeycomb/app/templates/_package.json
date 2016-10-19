@@ -19,6 +19,7 @@
     "start:development": "pm2-dev start .config/pm2.development.json",
     "start:production": "pm2 start .config/pm2.production.json",
     "test": "npm run lint && npm run test:unit",
+    "test:bench": "node ./test/bench/cases.js",
     "test:integration": "chimp .config/chimp.js",
     "test:unit": "jest",
     "test:unit:watch": "jest --watch"
@@ -65,6 +66,7 @@
     <%_ if (includeReact) { _%>
     "babel-preset-react": "^6.16.0",
     <%_ } _%>
+    "benchmark": "^2.1.1",
     "chimp": "^0.41.1",
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
