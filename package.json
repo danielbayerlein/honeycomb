@@ -18,5 +18,8 @@
     "ghooks": {
       "pre-commit": "npm test"
     }
+  },
+  "dependencies": {
+    "@danielbayerlein/caniuse-yarn": "^1.0.0"
   }
 }
