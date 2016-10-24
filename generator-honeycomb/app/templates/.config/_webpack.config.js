@@ -3,6 +3,7 @@ const path = require('path');
 const eslintFormatter = require('eslint-formatter-pretty');
 const webpack = require('webpack');
 <%_ if (includeHandlebars) { _%>
+const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 <%_ } _%>
@@ -17,7 +18,7 @@ const defaultConfig = {
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, '..' 'public'),
+    path: path.resolve(__dirname, '..', 'public'),
     publicPath: '/',
   },
   context: path.resolve(__dirname, '..'),

@@ -174,7 +174,7 @@ describe('generator-honeycomb', () => {
               ['package.json', '"build:views": "ncp src/server/views dist/server/views",'],
               ['package.json', '"lint": "npm run lint:js && npm run lint:css"'],
               ['package.json', '"lint:js": "eslint --format=node_modules/eslint-formatter-pretty ."'],
-              ['package.json', '"lint:css": "stylelint src/client/*/.css"'],
+              ['package.json', '"lint:css": "stylelint src/client/**/*.css"'],
               ['package.json', '"clean": "rimraf pids logs coverage .nyc_output dist public/**/*.bundle.(j|cs)s"'],
               ['package.json', /"handlebars": ".*",/],
               ['package.json', /"eslint-config-airbnb-base": ".*",/],

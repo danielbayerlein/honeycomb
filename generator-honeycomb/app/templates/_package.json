@@ -17,10 +17,10 @@
     "clean": "rimraf pids logs coverage .nyc_output dist public/javascripts/*.bundle.js",
     <%_ } _%>
     <%_ if (includeHandlebars) { _%>
-    "clean": "rimraf pids logs coverage .nyc_output dist public/**/*.bundle.(j|cs)s"
+    "clean": "rimraf pids logs coverage .nyc_output dist public/**/*.bundle.(j|cs)s",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint --format=node_modules/eslint-formatter-pretty .",
-    "lint:css": "stylelint src/client/*/.css",
+    "lint:css": "stylelint src/client/**/*.css",
     <%_ } else { _%>
     "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
     <%_ } _%>
