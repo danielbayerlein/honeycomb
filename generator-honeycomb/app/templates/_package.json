@@ -13,8 +13,17 @@
     <%_ } _%>
     "build:babel": "cross-env BABEL_ENV=production babel src/ --out-dir dist/ --source-maps --only src/server/",
     "build:webpack": "cross-env NODE_ENV=production webpack --config .config/webpack.config.js",
-    "clean": "rimraf pids logs coverage .nyc_output dist public/javascripts/*.bundle.js*",
+    <%_ if (includeReact) { _%>
+    "clean": "rimraf pids logs coverage .nyc_output dist public/javascripts/*.bundle.js",
+    <%_ } _%>
+    <%_ if (includeHandlebars) { _%>
+    "clean": "rimraf pids logs coverage .nyc_output dist public/**/*.bundle.(j|cs)s"
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint --format=node_modules/eslint-formatter-pretty .",
+    "lint:css": "stylelint src/client/*/.css",
+    <%_ } else { _%>
     "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
+    <%_ } _%>
     "start": "npm run start:development",
     "start:development": "pm2-dev start .config/pm2.development.json",
     "start:production": "pm2 start .config/pm2.production.json",
@@ -54,6 +63,9 @@
   },
   "devDependencies": {
     "@danielbayerlein/hapi-webpack-middleware": "^1.0.1",
+    <%_ if (includeHandlebars) { _%>
+    "autoprefixer": "^6.5.1",
+    <%_ } _%>
     "babel-cli": "^6.16.0",
     "babel-core": "^6.17.0",
     "babel-jest": "^16.0.0",
@@ -69,7 +81,9 @@
     "benchmark": "^2.1.1",
     "chimp": "^0.41.1",
     "cross-env": "^3.0.0",
+    <%_ if (includeHandlebars) { _%>
     "css-loader": "^0.25.0",
+    <%_ } _%>
     "eslint": "^3.7.0",
     <%_ if (includeReact) { _%>
     "eslint-config-airbnb": "^12.0.0",
@@ -84,14 +98,23 @@
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.3.0",
     <%_ } _%>
+    <%_ if (includeHandlebars) { _%>
+    "extract-text-webpack-plugin": "^2.0.0-beta.4",
+    <%_ } _%>
     "jest-cli": "^16.0.0",
     <%_ if (includeHandlebars) { _%>
     "ncp": "^2.0.0",
+    "postcss-loader": "^1.0.0",
     <%_ } _%>
     <%_ if (includeReact) { _%>
     "react-test-renderer": "^15.3.2",
     <%_ } _%>
     "rimraf": "^2.5.4",
+    <%_ if (includeHandlebars) { _%>
+    "style-loader": "^0.13.1",
+    "stylelint-config-standard": "^14.0.0",
+    "stylelint-webpack-plugin": "^0.4.0",
+    <%_ } _%>
     "style-loader": "^0.13.1",
     "webpack": "^2.1.0-beta.25",
     "webpack-dev-middleware": "^1.8.3",

@@ -160,6 +160,8 @@ describe('generator-honeycomb', () => {
 
         it('creates expected files', () => {
           assert.file('src/server/views/index/index.html');
+          assert.file('src/client/client.css');
+          assert.file('.stylelintrc.yml');
         });
 
         describe('package.json', () => {
@@ -170,9 +172,20 @@ describe('generator-honeycomb', () => {
                 '"build": "npm run build:babel && npm run build:views && npm run build:webpack",',
               ],
               ['package.json', '"build:views": "ncp src/server/views dist/server/views",'],
+              ['package.json', '"lint": "npm run lint:js && npm run lint:css"'],
+              ['package.json', '"lint:js": "eslint --format=node_modules/eslint-formatter-pretty ."'],
+              ['package.json', '"lint:css": "stylelint src/client/*/.css"'],
+              ['package.json', '"clean": "rimraf pids logs coverage .nyc_output dist public/**/*.bundle.(j|cs)s"'],
               ['package.json', /"handlebars": ".*",/],
               ['package.json', /"eslint-config-airbnb-base": ".*",/],
               ['package.json', /"ncp": ".*",/],
+              ['package.json', /"css-loader": ".*",/],
+              ['package.json', /"style-loader": ".*",/],
+              ['package.json', /"postcss-loader": ".*",/],
+              ['package.json', /"autoprefixer": ".*",/],
+              ['package.json', /"stylelint-webpack-plugin": ".*",/],
+              ['package.json', /"stylelint-config-standard": ".*",/],
+              ['package.json', /"extract-text-webpack-plugin": ".*",/],
             ]);
           });
         });
@@ -183,15 +196,34 @@ describe('generator-honeycomb', () => {
           });
         });
 
+        describe('.stylelintrc.yml', () => {
+          it('should have expected content', () => {
+            assert.fileContent('.stylelintrc.yml', '"stylelint-config-standard"');
+          });
+        });
+
         describe('.config/server.js', () => {
           it('should have expected content', () => {
             assert.fileContent('.config/server.js', "html: 'handlebars',");
           });
         });
 
+        describe('.config/webpack.config.js', () => {
+          it('should have expected content', () => {
+            assert.fileContent('.config/webpack.config.js', "const ExtractTextPlugin = require('extract-text-webpack-plugin');");
+            assert.fileContent('.config/webpack.config.js', "const StyleLintPlugin = require('stylelint-webpack-plugin');");
+            assert.fileContent('.config/webpack.config.js', 'postcss: [autoprefixer()],');
+            assert.fileContent('.config/webpack.config.js', "new ExtractTextPlugin('stylesheets/app.bundle.css'),");
+            assert.fileContent('.config/webpack.config.js', 'new StyleLintPlugin({');
+            assert.fileContent('.config/webpack.config.js', "configFile: path.join(__dirname, '..', '.stylelintrc.yml'),");
+            assert.fileContent('.config/webpack.config.js', "files: ['src/**/*.css'],");
+          });
+        });
+
         describe('src/client/client.js', () => {
           it('should have expected content', () => {
             assert.fileContent('src/client/client.js', "console.log('DOM has been loaded');");
+            assert.fileContent('src/client/client.js', "import './client.css';");
           });
         });
       });

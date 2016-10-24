@@ -184,6 +184,12 @@ module.exports = yeoman.Base.extend({
       );
     },
 
+    stylelint: function stylelint() {
+      if (this.includeHandlebars) {
+        this.copy('.stylelintrc.yml');
+      }
+    },
+
     publicDir: function publicDir() {
       this.directory('public');
     },
@@ -236,7 +242,10 @@ module.exports = yeoman.Base.extend({
       this.template(
         '.config/_webpack.config.js',
         '.config/webpack.config.js',
-        { includeReact: this.includeReact }
+        {
+          includeReact: this.includeReact,
+          includeHandlebars: this.includeHandlebars,
+        }
       );
     },
 
@@ -278,6 +287,7 @@ module.exports = yeoman.Base.extend({
       }
 
       if (this.includeHandlebars) {
+        this.copy('src/client/client.css');
         this.copy('src/server/views/index/index.html');
       }
     },

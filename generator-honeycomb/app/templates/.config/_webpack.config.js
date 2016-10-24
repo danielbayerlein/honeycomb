@@ -2,19 +2,23 @@ const path = require('path');
 /* eslint-disable import/no-extraneous-dependencies */
 const eslintFormatter = require('eslint-formatter-pretty');
 const webpack = require('webpack');
+<%_ if (includeHandlebars) { _%>
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
+<%_ } _%>
 /* eslint-enable import/no-extraneous-dependencies */
 const Hoek = require('hoek');
 
 const defaultConfig = {
   entry: {
-    app: [
+    'javascripts/app': [
       './src/client/client.js',
     ],
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, '../public/javascripts'),
-    publicPath: '/javascripts/',
+    path: path.resolve(__dirname, '..' 'public'),
+    publicPath: '/',
   },
   context: path.resolve(__dirname, '..'),
   module: {
@@ -23,10 +27,16 @@ const defaultConfig = {
         test: /\.js$/,
         loader: 'babel!eslint',
         exclude: /node_modules/,
-      }, {
-        test: /\.css$/,
-        loader: 'style!css',
       },
+      <%_ if (includeHandlebars) { _%>
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style',
+          loader: ['css', 'postcss'],
+        }),
+      },
+      <%_ } _%>
     ],
   },
   plugins: [
@@ -41,15 +51,25 @@ const defaultConfig = {
         eslint: {
           formatter: eslintFormatter,
         },
+        <%_ if (includeHandlebars) { _%>
+        postcss: [autoprefixer()],
+        <%_ } _%>
       },
     }),
+    <%_ if (includeHandlebars) { _%>
+    new ExtractTextPlugin('stylesheets/app.bundle.css'),
+    new StyleLintPlugin({
+      configFile: path.join(__dirname, '..', '.stylelintrc.yml'),
+      files: ['src/**/*.css'],
+    }),
+    <%_ } _%>
   ],
 };
 
 const developmentConfig = {
   devtool: 'eval',
   entry: {
-    app: [
+    'javascripts/app': [
       'webpack-hot-middleware/client?reload=true&noInfo=true',
       <%_ if (includeReact) { _%>
       'react-hot-loader/patch',
