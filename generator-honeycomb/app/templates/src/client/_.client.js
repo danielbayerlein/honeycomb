@@ -28,6 +28,8 @@ if (module.hot) {
 }
 <%_ } _%>
 <%_ if (includeHandlebars) { _%>
+import './client.css';
+
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOM has been loaded'); // eslint-disable-line no-console
 }, false);
