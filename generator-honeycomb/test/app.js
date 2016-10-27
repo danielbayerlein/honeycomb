@@ -258,6 +258,8 @@ describe('generator-honeycomb', () => {
           it('should have expected content', () => {
             assert.fileContent([
               ['package.json', '"build": "npm run build:babel && npm run build:webpack",'],
+              ['package.json', '"clean": "rimraf pids logs coverage .nyc_output dist public/javascripts/*.bundle.js"'],
+              ['package.json', '"lint": "eslint --format=node_modules/eslint-formatter-pretty ."'],
               ['package.json', /"hapi-react-views": ".*",/],
               ['package.json', /"react": ".*",/],
               ['package.json', /"react-dom": ".*",/],
