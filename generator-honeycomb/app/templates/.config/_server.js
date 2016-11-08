@@ -12,6 +12,20 @@ const viewEngines = {
   <%_ } _%>
 };
 
+const compileOptionsDevelopment = {
+  doctype: '',
+  <%_ if (includeReact) { _%>
+  layout: 'default',
+  layoutPath: path.resolve(__dirname, '../src/server/views/layout'),
+  renderMethod: 'renderToString',
+  <%_ } _%>
+};
+
+const compileOptionsProduction = Object.assign({}, compileOptionsDevelopment);
+<%_ if (includeReact) { _%>
+compileOptionsProduction.layoutPath = path.resolve(__dirname, '../dist/server/views/layout');
+<%_ } _%>
+
 const defaultConfig = {
   connections: [
     {
@@ -68,9 +82,7 @@ const developmentConfig = {
       plugin: {
         register: 'visionary',
         options: {
-          compileOptions: {
-            doctype: '',
-          },
+          compileOptions: compileOptionsDevelopment,
           engines: viewEngines,
           path: 'views',
           relativeTo: path.resolve(__dirname, '../src/server'),
@@ -94,9 +106,7 @@ const productionConfig = {
       plugin: {
         register: 'visionary',
         options: {
-          compileOptions: {
-            doctype: '',
-          },
+          compileOptions: compileOptionsProduction,
           engines: viewEngines,
           path: 'views',
           relativeTo: path.resolve(__dirname, '../dist/server'),

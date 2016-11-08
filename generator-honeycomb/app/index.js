@@ -185,9 +185,11 @@ module.exports = yeoman.Base.extend({
     },
 
     stylelint: function stylelint() {
-      if (this.includeHandlebars) {
-        this.copy('.stylelintrc.yml');
-      }
+      this.template(
+        '_.stylelintrc.yml',
+        '.stylelintrc.yml',
+        { includeReact: this.includeReact }
+      );
     },
 
     publicDir: function publicDir() {
