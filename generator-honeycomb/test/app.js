@@ -246,6 +246,7 @@ describe('generator-honeycomb', () => {
           assert.file([
             'src/client/components/Example.js',
             'src/server/views/index/index.js',
+            'src/server/views/layouts/default.js',
             'test/unit/client/components/Example.test.js',
             'test/unit/client/components/__snapshots__/Example.test.js.snap',
           ]);
@@ -302,6 +303,7 @@ describe('generator-honeycomb', () => {
         describe('.config/webpack.config.js', () => {
           it('should have expected content', () => {
             assert.fileContent('.config/webpack.config.js', "'react-hot-loader/patch',");
+            assert.fileContent('.config/webpack.config.js', "'styled-components$': 'styled-components/lib/index.js',");
           });
         });
 

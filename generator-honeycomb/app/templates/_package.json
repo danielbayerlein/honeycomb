@@ -117,6 +117,7 @@
     <%_ if (includeHandlebars) { _%>
     "style-loader": "^0.13.1",
     <%_ } _%>
+    "stylelint": "^7.5.0",
     "stylelint-config-standard": "^14.0.0",
     <%_ if (includeReact) { _%>
     "stylelint-processor-styled-components": "0.0.4",

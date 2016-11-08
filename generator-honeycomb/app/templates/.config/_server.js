@@ -16,14 +16,14 @@ const compileOptionsDevelopment = {
   doctype: '',
   <%_ if (includeReact) { _%>
   layout: 'default',
-  layoutPath: path.resolve(__dirname, '../src/server/views/layout'),
+  layoutPath: path.resolve(__dirname, '../src/server/views/layouts'),
   renderMethod: 'renderToString',
   <%_ } _%>
 };
 
 const compileOptionsProduction = Object.assign({}, compileOptionsDevelopment);
 <%_ if (includeReact) { _%>
-compileOptionsProduction.layoutPath = path.resolve(__dirname, '../dist/server/views/layout');
+compileOptionsProduction.layoutPath = path.resolve(__dirname, '../dist/server/views/layouts');
 <%_ } _%>
 
 const defaultConfig = {

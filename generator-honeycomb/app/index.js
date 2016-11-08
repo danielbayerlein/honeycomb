@@ -286,6 +286,7 @@ module.exports = yeoman.Base.extend({
       if (this.includeReact) {
         this.copy('src/client/components/Example.js');
         this.copy('src/server/views/index/index.js');
+        this.copy('src/server/views/layouts/default.js');
       }
 
       if (this.includeHandlebars) {

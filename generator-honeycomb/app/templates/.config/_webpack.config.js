@@ -24,28 +24,12 @@ const defaultConfig = {
   context: path.resolve(__dirname, '..'),
   module: {
     rules: [
-      <%_ if (includeReact) { _%>
-      {
-        test: /\.js?$/,
-        loader: 'eslint',
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel',
-        query: {
-          presets: ['react', ['es2015', { modules: false }]],
-          plugins: ['react-hot-loader/babel', 'transform-runtime', 'transform-class-properties', 'transform-object-rest-spread'],
-        },
-        exclude: /node_modules/,
-      },
-      <%_ } _%>
-      <%_ if (includeHandlebars) { _%>
       {
         test: /\.js$/,
         loader: 'babel!eslint',
         exclude: /node_modules/,
       },
+      <%_ if (includeHandlebars) { _%>
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
@@ -81,6 +65,14 @@ const defaultConfig = {
     }),
     <%_ } _%>
   ],
+  <%_ if (includeReact) { _%>
+  // temporary workaround see https://github.com/styled-components/styled-components/issues/115
+  resolve: {
+    alias: {
+      'styled-components$': 'styled-components/lib/index.js',
+    },
+  },
+  <%_ } _%>
 };
 
 const developmentConfig = {
