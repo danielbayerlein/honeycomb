@@ -1,0 +1,6 @@
+<%_ if (includeReact) { _%>
+processors:
+  - stylelint-processor-styled-components
+<%_ } _%>
+extends:
+  "stylelint-config-standard"

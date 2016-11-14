@@ -55,6 +55,7 @@ describe('generator-honeycomb', () => {
           '.config/webpack.config.js',
           '.eslintignore',
           '.eslintrc.yml',
+          '.stylelintrc.yml',
           'Dockerfile',
           'package.json',
           'public/images/.gitkeep',
@@ -90,6 +91,12 @@ describe('generator-honeycomb', () => {
             ['package.json', '"description": "Example package",'],
             ['package.json', '"version": "1.2.3",'],
           ]);
+        });
+      });
+
+      describe('.stylelintrc.yml', () => {
+        it('should have expected content', () => {
+          assert.fileContent('.stylelintrc.yml', '"stylelint-config-standard"');
         });
       });
 
@@ -161,7 +168,6 @@ describe('generator-honeycomb', () => {
         it('creates expected files', () => {
           assert.file('src/server/views/index/index.html');
           assert.file('src/client/client.css');
-          assert.file('.stylelintrc.yml');
         });
 
         describe('package.json', () => {
@@ -172,9 +178,7 @@ describe('generator-honeycomb', () => {
                 '"build": "npm run build:babel && npm run build:views && npm run build:webpack",',
               ],
               ['package.json', '"build:views": "ncp src/server/views dist/server/views",'],
-              ['package.json', '"lint": "npm run lint:js && npm run lint:css"'],
-              ['package.json', '"lint:js": "eslint --format=node_modules/eslint-formatter-pretty ."'],
-              ['package.json', '"lint:css": "stylelint src/client/**/*.css"'],
+              ['package.json', '"lint:styles": "stylelint src/client/**/*.css"'],
               ['package.json', '"clean": "rimraf pids logs coverage .nyc_output dist public/**/*.bundle.(j|cs)s"'],
               ['package.json', /"handlebars": ".*",/],
               ['package.json', /"eslint-config-airbnb-base": ".*",/],
@@ -184,7 +188,6 @@ describe('generator-honeycomb', () => {
               ['package.json', /"postcss-loader": ".*",/],
               ['package.json', /"autoprefixer": ".*",/],
               ['package.json', /"stylelint-webpack-plugin": ".*",/],
-              ['package.json', /"stylelint-config-standard": ".*",/],
               ['package.json', /"extract-text-webpack-plugin": ".*",/],
             ]);
           });
@@ -193,12 +196,6 @@ describe('generator-honeycomb', () => {
         describe('.eslintrc.yml', () => {
           it('should have expected content', () => {
             assert.fileContent('.eslintrc.yml', '"airbnb-base"');
-          });
-        });
-
-        describe('.stylelintrc.yml', () => {
-          it('should have expected content', () => {
-            assert.fileContent('.stylelintrc.yml', '"stylelint-config-standard"');
           });
         });
 
@@ -249,6 +246,7 @@ describe('generator-honeycomb', () => {
           assert.file([
             'src/client/components/Example.js',
             'src/server/views/index/index.js',
+            'src/server/views/layouts/default.js',
             'test/unit/client/components/Example.test.js',
             'test/unit/client/components/__snapshots__/Example.test.js.snap',
           ]);
@@ -259,7 +257,7 @@ describe('generator-honeycomb', () => {
             assert.fileContent([
               ['package.json', '"build": "npm run build:babel && npm run build:webpack",'],
               ['package.json', '"clean": "rimraf pids logs coverage .nyc_output dist public/javascripts/*.bundle.js"'],
-              ['package.json', '"lint": "eslint --format=node_modules/eslint-formatter-pretty ."'],
+              ['package.json', '"lint:styles": "stylelint src/server/views/**/*.js src/client/components/**/*.js",'],
               ['package.json', /"hapi-react-views": ".*",/],
               ['package.json', /"react": ".*",/],
               ['package.json', /"react-dom": ".*",/],
@@ -269,6 +267,8 @@ describe('generator-honeycomb', () => {
               ['package.json', /"eslint-plugin-jsx-a11y": ".*",/],
               ['package.json', /"eslint-plugin-react": ".*",/],
               ['package.json', /"react-test-renderer": ".*",/],
+              ['package.json', /"styled-components": ".*",/],
+              ['package.json', /"stylelint-processor-styled-components": ".*"/],
             ]);
           });
         });
@@ -277,6 +277,13 @@ describe('generator-honeycomb', () => {
           it('should have expected content', () => {
             assert.fileContent('.eslintrc.yml', 'airbnb');
             assert.fileContent('.eslintrc.yml', '"react/jsx-filename-extension"');
+          });
+        });
+
+        describe('.stylelintrc.yml', () => {
+          it('should have expected content', () => {
+            assert.fileContent('.stylelintrc.yml', 'processors');
+            assert.fileContent('.stylelintrc.yml', '- stylelint-processor-styled-components');
           });
         });
 
@@ -296,6 +303,7 @@ describe('generator-honeycomb', () => {
         describe('.config/webpack.config.js', () => {
           it('should have expected content', () => {
             assert.fileContent('.config/webpack.config.js', "'react-hot-loader/patch',");
+            assert.fileContent('.config/webpack.config.js', "'styled-components$': 'styled-components/lib/index.js',");
           });
         });
 

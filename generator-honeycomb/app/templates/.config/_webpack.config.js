@@ -65,6 +65,14 @@ const defaultConfig = {
     }),
     <%_ } _%>
   ],
+  <%_ if (includeReact) { _%>
+  // temporary workaround see https://github.com/styled-components/styled-components/issues/115
+  resolve: {
+    alias: {
+      'styled-components$': 'styled-components/lib/index.js',
+    },
+  },
+  <%_ } _%>
 };
 
 const developmentConfig = {
