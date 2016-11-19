@@ -1,11 +1,4 @@
 globals:
   browser: false
-<%_ if (includeReact) { _%>
-rules:
-  react/jsx-filename-extension:
-    - error
-    - extensions:
-      - js
-<%_ } _%>
 env:
   jest: true
