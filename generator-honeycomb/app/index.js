@@ -260,11 +260,7 @@ module.exports = yeoman.Base.extend({
     },
 
     testDir: function testDir() {
-      this.template(
-        'test/_.eslintrc.yml',
-        'test/.eslintrc.yml',
-        { includeReact: this.includeReact }
-      );
+      this.copy('test/.eslintrc.yml');
 
       this.directory('test/bench');
       this.directory('test/integration');
