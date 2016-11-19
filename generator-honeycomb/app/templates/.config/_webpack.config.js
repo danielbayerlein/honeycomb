@@ -26,7 +26,7 @@ const defaultConfig = {
     rules: [
       {
         test: /\.js$/,
-        loader: 'babel-loader!babel-eslint',
+        loader: 'babel-loader!eslint-loader',
         exclude: /node_modules/,
       },
       <%_ if (includeHandlebars) { _%>
