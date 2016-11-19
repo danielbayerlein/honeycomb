@@ -17,7 +17,8 @@
       "NODE_ENV": "development"
     },
     <%_ } _%>
-    "combine_logs": true,
+    "merge_logs": true,
+    "log_file": "logs/<%= name %>.combined.log",
     "error_file": "logs/<%= name %>.error.log",
     "out_file": "logs/<%= name %>.out.log",
     "pid_file": "pids/<%= name %>.pid"
