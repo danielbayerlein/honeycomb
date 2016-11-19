@@ -1,3 +1,13 @@
+/*
+  eslint comma-dangle: ["error", {
+    "arrays": "always-multiline",
+    "objects": "always-multiline",
+    "imports": "always-multiline",
+    "exports": "always-multiline",
+    "functions": "never"
+  }]
+*/
+
 const yeoman = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
@@ -67,9 +77,7 @@ module.exports = yeoman.Base.extend({
   },
 
   prompting: function prompting() {
-    this.log(yosay(
-      `Welcome to the ${chalk.yellow('honeycomb')} generator!`
-    ));
+    this.log(yosay(`Welcome to the ${chalk.yellow('honeycomb')} generator!`));
 
     const prompts = [{
       type: 'input',
@@ -301,8 +309,6 @@ module.exports = yeoman.Base.extend({
   },
 
   end: function end() {
-    this.log(yosay(
-      'Bye bye'
-    ));
+    this.log(yosay('Bye bye'));
   },
 });
