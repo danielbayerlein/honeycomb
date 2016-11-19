@@ -1,4 +1,3 @@
-/* global it */
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Example from '../../../../src/client/components/Example';

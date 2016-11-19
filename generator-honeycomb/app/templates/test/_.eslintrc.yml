@@ -1,23 +1,13 @@
 globals:
   browser: false
-  expect: false
+
 rules:
-  import/no-extraneous-dependencies:
-    - error
-    - devDependencies: true
   <%_ if (includeReact) { _%>
   react/jsx-filename-extension:
     - error
     - extensions:
       - js
   <%_ } _%>
-  new-cap:
-    - error
-    - capIsNewExceptions:
-      - Feature
-      - Scenario
-      - Given
-      - When
-      - Then
-      - And
-      - But
+
+env:
+  jest: true
