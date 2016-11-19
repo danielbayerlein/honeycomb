@@ -6,7 +6,7 @@ extends:
   <%_ } _%>
 <%_ if (includeReact) { _%>
 rules:
-  "react/jsx-filename-extension":
+  react/jsx-filename-extension:
     - error
     - extensions:
       - .js
