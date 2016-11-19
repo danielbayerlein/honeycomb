@@ -4,7 +4,6 @@ extends:
   <%_ } else { _%>
   "airbnb-base"
   <%_ } _%>
-
 <%_ if (includeReact) { _%>
 rules:
   "react/jsx-filename-extension":
