@@ -4,6 +4,7 @@
   "description": "Honeycomb is a common basis for Node.js microservices.",
   "private": true,
   "scripts": {
+    "clean": "lerna clean",
     "test": "lerna run test",
     "postinstall": "lerna bootstrap",
     "generate": ""
