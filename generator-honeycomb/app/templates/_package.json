@@ -50,15 +50,15 @@
     "hapi-router": "^3.5.0",
     "hapijs-status-monitor": "^0.4.0",
     <%_ if (includeHandlebars) { _%>
-    "handlebars": "^4.0.5",
+    "handlebars": "^4.0.6",
     <%_ } _%>
     "hoek": "^4.1.0",
     "honeycomb-registry-client": "^1.0.0",
     "inert": "^4.0.2",
-    "pm2": "^1.1.3",
+    "pm2": "^2.1.5",
     <%_ if (includeReact) { _%>
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2",
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0",
     "react-hot-loader": "^3.0.0-beta.6",
     "styled-components": "^1.0.10",
     <%_ } _%>
@@ -68,50 +68,50 @@
   "devDependencies": {
     "@danielbayerlein/hapi-webpack-middleware": "^1.0.1",
     <%_ if (includeHandlebars) { _%>
-    "autoprefixer": "^6.5.1",
+    "autoprefixer": "^6.5.3",
     <%_ } _%>
     "babel-cli": "^6.18.0",
-    "babel-core": "^6.17.0",
-    "babel-jest": "^16.0.0",
-    "babel-loader": "^6.2.7",
-    "babel-plugin-transform-class-properties": "^6.18.0",
-    "babel-plugin-transform-object-rest-spread": "^6.16.0",
+    "babel-core": "^6.18.2",
+    "babel-jest": "^17.0.2",
+    "babel-loader": "^6.2.8",
+    "babel-plugin-transform-class-properties": "^6.19.0",
+    "babel-plugin-transform-object-rest-spread": "^6.19.0",
     "babel-plugin-transform-runtime": "^6.15.0",
     "babel-polyfill": "^6.16.0",
     "babel-preset-es2015": "^6.18.0",
     <%_ if (includeReact) { _%>
     "babel-preset-react": "^6.16.0",
     <%_ } _%>
-    "benchmark": "^2.1.1",
+    "benchmark": "^2.1.2",
     "chimp": "^0.41.2",
     "cross-env": "^3.1.3",
     <%_ if (includeHandlebars) { _%>
-    "css-loader": "^0.25.0",
+    "css-loader": "^0.26.0",
     <%_ } _%>
-    "eslint": "^3.9.0",
+    "eslint": "^3.10.2",
     <%_ if (includeReact) { _%>
-    "eslint-config-airbnb": "^12.0.0",
+    "eslint-config-airbnb": "^13.0.0",
     <%_ } _%>
     <%_ if (includeHandlebars) { _%>
-    "eslint-config-airbnb-base": "^9.0.0",
+    "eslint-config-airbnb-base": "^10.0.1",
     <%_ } _%>
     "eslint-formatter-pretty": "^1.1.0",
-    "eslint-loader": "^1.6.0",
-    "eslint-plugin-import": "^2.0.1",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-import": "^2.2.0",
     <%_ if (includeReact) { _%>
-    "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.4.1",
+    "eslint-plugin-jsx-a11y": "^3.0.1",
+    "eslint-plugin-react": "^6.7.1",
     <%_ } _%>
     <%_ if (includeHandlebars) { _%>
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
     <%_ } _%>
-    "jest-cli": "^16.0.2",
+    "jest-cli": "^17.0.3",
     <%_ if (includeHandlebars) { _%>
     "ncp": "^2.0.0",
-    "postcss-loader": "^1.1.0",
+    "postcss-loader": "^1.1.1",
     <%_ } _%>
     <%_ if (includeReact) { _%>
-    "react-test-renderer": "^15.3.2",
+    "react-test-renderer": "^15.4.0",
     <%_ } _%>
     "rimraf": "^2.5.4",
     <%_ if (includeHandlebars) { _%>
@@ -126,9 +126,9 @@
     "stylelint-webpack-plugin": "^0.4.0",
     <%_ } _%>
     "style-loader": "^0.13.1",
-    "webpack": "^2.1.0-beta.25",
+    "webpack": "^2.1.0-beta.27",
     "webpack-dev-middleware": "^1.8.4",
-    "webpack-hot-middleware": "^2.13.1"
+    "webpack-hot-middleware": "^2.13.2"
   },
   "jest": {
     "cacheDirectory": "./node_modules/.cache",
