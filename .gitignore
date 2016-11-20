@@ -45,5 +45,5 @@ jspm_packages
 # Babel output directory
 dist
 
-# generated test-projects
-test-*
+# Generated example projects
+packages/example-*

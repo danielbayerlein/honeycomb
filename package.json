@@ -6,8 +6,8 @@
   "scripts": {
     "clean": "lerna clean",
     "test": "lerna run test",
-    "postinstall": "lerna bootstrap",
-    "generate": "",
+    "postinstall": "lerna bootstrap --ignore example-*",
+    "generate": "node scripts/generate-examples.js && lerna bootstrap",
     "prepush": "lerna run test"
   },
   "author": "Daniel Bayerlein",
