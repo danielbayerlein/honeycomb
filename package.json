@@ -5,10 +5,10 @@
   "private": true,
   "scripts": {
     "clean": "lerna clean",
-    "test": "lerna run test",
+    "test": "lerna run test --scope *honeycomb*",
     "postinstall": "lerna bootstrap --ignore example-*",
     "generate": "node scripts/generate-examples.js && lerna bootstrap",
-    "prepush": "lerna run test"
+    "prepush": "npm test"
   },
   "author": "Daniel Bayerlein",
   "license": "MIT",
