@@ -7,7 +7,7 @@ exports.register = function register(server, options, next) {
   server.ext('onRequest', (request, reply) => {
     const { req, res } = request.raw;
 
-    tailor.requestHandler(req, res, error => {
+    tailor.requestHandler(req, res, (error) => {
       if (error) {
         return reply(error);
       }
