@@ -276,7 +276,7 @@ describe('generator-honeycomb', () => {
         describe('.eslintrc.yml', () => {
           it('should have expected content', () => {
             assert.fileContent('.eslintrc.yml', 'airbnb');
-            assert.fileContent('.eslintrc.yml', '"react/jsx-filename-extension"');
+            assert.fileContent('.eslintrc.yml', 'react/jsx-filename-extension');
           });
         });
 
@@ -310,12 +310,6 @@ describe('generator-honeycomb', () => {
         describe('src/client/client.js', () => {
           it('should have expected content', () => {
             assert.fileContent('src/client/client.js', "import React from 'react';");
-          });
-        });
-
-        describe('test/.eslintrc.yml', () => {
-          it('should have expected content', () => {
-            assert.fileContent('test/.eslintrc.yml', 'react/jsx-filename-extension:');
           });
         });
       });

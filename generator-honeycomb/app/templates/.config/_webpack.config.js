@@ -26,15 +26,15 @@ const defaultConfig = {
     rules: [
       {
         test: /\.js$/,
-        loader: 'babel!eslint',
+        loader: 'babel-loader!eslint-loader',
         exclude: /node_modules/,
       },
       <%_ if (includeHandlebars) { _%>
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
-          fallbackLoader: 'style',
-          loader: ['css', 'postcss'],
+          fallbackLoader: 'style-loader',
+          loader: ['css-loader', 'postcss-loader'],
         }),
       },
       <%_ } _%>
@@ -106,5 +106,5 @@ const productionConfig = {
 
 module.exports = Hoek.merge(
   process.env.NODE_ENV === 'development' ? developmentConfig : productionConfig,
-  defaultConfig
+  defaultConfig,
 );

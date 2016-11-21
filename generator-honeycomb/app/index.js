@@ -67,9 +67,7 @@ module.exports = yeoman.Base.extend({
   },
 
   prompting: function prompting() {
-    this.log(yosay(
-      `Welcome to the ${chalk.yellow('honeycomb')} generator!`
-    ));
+    this.log(yosay(`Welcome to the ${chalk.yellow('honeycomb')} generator!`));
 
     const prompts = [{
       type: 'input',
@@ -252,11 +250,7 @@ module.exports = yeoman.Base.extend({
     },
 
     testDir: function testDir() {
-      this.template(
-        'test/_.eslintrc.yml',
-        'test/.eslintrc.yml',
-        { includeReact: this.includeReact }
-      );
+      this.copy('test/.eslintrc.yml');
 
       this.directory('test/bench');
       this.directory('test/integration');
@@ -301,8 +295,6 @@ module.exports = yeoman.Base.extend({
   },
 
   end: function end() {
-    this.log(yosay(
-      'Bye bye'
-    ));
+    this.log(yosay('Bye bye'));
   },
 });

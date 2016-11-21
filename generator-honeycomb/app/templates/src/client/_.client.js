@@ -13,7 +13,7 @@ render(
   <AppContainer>
     <Example name={name} />
   </AppContainer>,
-  appEl
+  appEl,
 );
 
 if (module.hot) {
@@ -22,7 +22,7 @@ if (module.hot) {
       <AppContainer>
         <Example name={name} />
       </AppContainer>,
-      appEl
+      appEl,
     );
   });
 }

@@ -1,4 +1,3 @@
-/* global it */
 import controller from '../../../../src/server/controllers/index';
 
 it('index.Controller.handler should set the template and name to the callback-reply', () => {
