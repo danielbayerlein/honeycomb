@@ -25,6 +25,9 @@
     "yeoman-test": "^1.5.1"
   },
   "jest": {
-    "bail": true
+    "bail": true,
+    "testPathIgnorePatterns": [
+      "app/templates/"
+    ]
   }
 }
