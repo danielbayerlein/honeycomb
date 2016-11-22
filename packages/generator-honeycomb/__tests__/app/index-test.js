@@ -5,7 +5,7 @@ const helpers = require('yeoman-test');
 /* eslint-enable import/no-extraneous-dependencies */
 
 describe('generator-honeycomb', () => {
-  const appPath = path.join(__dirname, '../app');
+  const appPath = path.join(__dirname, '..', '..', 'app');
   const author = 'Chuck Norris';
   const name = 'honeycomb-example';
   const description = 'Example package';
