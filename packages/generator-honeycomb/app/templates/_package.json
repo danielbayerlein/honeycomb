@@ -57,10 +57,10 @@
     "inert": "^4.0.2",
     "pm2": "^2.1.5",
     <%_ if (includeReact) { _%>
-    "react": "^15.4.0",
-    "react-dom": "^15.4.0",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
     "react-hot-loader": "^3.0.0-beta.6",
-    "styled-components": "^1.0.10",
+    "styled-components": "^1.1.2",
     <%_ } _%>
     "vision": "^4.1.0",
     "visionary": "^6.0.2"
@@ -83,12 +83,12 @@
     "babel-preset-react": "^6.16.0",
     <%_ } _%>
     "benchmark": "^2.1.2",
-    "chimp": "^0.41.2",
+    "chimp": "^0.42.0",
     "cross-env": "^3.1.3",
     <%_ if (includeHandlebars) { _%>
     "css-loader": "^0.26.0",
     <%_ } _%>
-    "eslint": "^3.10.2",
+    "eslint": "^3.11.0",
     <%_ if (includeReact) { _%>
     "eslint-config-airbnb": "^13.0.0",
     <%_ } _%>
@@ -99,7 +99,7 @@
     "eslint-loader": "^1.6.1",
     "eslint-plugin-import": "^2.2.0",
     <%_ if (includeReact) { _%>
-    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-jsx-a11y": "^3.0.1",
     "eslint-plugin-react": "^6.7.1",
     <%_ } _%>
     <%_ if (includeHandlebars) { _%>
@@ -111,14 +111,14 @@
     "postcss-loader": "^1.1.1",
     <%_ } _%>
     <%_ if (includeReact) { _%>
-    "react-test-renderer": "^15.4.0",
+    "react-test-renderer": "^15.4.1",
     <%_ } _%>
     "rimraf": "^2.5.4",
     <%_ if (includeHandlebars) { _%>
     "style-loader": "^0.13.1",
     <%_ } _%>
-    "stylelint": "^7.5.0",
-    "stylelint-config-standard": "^14.0.0",
+    "stylelint": "^7.6.0",
+    "stylelint-config-standard": "^15.0.0",
     <%_ if (includeReact) { _%>
     "stylelint-processor-styled-components": "0.0.4",
     <%_ } _%>
