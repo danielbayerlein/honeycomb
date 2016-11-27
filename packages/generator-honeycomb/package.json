@@ -16,7 +16,7 @@
     "yosay": "^1.2.1"
   },
   "devDependencies": {
-    "eslint": "^3.10.2",
+    "eslint": "^3.11.0",
     "eslint-config-airbnb-base": "^10.0.1",
     "eslint-formatter-pretty": "^1.1.0",
     "eslint-plugin-import": "^2.2.0",
