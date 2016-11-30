@@ -1,7 +1,7 @@
 import Hapi from 'hapi';
 import Hoek from 'hoek';
 import Path from 'path';
-import Tailor from './middleware/tailor';
+import tailor from 'hapi-tailor-middleware';
 
 const server = new Hapi.Server();
 
@@ -10,7 +10,7 @@ server.connection({
 });
 
 server.register([{
-  register: Tailor,
+  register: tailor,
   options: {
     templatesPath: Path.join(__dirname, 'templates'),
   },
