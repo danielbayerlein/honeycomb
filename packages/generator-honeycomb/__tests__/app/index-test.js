@@ -5,7 +5,7 @@ const helpers = require('yeoman-test');
 /* eslint-enable import/no-extraneous-dependencies */
 
 describe('generator-honeycomb', () => {
-  const appPath = path.join(__dirname, '../app');
+  const appPath = path.join(__dirname, '..', '..', 'app');
   const author = 'Chuck Norris';
   const name = 'honeycomb-example';
   const description = 'Example package';
@@ -30,7 +30,7 @@ describe('generator-honeycomb', () => {
 
   ['prompts', 'options'].forEach((type) => {
     describe(`with ${type}`, () => {
-      before((done) => {
+      beforeAll((done) => {
         if (type === 'prompts') {
           helpers
             .run(appPath)
@@ -155,7 +155,7 @@ describe('generator-honeycomb', () => {
       });
 
       describe('and handlebars templates', () => {
-        before((done) => {
+        beforeAll((done) => {
           if (type === 'prompts') {
             prompts.templateEngine = 'handlebars';
             helpers.run(appPath).withPrompts(prompts).on('end', done);
@@ -226,7 +226,7 @@ describe('generator-honeycomb', () => {
       });
 
       describe('and react templates', () => {
-        before((done) => {
+        beforeAll((done) => {
           if (type === 'prompts') {
             prompts.templateEngine = 'react';
             helpers
