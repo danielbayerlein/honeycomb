@@ -1,4 +1,2 @@
 globals:
   browser: false
-env:
-  jest: true

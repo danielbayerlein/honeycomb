@@ -13,5 +13,8 @@ module.exports = {
       exports: 'always-multiline',
       functions: 'never',
     }],
+    'react/jsx-filename-extension': ['error', {
+      extensions: ['.js'],
+    }],
   },
 };

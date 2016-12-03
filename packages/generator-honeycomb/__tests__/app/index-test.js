@@ -181,7 +181,6 @@ describe('generator-honeycomb', () => {
               ['package.json', '"lint:styles": "stylelint src/client/**/*.css"'],
               ['package.json', '"clean": "rimraf pids logs coverage .nyc_output dist public/**/*.bundle.(j|cs)s"'],
               ['package.json', /"handlebars": ".*",/],
-              ['package.json', /"eslint-config-airbnb-base": ".*",/],
               ['package.json', /"ncp": ".*",/],
               ['package.json', /"css-loader": ".*",/],
               ['package.json', /"style-loader": ".*",/],
@@ -195,7 +194,7 @@ describe('generator-honeycomb', () => {
 
         describe('.eslintrc.yml', () => {
           it('should have expected content', () => {
-            assert.fileContent('.eslintrc.yml', '"airbnb-base"');
+            assert.fileContent('.eslintrc.yml', 'honeycomb/base');
           });
         });
 
@@ -263,7 +262,6 @@ describe('generator-honeycomb', () => {
               ['package.json', /"react-dom": ".*",/],
               ['package.json', /"react-hot-loader": ".*",/],
               ['package.json', /"babel-preset-react": ".*",/],
-              ['package.json', /"eslint-config-airbnb": ".*",/],
               ['package.json', /"eslint-plugin-jsx-a11y": ".*",/],
               ['package.json', /"eslint-plugin-react": ".*",/],
               ['package.json', /"react-test-renderer": ".*",/],
@@ -275,8 +273,7 @@ describe('generator-honeycomb', () => {
 
         describe('.eslintrc.yml', () => {
           it('should have expected content', () => {
-            assert.fileContent('.eslintrc.yml', 'airbnb');
-            assert.fileContent('.eslintrc.yml', 'react/jsx-filename-extension');
+            assert.fileContent('.eslintrc.yml', 'honeycomb/react');
           });
         });
 

@@ -88,13 +88,8 @@
     <%_ if (includeHandlebars) { _%>
     "css-loader": "^0.26.0",
     <%_ } _%>
-    "eslint": "^3.11.0",
-    <%_ if (includeReact) { _%>
-    "eslint-config-airbnb": "^13.0.0",
-    <%_ } _%>
-    <%_ if (includeHandlebars) { _%>
-    "eslint-config-airbnb-base": "^10.0.1",
-    <%_ } _%>
+    "eslint": "^3.11.1",
+    "eslint-config-honeycomb": "^1.0.0",
     "eslint-formatter-pretty": "^1.1.0",
     "eslint-loader": "^1.6.1",
     "eslint-plugin-import": "^2.2.0",
