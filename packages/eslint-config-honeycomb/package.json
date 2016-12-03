@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "ESLint shareable config for Honeycomb",
   "scripts": {
-    "test": "eslint --format=node_modules/eslint-formatter-pretty ."
+    "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
+    "test": "npm run lint && jest"
   },
   "keywords": [
     "eslint",
@@ -21,7 +22,8 @@
     "eslint-config-airbnb": "^13.0.0",
     "eslint-config-airbnb-base": "^10.0.1",
     "eslint-formatter-pretty": "^1.1.0",
-    "eslint-plugin-import": "^2.2.0"
+    "eslint-plugin-import": "^2.2.0",
+    "jest": "^17.0.3"
   },
   "peerDependencies": {
     "eslint": "^3.11.1",
