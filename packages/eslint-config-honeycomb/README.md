@@ -14,7 +14,7 @@ Add the extends attribute to your `.eslintrc.yml`:
 
 ```yaml
   extends:
-    "honeycomb/base"
+    honeycomb/base
 ```
 
 ### honeycomb-react
@@ -27,7 +27,7 @@ Add the extends attribute to your `.eslintrc.yml`:
 
 ```yaml
 extends:
-  "honeycomb/react"
+  honeycomb/react
 ```
 
 ## License
