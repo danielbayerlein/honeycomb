@@ -10,7 +10,7 @@ describe('honeycomb/react', () => {
   });
 
   it('set rules', () => {
-    const obj = {
+    const rules = {
       'comma-dangle': ['error', {
         arrays: 'always-multiline',
         objects: 'always-multiline',
@@ -23,6 +23,6 @@ describe('honeycomb/react', () => {
       }],
     };
 
-    expect(react.rules).toEqual(obj);
+    expect(react.rules).toEqual(rules);
   });
 });
