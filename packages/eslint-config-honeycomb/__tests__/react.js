@@ -1,15 +1,15 @@
 const react = require('../react');
 
 describe('honeycomb/react', () => {
-  it('extends eslint-config-airbnb', () => {
+  it('should extends eslint-config-airbnb', () => {
     expect(react.extends[0]).toMatch(/eslint-config-airbnb\/index\.js/);
   });
 
-  it('set jest environment', () => {
+  it('should have expected jest environment', () => {
     expect(react.env).toEqual({ jest: true });
   });
 
-  it('set rules', () => {
+  it('should have expected rules', () => {
     const rules = {
       'comma-dangle': ['error', {
         arrays: 'always-multiline',
