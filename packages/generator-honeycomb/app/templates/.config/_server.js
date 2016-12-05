@@ -118,5 +118,5 @@ const productionConfig = {
 
 module.exports = Hoek.merge(
   defaultConfig,
-  process.env.NODE_ENV === 'development' ? developmentConfig : productionConfig,
+  process.env.NODE_ENV === 'development' ? developmentConfig : productionConfig
 );

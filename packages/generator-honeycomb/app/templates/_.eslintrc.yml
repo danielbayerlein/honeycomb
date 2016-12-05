@@ -1,13 +1,2 @@
 extends:
-  <%_ if (includeReact) { _%>
-  airbnb
-  <%_ } else { _%>
-  "airbnb-base"
-  <%_ } _%>
-<%_ if (includeReact) { _%>
-rules:
-  react/jsx-filename-extension:
-    - error
-    - extensions:
-      - .js
-<%_ } _%>
+  honeycomb/<%= includeReact ? 'react' : 'base' %>
