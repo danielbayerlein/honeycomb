@@ -10,7 +10,6 @@ describe('honeycomb-registry-client', () => {
     jest.resetAllMocks();
     client = { on: jest.fn(), start: jest.fn() };
     Eureka.mockImplementation(() => (client));
-    console.info = jest.genMockFn(); // eslint-disable-line no-console
     register('test', '127.0.0.1', 3000);
   });
 
