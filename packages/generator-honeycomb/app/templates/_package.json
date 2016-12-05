@@ -131,7 +131,7 @@
       "js"
     ],
     "testRegex": ".*\\.test\\.js",
-    "collectCoverage": "true",
+    "collectCoverage": true,
     "coverageDirectory": "coverage",
     "collectCoverageFrom": [
       "**/src/**/*.js"
