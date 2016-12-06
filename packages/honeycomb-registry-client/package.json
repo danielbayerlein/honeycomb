@@ -1,7 +1,7 @@
 {
   "name": "honeycomb-registry-client",
   "version": "1.0.0",
-  "description": "",
+  "description": "Service registry client for Honeycomb",
   "main": "index.js",
   "scripts": {
     "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
