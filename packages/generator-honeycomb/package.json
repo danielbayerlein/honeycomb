@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
     "test": "npm run lint && npm run test:unit",
-    "test:unit": "jest --coverage"
+    "test:unit": "jest __tests__/**/*.js --coverage"
   },
   "author": "Daniel Bayerlein",
   "license": "MIT",
@@ -25,9 +25,6 @@
     "yeoman-test": "^1.5.1"
   },
   "jest": {
-    "bail": true,
-    "testPathIgnorePatterns": [
-      "app/templates/"
-    ]
+    "bail": true
   }
 }
