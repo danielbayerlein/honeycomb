@@ -126,7 +126,7 @@
     "webpack-hot-middleware": "^2.13.2"
   },
   "jest": {
-    "testRegex": ".*\\.test\\.js",
+    "testRegex": ".*-test\\.js$",
     "collectCoverageFrom": [
       "**/src/**/*.js"
     ],
