@@ -11,6 +11,10 @@
 </p>
 
 <p align="center">
+  Busy bees are working hard to get things done. This project is not ready for prime time.
+</p>
+
+<p align="center">
   <a href="https://travis-ci.org/danielbayerlein/honeycomb"><img alt="Build Status" src="https://travis-ci.org/danielbayerlein/honeycomb.svg?branch=master"></a>
 </p>
 
@@ -22,11 +26,14 @@
 | [generator-honeycomb](./packages/generator-honeycomb) | Yeoman generator for Honeycomb services |
 | [honeycomb-registry-client](./packages/honeycomb-registry-client) | Service registry client for Honeycomb |
 
-## Work in Progress
+## Development
 
-<img src="./docs/images/work_in_progress.gif" width="100" alt="Honeycomb - Work in Progress">
-
-Busy bees are working hard to get things done. This project is not ready for prime time.
+| Command | Description |
+| --------|-------------|
+| `npm run install` | Install the dependencies from all packages |
+| `npm run test` | Run the tests from all packages |
+| `npm run clean` | Remove the `node_modules` directory from all packages |
+| `npm run generate` | Generate example honeycomb services (`packages/example-*`) |
 
 ## License
 
