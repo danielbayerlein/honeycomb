@@ -1,10 +1,26 @@
-# Honeycomb
+<p align="center">
+  <img src="./docs/images/logo.png" width="250">
+</p>
 
-[![Build Status](https://travis-ci.org/danielbayerlein/honeycomb.svg?branch=master)](https://travis-ci.org/danielbayerlein/honeycomb)
+<h1 align="center">
+  Honeycomb
+</h1>
 
-<img src="./docs/images/logo.png" width="150">
+<p align="center">
+  **Honeycomb** is a common basis for [Node.js](https://nodejs.org) microservices 🐝
+</p>
 
-**Honeycomb** is a common basis for [Node.js](https://nodejs.org) microservices 🐝
+<p align="center">
+  [![Build Status](https://travis-ci.org/danielbayerlein/honeycomb.svg?branch=master)](https://travis-ci.org/danielbayerlein/honeycomb)
+</p>
+
+## Packages
+
+| Name | Description |
+|------|-------------|
+| [eslint-config-honeycomb](./packages/eslint-config-honeycomb) | ESLint shareable config for Honeycomb |
+| [generator-honeycomb](./packages/generator-honeycomb) | Yeoman generator for Honeycomb services |
+| [honeycomb-registry-client](./packages/honeycomb-registry-client) | Service registry client for Honeycomb |
 
 ## Work in Progress
 
