@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./docs/images/logo.png" width="250">
+  <img src="./docs/images/logo.png" width="250" alt="Honeycomb">
 </p>
 
 <h1 align="center">
@@ -7,11 +7,11 @@
 </h1>
 
 <p align="center">
-  **Honeycomb** is a common basis for [Node.js](https://nodejs.org) microservices 🐝
+  <strong>Honeycomb</strong> is a common basis for <a href="https://nodejs.org">Node.js</a> microservices 🐝
 </p>
 
 <p align="center">
-  [![Build Status](https://travis-ci.org/danielbayerlein/honeycomb.svg?branch=master)](https://travis-ci.org/danielbayerlein/honeycomb)
+  <a href="https://travis-ci.org/danielbayerlein/honeycomb"><img alt="Build Status" src="https://travis-ci.org/danielbayerlein/honeycomb.svg?branch=master"></a>
 </p>
 
 ## Packages
@@ -24,7 +24,7 @@
 
 ## Work in Progress
 
-<img src="./docs/images/work_in_progress.gif" width="100">
+<img src="./docs/images/work_in_progress.gif" width="100" alt="Honeycomb - Work in Progress">
 
 Busy bees are working hard to get things done. This project is not ready for prime time.
 
