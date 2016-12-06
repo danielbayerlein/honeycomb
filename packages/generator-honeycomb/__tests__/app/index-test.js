@@ -79,7 +79,7 @@ describe('generator-honeycomb', () => {
           'test/integration/features/support/.gitkeep',
           'test/integration/features/index.feature',
           'test/ui/.gitkeep',
-          'test/unit/server/controllers/index.test.js',
+          'test/unit/server/controllers/index-test.js',
         ]);
       });
 
@@ -246,8 +246,8 @@ describe('generator-honeycomb', () => {
             'src/client/components/Example.js',
             'src/server/views/index/index.js',
             'src/server/views/layouts/default.js',
-            'test/unit/client/components/Example.test.js',
-            'test/unit/client/components/__snapshots__/Example.test.js.snap',
+            'test/unit/client/components/Example-test.js',
+            'test/unit/client/components/__snapshots__/Example-test.js.snap',
           ]);
         });
 
