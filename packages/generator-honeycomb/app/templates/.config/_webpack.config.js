@@ -9,10 +9,11 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 <%_ } _%>
 /* eslint-enable import/no-extraneous-dependencies */
 const Hoek = require('hoek');
+const serviceName = require('../package.json').name;
 
 const defaultConfig = {
   entry: {
-    'javascripts/app': [
+    [`javascripts/${serviceName}`]: [
       './src/client/client.js',
     ],
   },
@@ -58,7 +59,7 @@ const defaultConfig = {
       },
     }),
     <%_ if (includeHandlebars) { _%>
-    new ExtractTextPlugin('stylesheets/app.bundle.css'),
+    new ExtractTextPlugin(`stylesheets/${serviceName}.bundle.css`),
     new StyleLintPlugin({
       configFile: path.join(__dirname, '..', '.stylelintrc.yml'),
       files: ['src/**/*.css'],
@@ -78,7 +79,7 @@ const defaultConfig = {
 const developmentConfig = {
   devtool: 'eval',
   entry: {
-    'javascripts/app': [
+    [`javascripts/${serviceName}`]: [
       'webpack-hot-middleware/client?reload=true&noInfo=true',
       <%_ if (includeReact) { _%>
       'react-hot-loader/patch',

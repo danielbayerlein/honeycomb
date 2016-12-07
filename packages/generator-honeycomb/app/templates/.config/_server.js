@@ -1,7 +1,8 @@
 const path = require('path');
+const Hoek = require('hoek');
 const logConfig = require('./log');
 const webpackConfig = require('./webpack.config');
-const Hoek = require('hoek');
+const pkg = require('../package.json');
 
 const viewEngines = {
   <%_ if (includeReact) { _%>
@@ -25,6 +26,22 @@ const compileOptionsProduction = Object.assign({}, compileOptionsDevelopment);
 <%_ if (includeReact) { _%>
 compileOptionsProduction.layoutPath = path.resolve(__dirname, '../dist/server/views/layouts');
 <%_ } _%>
+
+/**
+ * reads the server-info from the request
+ * and pass the uri to the template.
+ *
+ * @param  {object} request incoming request
+ * @return {object}         template-variable
+ */
+function contextFunc(request) {
+  const info = request.server.info;
+
+  return {
+    baseUrl: `${info.protocol}://${info.address}:${info.port}`,
+    serviceName: pkg.name,
+  };
+}
 
 const defaultConfig = {
   connections: [
@@ -83,6 +100,7 @@ const developmentConfig = {
         register: 'visionary',
         options: {
           compileOptions: compileOptionsDevelopment,
+          context: contextFunc,
           engines: viewEngines,
           path: 'views',
           relativeTo: path.resolve(__dirname, '../src/server'),
@@ -107,6 +125,7 @@ const productionConfig = {
         register: 'visionary',
         options: {
           compileOptions: compileOptionsProduction,
+          context: contextFunc,
           engines: viewEngines,
           path: 'views',
           relativeTo: path.resolve(__dirname, '../dist/server'),

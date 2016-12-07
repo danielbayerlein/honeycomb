@@ -2,7 +2,7 @@
 import React, { PropTypes } from 'react';
 import styleSheet from 'styled-components/lib/models/StyleSheet';
 
-const Layout = ({ children }) => (
+const Layout = ({ children, baseUrl, serviceName }) => (
   <html lang="de">
     <head>
       <style type="text/css">
@@ -11,13 +11,15 @@ const Layout = ({ children }) => (
     </head>
     <body>
       <main dangerouslySetInnerHTML={{ __html: children }} />
-      <script src="/javascripts/app.bundle.js" />
+      <script src={`${baseUrl}/javascripts/${serviceName}.bundle.js`} />
     </body>
   </html>
 );
 
 Layout.propTypes = {
   children: PropTypes.node,
+  baseUrl: PropTypes.string,
+  serviceName: PropTypes.string,
 };
 
 export default Layout;

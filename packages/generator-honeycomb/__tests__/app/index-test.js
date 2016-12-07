@@ -209,7 +209,8 @@ describe('generator-honeycomb', () => {
             assert.fileContent('.config/webpack.config.js', "const ExtractTextPlugin = require('extract-text-webpack-plugin');");
             assert.fileContent('.config/webpack.config.js', "const StyleLintPlugin = require('stylelint-webpack-plugin');");
             assert.fileContent('.config/webpack.config.js', 'postcss: [autoprefixer()],');
-            assert.fileContent('.config/webpack.config.js', "new ExtractTextPlugin('stylesheets/app.bundle.css'),");
+            // eslint-disable-next-line no-template-curly-in-string
+            assert.fileContent('.config/webpack.config.js', 'new ExtractTextPlugin(`stylesheets/${serviceName}.bundle.css`),');
             assert.fileContent('.config/webpack.config.js', 'new StyleLintPlugin({');
             assert.fileContent('.config/webpack.config.js', "configFile: path.join(__dirname, '..', '.stylelintrc.yml'),");
             assert.fileContent('.config/webpack.config.js', "files: ['src/**/*.css'],");
