@@ -4,6 +4,7 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
+    "start": "npm run start:production",
     "start:development": "babel-node src/index.js",
     "start:production": "node dist/index.js",
     "build": "cross-env BABEL_ENV=production babel src/ --out-dir dist/ --source-maps",
