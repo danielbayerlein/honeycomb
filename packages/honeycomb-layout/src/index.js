@@ -19,6 +19,6 @@ server.register([{
 
   server.start((startError) => {
     Hoek.assert(!startError, startError);
-    console.log('Server running at:', server.info.uri); // eslint-disable-line no-console
+    console.info('Server running at:', server.info.uri); // eslint-disable-line no-console
   });
 });
