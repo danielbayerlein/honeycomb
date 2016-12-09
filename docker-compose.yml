@@ -1,18 +1,22 @@
 version: '2'
 services:
-  example-react:
-    build: ./packages/example-react
-    ports:
-      - "3000:3001"
-    volumes:
-      - .:/code
-
   example-handlebars:
    build: ./packages/example-handlebars
+   expose:
+     - "3001"
    ports:
-     - "3000:3002"
+     - "3001:3001"
    volumes:
      - .:/code
+
+  example-react:
+    build: ./packages/example-react
+    expose:
+      - "3002"
+    ports:
+      - "3002:3002"
+    volumes:
+      - .:/code
 
   layout:
     build: ./packages/honeycomb-layout

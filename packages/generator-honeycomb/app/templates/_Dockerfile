@@ -7,16 +7,20 @@ WORKDIR /code/<%= dir %>
 # Install app dependencies
 COPY package.json /code/<%= dir %>/
 
+# set to production
+ENV NODE_ENV=production
+
+# install node_modules
 RUN npm install
 
 # Bundle app source
 COPY . /code/<%= dir %>
 
 # build assets
-RUN npm run build:production
+RUN npm run build
 
 # access-port
 EXPOSE <%= port %>
 
 # start-command
-CMD [ "npm", "start:production" ]
+CMD [ "npm", "start" ]
