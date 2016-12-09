@@ -3,6 +3,7 @@
   "version": "<%= packageVersion %>",
   "description": "<%= packageDescription %>",
   "main": "src/server/server.js",
+  "private": true,
   "scripts": {
     <%_ if (includeReact) { _%>
     "build": "npm run build:babel && npm run build:webpack",
