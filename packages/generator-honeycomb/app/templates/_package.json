@@ -15,10 +15,10 @@
     "build:babel": "cross-env BABEL_ENV=production babel src/ --out-dir dist/ --source-maps --only src/server/",
     "build:webpack": "cross-env NODE_ENV=production webpack --config .config/webpack.config.js",
     <%_ if (includeReact) { _%>
-    "clean": "rimraf pids logs coverage .nyc_output dist public/javascripts/*.bundle.js",
+    "clean": "rimraf pids logs coverage dist public/javascripts/*.bundle.js",
     <%_ } _%>
     <%_ if (includeHandlebars) { _%>
-    "clean": "rimraf pids logs coverage .nyc_output dist public/**/*.bundle.(j|cs)s",
+    "clean": "rimraf pids logs coverage dist public/**/*.bundle.*",
     <%_ } _%>
     "lint": "npm run lint:js && npm run lint:styles",
     "lint:js": "eslint --format=node_modules/eslint-formatter-pretty .",

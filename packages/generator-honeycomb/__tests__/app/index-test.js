@@ -179,7 +179,7 @@ describe('generator-honeycomb', () => {
               ],
               ['package.json', '"build:views": "ncp src/server/views dist/server/views",'],
               ['package.json', '"lint:styles": "stylelint src/client/**/*.css"'],
-              ['package.json', '"clean": "rimraf pids logs coverage .nyc_output dist public/**/*.bundle.(j|cs)s"'],
+              ['package.json', '"clean": "rimraf pids logs coverage dist public/**/*.bundle.*"'],
               ['package.json', /"handlebars": ".*",/],
               ['package.json', /"ncp": ".*",/],
               ['package.json', /"css-loader": ".*",/],
@@ -256,7 +256,7 @@ describe('generator-honeycomb', () => {
           it('should have expected content', () => {
             assert.fileContent([
               ['package.json', '"build": "npm run build:babel && npm run build:webpack",'],
-              ['package.json', '"clean": "rimraf pids logs coverage .nyc_output dist public/javascripts/*.bundle.js"'],
+              ['package.json', '"clean": "rimraf pids logs coverage dist public/javascripts/*.bundle.js"'],
               ['package.json', '"lint:styles": "stylelint src/server/views/**/*.js src/client/components/**/*.js",'],
               ['package.json', /"hapi-react-views": ".*",/],
               ['package.json', /"react": ".*",/],
