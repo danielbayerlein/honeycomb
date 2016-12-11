@@ -4,12 +4,12 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "start": "npm run start:production",
-    "start:development": "babel-node src/index.js",
-    "start:production": "node dist/index.js",
     "build": "cross-env BABEL_ENV=production babel src/ --out-dir dist/ --source-maps",
-    "clean": "rimraf dist",
+    "clean": "rimraf pids logs coverage dist",
     "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
+    "start": "npm run start:production",
+    "start:development": "pm2-dev start .config/pm2.development.json",
+    "start:production": "pm2 start .config/pm2.production.json",
     "test": "npm run lint &&  npm run test:unit",
     "test:unit": "jest --coverage",
     "test:unit:watch": "jest --coverage --watch"
@@ -17,9 +17,11 @@
   "author": "Daniel Bayerlein",
   "license": "MIT",
   "dependencies": {
+    "babel-runtime": "^6.18.0",
     "hapi": "^16.0.0",
     "hapi-tailor-middleware": "^1.0.0",
-    "hoek": "^4.1.0"
+    "hoek": "^4.1.0",
+    "pm2": "^2.1.6"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
