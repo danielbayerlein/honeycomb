@@ -53,6 +53,7 @@ describe('generator-honeycomb', () => {
           '.config/pm2.production.json',
           '.config/server.js',
           '.config/webpack.config.js',
+          '.dockerignore',
           '.eslintignore',
           '.eslintrc.yml',
           '.stylelintrc.yml',
