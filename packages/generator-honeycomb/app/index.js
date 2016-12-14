@@ -162,6 +162,8 @@ module.exports = yeoman.Base.extend({
     },
 
     docker: function docker() {
+      this.copy('.dockerignore');
+
       this.template(
         '_Dockerfile',
         'Dockerfile',
