@@ -1,15 +1,21 @@
 version: '2'
 
 services:
-  example-handlebars:
-    build: ./packages/example-handlebars
-    ports:
-      - "3001:3000"
-
   example-react:
     build: ./packages/example-react
+    environment:
+      PORT: "3001"
+      FRAGMENT_URL: "//localhost:3001"
     ports:
-      - "3002:3000"
+      - "3001:3001"
+
+  example-handlebars:
+    build: ./packages/example-handlebars
+    environment:
+      PORT: "3002"
+      FRAGMENT_URL: "//localhost:3002"
+    ports:
+      - "3002:3002"
 
   layout:
     build: ./packages/honeycomb-layout
