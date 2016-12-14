@@ -38,7 +38,7 @@ function contextFunc(request) {
   const info = request.server.info;
 
   return {
-    baseUrl: `${info.protocol}://${info.address}:${info.port}`,
+    baseUrl: process.env.FRAGMENT_URL || `${info.protocol}://${info.address}:${info.port}`,
     serviceName: pkg.name,
   };
 }
