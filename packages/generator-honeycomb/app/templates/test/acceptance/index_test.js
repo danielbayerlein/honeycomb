@@ -1,6 +1,6 @@
 Feature('Welcome page');
 
-Scenario('check Welcome page on site', (I) => {
+Scenario('receive a welcome message', (I) => {
   I.amOnPage('/');
   I.see('Hello World', '.qa-info');
 });
