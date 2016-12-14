@@ -48,7 +48,7 @@ describe('layoutService', () => {
     const call = server.register.mock.calls[0][0];
 
     expect(call[0].register).toBe(tailor);
-    expect(call[0].options.templatesPath).toBe(path.join(__dirname, '..', '..', 'src', 'templates'));
+    expect(call[0].options.templatesPath).toBe(path.join(__dirname, '..', '..', 'templates'));
   });
 
   it('should check for registration-error', () => {
