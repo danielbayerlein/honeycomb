@@ -1,2 +1,14 @@
 globals:
-  browser: false
+  # CodeceptJS
+  BeforeAll: false
+  AfterAll: false
+  Feature: false
+  BeforeSuite: false
+  AfterSuite: false
+  Background: false
+  Before: false
+  After: false
+  Scenario: false
+  xScenario: false
+  within: false
+  pause: false

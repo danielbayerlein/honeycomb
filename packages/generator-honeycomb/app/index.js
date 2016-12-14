@@ -224,9 +224,12 @@ module.exports = yeoman.Base.extend({
       );
 
       this.template(
-        '.config/_chimp.js',
-        '.config/chimp.js',
-        { port: this.applicationPort }
+        '.config/_codecept.json',
+        '.config/codecept.json',
+        {
+          name: this.packageName,
+          port: this.applicationPort,
+        }
       );
 
       this.template(
@@ -252,8 +255,8 @@ module.exports = yeoman.Base.extend({
     testDir: function testDir() {
       this.copy('test/.eslintrc.yml');
 
+      this.directory('test/acceptance');
       this.directory('test/bench');
-      this.directory('test/integration');
       this.directory('test/ui');
       this.directory('test/unit/server/controllers');
 
