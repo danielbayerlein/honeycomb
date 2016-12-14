@@ -12,7 +12,7 @@ server.connection({
 server.register([{
   register: tailor,
   options: {
-    templatesPath: Path.join(__dirname, 'templates'),
+    templatesPath: Path.join(__dirname, '..', 'templates'),
   },
 }], (registerError) => {
   Hoek.assert(!registerError, registerError);
