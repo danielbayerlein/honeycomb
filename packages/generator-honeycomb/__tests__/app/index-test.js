@@ -47,7 +47,7 @@ describe('generator-honeycomb', () => {
       it('creates expected files', () => {
         assert.file([
           '.babelrc',
-          '.config/chimp.js',
+          '.config/codecept.json',
           '.config/log.js',
           '.config/pm2.development.json',
           '.config/pm2.production.json',
@@ -74,11 +74,9 @@ describe('generator-honeycomb', () => {
           'src/server/routes/public.js',
           'src/server/server.js',
           'test/.eslintrc.yml',
+          'test/acceptance/index_test.js',
           'test/bench/cases.js',
           'test/bench/server/controllers/info.js',
-          'test/integration/features/steps/index.js',
-          'test/integration/features/support/.gitkeep',
-          'test/integration/features/index.feature',
           'test/ui/.gitkeep',
           'test/unit/server/controllers/index-test.js',
         ]);
@@ -113,9 +111,10 @@ describe('generator-honeycomb', () => {
         });
       });
 
-      describe('.config/chimp.js', () => {
+      describe('.config/codecept.json', () => {
         it('should have expected content', () => {
-          assert.fileContent('.config/chimp.js', "baseUrl: 'http://localhost:3001',");
+          assert.fileContent('.config/codecept.json', '"url": "http://localhost:3001"');
+          assert.fileContent('.config/codecept.json', '"name": "honeycomb-example test suite"');
         });
       });
 
@@ -180,7 +179,7 @@ describe('generator-honeycomb', () => {
               ],
               ['package.json', '"build:views": "ncp src/server/views dist/server/views",'],
               ['package.json', '"lint:styles": "stylelint src/client/**/*.css"'],
-              ['package.json', '"clean": "rimraf pids logs coverage dist public/**/*.bundle.*"'],
+              ['package.json', '"clean": "rimraf pids logs coverage dist output public/**/*.bundle.*"'],
               ['package.json', /"handlebars": ".*",/],
               ['package.json', /"ncp": ".*",/],
               ['package.json', /"css-loader": ".*",/],
@@ -257,7 +256,7 @@ describe('generator-honeycomb', () => {
           it('should have expected content', () => {
             assert.fileContent([
               ['package.json', '"build": "npm run build:babel && npm run build:webpack",'],
-              ['package.json', '"clean": "rimraf pids logs coverage dist public/javascripts/*.bundle.js"'],
+              ['package.json', '"clean": "rimraf pids logs coverage dist output public/javascripts/*.bundle.js"'],
               ['package.json', '"lint:styles": "stylelint src/server/views/**/*.js src/client/components/**/*.js",'],
               ['package.json', /"hapi-react-views": ".*",/],
               ['package.json', /"react": ".*",/],

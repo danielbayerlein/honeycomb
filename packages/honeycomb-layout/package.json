@@ -10,7 +10,7 @@
     "start": "npm run start:production",
     "start:development": "pm2-dev start .config/pm2.development.json",
     "start:production": "pm2 start .config/pm2.production.json",
-    "test": "npm run lint &&  npm run test:unit",
+    "test": "npm run lint && npm run test:unit",
     "test:unit": "jest --coverage",
     "test:unit:watch": "jest --coverage --watch"
   },
