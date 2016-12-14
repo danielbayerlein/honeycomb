@@ -15,10 +15,10 @@
     "build:babel": "cross-env BABEL_ENV=production babel src/ --out-dir dist/ --source-maps --only src/server/",
     "build:webpack": "cross-env NODE_ENV=production webpack --config .config/webpack.config.js",
     <%_ if (includeReact) { _%>
-    "clean": "rimraf pids logs coverage output .nyc_output dist public/javascripts/*.bundle.js",
+    "clean": "rimraf pids logs coverage dist output public/javascripts/*.bundle.js",
     <%_ } _%>
     <%_ if (includeHandlebars) { _%>
-    "clean": "rimraf pids logs coverage output .nyc_output dist public/**/*.bundle.(j|cs)s",
+    "clean": "rimraf pids logs coverage dist output public/**/*.bundle.*",
     <%_ } _%>
     "lint": "npm run lint:js && npm run lint:styles",
     "lint:js": "eslint --format=node_modules/eslint-formatter-pretty .",
@@ -28,7 +28,7 @@
     <%_ if (includeReact) { _%>
     "lint:styles": "stylelint src/server/views/**/*.js src/client/components/**/*.js",
     <%_ } _%>
-    "start": "npm run start:development",
+    "start": "npm run start:production",
     "start:development": "pm2-dev start .config/pm2.development.json",
     "start:production": "pm2 start .config/pm2.production.json",
     "test": "npm run lint && npm run test:unit",

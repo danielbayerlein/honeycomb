@@ -8,21 +8,21 @@ ENV PATH /root/.yarn/bin:$PATH
 RUN yarn global add pm2
 
 # Create app directory
-RUN mkdir -p /code/<%= dir %>
-WORKDIR /code/<%= dir %>
+RUN mkdir -p /code/honeycomb-layout
+WORKDIR /code/honeycomb-layout
 
 # Install app dependencies
-COPY package.json /code/<%= dir %>/
+COPY package.json /code/honeycomb-layout
 RUN yarn --pure-lockfile
 
 # Bundle app source
-COPY . /code/<%= dir %>
+COPY . /code/honeycomb-layout
 
 # Build
 RUN yarn run build
 
 # Port
-EXPOSE <%= port %>
+EXPOSE 3000
 
 # Start
 CMD [ "pm2-docker", ".config/pm2.production.json" ]

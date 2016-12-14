@@ -1,0 +1,7 @@
+coverage
+logs
+node_modules
+pids
+npm-debug.log
+Dockerfile
+.dockerignore
