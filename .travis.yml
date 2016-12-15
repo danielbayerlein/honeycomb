@@ -3,6 +3,7 @@ cache:
   yarn: true
   directories:
     - node_modules
+    - packages/eslint-config-honeycomb/node_modules
     - packages/honeycomb-layout/node_modules
     - packages/honeycomb-registry-client/node_modules
     - packages/generator-honeycomb/node_modules
