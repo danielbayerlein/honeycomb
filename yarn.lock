@@ -447,6 +447,10 @@ filled-array@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/filled-array/-/filled-array-1.1.0.tgz#c3c4f6c663b923459a9aa29912d2d031f1507f84"
 
+find-parent-dir@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/find-parent-dir/-/find-parent-dir-0.3.0.tgz#33c44b429ab2b2f0646299c5f9f718f376ff8d54"
+
 find-up@^1.0.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/find-up/-/find-up-1.1.2.tgz#6b2e9822b1a2ce0a60ab64d610eccad53cb24d0f"
@@ -648,10 +652,11 @@ humanize-string@^1.0.0:
   dependencies:
     decamelize "^1.0.0"
 
-husky@^0.11.9:
-  version "0.11.9"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-0.11.9.tgz#28cd1dc16bffdca1d4d93592814e5f3c327b38ee"
+husky@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-0.12.0.tgz#3a44922fce8071803242c3c7522a6582c50525dc"
   dependencies:
+    find-parent-dir "^0.3.0"
     is-ci "^1.0.9"
     normalize-path "^1.0.0"
 

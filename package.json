@@ -13,7 +13,7 @@
   "author": "Daniel Bayerlein",
   "license": "MIT",
   "devDependencies": {
-    "husky": "^0.11.9",
+    "husky": "^0.12.0",
     "lerna": "^2.0.0-beta.30",
     "rimraf": "^2.5.4",
     "yo": "^1.8.5"
