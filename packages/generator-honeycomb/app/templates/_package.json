@@ -29,8 +29,8 @@
     "lint:styles": "stylelint src/server/views/**/*.js src/client/components/**/*.js",
     <%_ } _%>
     "start": "npm run start:production",
-    "start:development": "pm2-dev start .config/pm2.development.json",
-    "start:production": "pm2 start .config/pm2.production.json",
+    "start:development": "cross-env NODE_ENV=development nodemon src/server/server.js --exec babel-node --watch src/server",
+    "start:production": "cross-env NODE_ENV=production node dist/server/server.js",
     "test": "npm run lint && npm run test:unit",
     "test:bench": "node ./test/bench/cases.js",
     "test:acceptance": "codeceptjs run --steps --config .config/codecept.json",
@@ -56,7 +56,6 @@
     "hoek": "^4.1.0",
     "honeycomb-registry-client": "^1.0.0",
     "inert": "^4.0.3",
-    "pm2": "^2.2.2",
     <%_ if (includeReact) { _%>
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
@@ -107,6 +106,7 @@
     <%_ } _%>
     "nightmare": "^2.8.1",
     "nightmare-upload": "^0.1.1",
+    "nodemon": "^1.11.0",
     <%_ if (includeHandlebars) { _%>
     "postcss-loader": "^1.2.1",
     <%_ } _%>
