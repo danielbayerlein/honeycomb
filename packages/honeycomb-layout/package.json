@@ -8,8 +8,8 @@
     "clean": "rimraf pids logs coverage dist",
     "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
     "start": "npm run start:production",
-    "start:development": "pm2-dev start .config/pm2.development.json",
-    "start:production": "pm2 start .config/pm2.production.json",
+    "start:development": "cross-env NODE_ENV=production nodemon src/index.js --exec babel-node --watch src/",
+    "start:production": "cross-env NODE_ENV=development node dist/index.js",
     "test": "npm run lint && npm run test:unit",
     "test:unit": "jest --coverage",
     "test:unit:watch": "jest --coverage --watch"
@@ -20,8 +20,7 @@
     "babel-runtime": "^6.18.0",
     "hapi": "^16.0.1",
     "hapi-tailor-middleware": "^1.0.0",
-    "hoek": "^4.1.0",
-    "pm2": "^2.2.2"
+    "hoek": "^4.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
@@ -32,6 +31,7 @@
     "eslint-formatter-pretty": "^1.1.0",
     "eslint-plugin-import": "^2.2.0",
     "jest": "^18.0.0",
+    "nodemon": "^1.11.0",
     "rimraf": "^2.5.4"
   },
   "jest": {
