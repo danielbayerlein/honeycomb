@@ -141,13 +141,11 @@ describe('generator-honeycomb', () => {
         describe('package.json', () => {
           it('should have expected content', () => {
             assert.fileContent([
-              [
-                'package.json',
-                '"build": "npm run build:babel && npm run build:views && npm run build:webpack",',
-              ],
+              ['package.json', '"build": "npm run build:babel && npm run build:views && npm run build:webpack",'],
               ['package.json', '"build:views": "ncp src/server/views dist/server/views",'],
               ['package.json', '"lint:styles": "stylelint src/client/**/*.css"'],
               ['package.json', '"clean": "rimraf pids logs coverage dist output public/**/*.bundle.*"'],
+              ['package.json', '"start:development": "cross-env NODE_ENV=development nodemon src/server/server.js --exec babel-node --watch src/server --ext js,html",'],
               ['package.json', /"handlebars": ".*",/],
               ['package.json', /"ncp": ".*",/],
               ['package.json', /"css-loader": ".*",/],
@@ -226,6 +224,7 @@ describe('generator-honeycomb', () => {
               ['package.json', '"build": "npm run build:babel && npm run build:webpack",'],
               ['package.json', '"clean": "rimraf pids logs coverage dist output public/javascripts/*.bundle.js"'],
               ['package.json', '"lint:styles": "stylelint src/server/views/**/*.js src/client/components/**/*.js",'],
+              ['package.json', '"start:development": "cross-env NODE_ENV=development nodemon src/server/server.js --exec babel-node --watch src/server --ext js",'],
               ['package.json', /"hapi-react-views": ".*",/],
               ['package.json', /"react": ".*",/],
               ['package.json', /"react-dom": ".*",/],

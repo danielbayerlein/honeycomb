@@ -14,12 +14,7 @@
     <%_ } _%>
     "build:babel": "cross-env BABEL_ENV=production babel src/ --out-dir dist/ --source-maps --only src/server/",
     "build:webpack": "cross-env NODE_ENV=production webpack --config .config/webpack.config.js",
-    <%_ if (includeReact) { _%>
-    "clean": "rimraf pids logs coverage dist output public/javascripts/*.bundle.js",
-    <%_ } _%>
-    <%_ if (includeHandlebars) { _%>
-    "clean": "rimraf pids logs coverage dist output public/**/*.bundle.*",
-    <%_ } _%>
+    "clean": "rimraf pids logs coverage dist output <%= includeReact ? 'public/javascripts/*.bundle.js' : 'public/**/*.bundle.*' %>",
     "lint": "npm run lint:js && npm run lint:styles",
     "lint:js": "eslint --format=node_modules/eslint-formatter-pretty .",
     <%_ if (includeHandlebars) { _%>
@@ -29,10 +24,10 @@
     "lint:styles": "stylelint src/server/views/**/*.js src/client/components/**/*.js",
     <%_ } _%>
     "start": "npm run start:production",
-    "start:development": "cross-env NODE_ENV=development nodemon src/server/server.js --exec babel-node --watch src/server",
+    "start:development": "cross-env NODE_ENV=development nodemon src/server/server.js --exec babel-node --watch src/server --ext <%= includeHandlebars ? 'js,html' : 'js' %>",
     "start:production": "cross-env NODE_ENV=production node dist/server/server.js",
     "test": "npm run lint && npm run test:unit",
-    "test:bench": "node ./test/bench/cases.js",
+    "test:bench": "node test/bench/cases.js",
     "test:acceptance": "codeceptjs run --steps --config .config/codecept.json",
     "test:unit": "jest --coverage",
     "test:unit:watch": "jest --watch --coverage"
