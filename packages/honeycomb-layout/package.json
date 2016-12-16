@@ -8,7 +8,7 @@
     "clean": "rimraf pids logs coverage dist",
     "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
     "start": "npm run start:production",
-    "start:development": "cross-env NODE_ENV=development nodemon src/index.js --exec babel-node --watch src/",
+    "start:development": "cross-env NODE_ENV=development nodemon src/index.js --exec babel-node --watch src/ --ext js",
     "start:production": "cross-env NODE_ENV=production node dist/index.js",
     "test": "npm run lint && npm run test:unit",
     "test:unit": "jest --coverage",
