@@ -13,7 +13,7 @@ ENV NODE_ENV production
 
 # Install app dependencies
 COPY package.json /code/<%= dir %>/
-RUN yarn --pure-lockfile --production
+RUN yarn --pure-lockfile
 
 # Bundle app source
 COPY . /code/<%= dir %>
