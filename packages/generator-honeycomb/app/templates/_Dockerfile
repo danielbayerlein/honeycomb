@@ -25,4 +25,4 @@ RUN yarn run build
 EXPOSE <%= port %>
 
 # Start
-CMD [ "npm", "run", "start:production" ]
+CMD [ "npm", "start" ]

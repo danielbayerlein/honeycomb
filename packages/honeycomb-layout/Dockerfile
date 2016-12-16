@@ -25,4 +25,4 @@ RUN yarn run build
 EXPOSE 3000
 
 # Start
-CMD [ "npm", "run", "start:production" ]
+CMD [ "npm", "start" ]
