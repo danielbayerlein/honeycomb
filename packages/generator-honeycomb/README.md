@@ -2,7 +2,7 @@
 
 > Yeoman generator for Honeycomb services
 
-## Installation
+## Installation and Usage
 
 First, install [Yeoman](http://yeoman.io) and generator-honeycomb using [npm](https://www.npmjs.com/) (we assume you have pre-installed [Node.js](https://nodejs.org/)).
 

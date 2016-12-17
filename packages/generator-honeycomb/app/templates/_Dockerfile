@@ -4,12 +4,12 @@ FROM node:latest
 RUN curl -o- -L https://yarnpkg.com/install.sh | bash
 ENV PATH /root/.yarn/bin:$PATH
 
-# Install PM2
-RUN yarn global add pm2
-
 # Create app directory
 RUN mkdir -p /code/<%= dir %>
 WORKDIR /code/<%= dir %>
+
+# Set environment variable
+ENV NODE_ENV production
 
 # Install app dependencies
 COPY package.json /code/<%= dir %>/
@@ -25,4 +25,4 @@ RUN yarn run build
 EXPOSE <%= port %>
 
 # Start
-CMD [ "pm2-docker", ".config/pm2.production.json" ]
+CMD [ "npm", "start" ]

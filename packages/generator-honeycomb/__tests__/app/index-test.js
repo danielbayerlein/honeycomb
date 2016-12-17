@@ -49,8 +49,6 @@ describe('generator-honeycomb', () => {
           '.babelrc',
           '.config/codecept.json',
           '.config/log.js',
-          '.config/pm2.development.json',
-          '.config/pm2.production.json',
           '.config/server.js',
           '.config/webpack.config.js',
           '.dockerignore',
@@ -124,36 +122,6 @@ describe('generator-honeycomb', () => {
         });
       });
 
-      describe('.config/pm2.development.json', () => {
-        it('should have expected content', () => {
-          assert.fileContent([
-            ['.config/pm2.development.json', '"name": "honeycomb-example"'],
-            ['.config/pm2.development.json', '"script": "src/server/server.js"'],
-            ['.config/pm2.development.json', '"watch": ["src/server"]'],
-            ['.config/pm2.development.json', '"exec_interpreter": "babel-node"'],
-            ['.config/pm2.development.json', '"NODE_ENV": "development"'],
-            ['.config/pm2.development.json', '"error_file": "logs/honeycomb-example.error.log"'],
-            ['.config/pm2.development.json', '"out_file": "logs/honeycomb-example.out.log"'],
-            ['.config/pm2.development.json', '"pid_file": "pids/honeycomb-example.pid"'],
-          ]);
-        });
-      });
-
-      describe('.config/pm2.production.json', () => {
-        it('should have expected content', () => {
-          assert.fileContent([
-            ['.config/pm2.production.json', '"name": "honeycomb-example"'],
-            ['.config/pm2.production.json', '"script": "dist/server/server.js"'],
-            ['.config/pm2.production.json', '"instances": 2'],
-            ['.config/pm2.production.json', '"exec_mode": "cluster"'],
-            ['.config/pm2.production.json', '"NODE_ENV": "production"'],
-            ['.config/pm2.production.json', '"error_file": "logs/honeycomb-example.error.log"'],
-            ['.config/pm2.production.json', '"out_file": "logs/honeycomb-example.out.log"'],
-            ['.config/pm2.production.json', '"pid_file": "pids/honeycomb-example.pid"'],
-          ]);
-        });
-      });
-
       describe('and handlebars templates', () => {
         beforeAll((done) => {
           if (type === 'prompts') {
@@ -173,13 +141,11 @@ describe('generator-honeycomb', () => {
         describe('package.json', () => {
           it('should have expected content', () => {
             assert.fileContent([
-              [
-                'package.json',
-                '"build": "npm run build:babel && npm run build:views && npm run build:webpack",',
-              ],
+              ['package.json', '"build": "npm run build:babel && npm run build:views && npm run build:webpack",'],
               ['package.json', '"build:views": "ncp src/server/views dist/server/views",'],
               ['package.json', '"lint:styles": "stylelint src/client/**/*.css"'],
               ['package.json', '"clean": "rimraf pids logs coverage dist output public/**/*.bundle.*"'],
+              ['package.json', '"start:development": "cross-env NODE_ENV=development nodemon src/server/server.js --exec babel-node --watch src/server --ext js,html",'],
               ['package.json', /"handlebars": ".*",/],
               ['package.json', /"ncp": ".*",/],
               ['package.json', /"css-loader": ".*",/],
@@ -258,6 +224,7 @@ describe('generator-honeycomb', () => {
               ['package.json', '"build": "npm run build:babel && npm run build:webpack",'],
               ['package.json', '"clean": "rimraf pids logs coverage dist output public/javascripts/*.bundle.js"'],
               ['package.json', '"lint:styles": "stylelint src/server/views/**/*.js src/client/components/**/*.js",'],
+              ['package.json', '"start:development": "cross-env NODE_ENV=development nodemon src/server/server.js --exec babel-node --watch src/server --ext js",'],
               ['package.json', /"hapi-react-views": ".*",/],
               ['package.json', /"react": ".*",/],
               ['package.json', /"react-dom": ".*",/],

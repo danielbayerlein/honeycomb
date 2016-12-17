@@ -2,6 +2,7 @@ coverage
 logs
 node_modules
 pids
+dist
 npm-debug.log
 Dockerfile
 .dockerignore
