@@ -16,6 +16,7 @@
 
 <p align="center">
   <a href="https://travis-ci.org/danielbayerlein/honeycomb"><img alt="Build Status" src="https://travis-ci.org/danielbayerlein/honeycomb.svg?branch=master"></a>
+  <a href="https://coveralls.io/github/danielbayerlein/honeycomb?branch=master"><img alt="Coverage Status" src="https://coveralls.io/repos/github/danielbayerlein/honeycomb/badge.svg?branch=master"></a>
 </p>
 
 ## Packages

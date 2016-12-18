@@ -7,3 +7,6 @@ cache:
     - packages/honeycomb-layout/node_modules
     - packages/honeycomb-registry-client/node_modules
     - packages/generator-honeycomb/node_modules
+after_success:
+  - './node_modules/.bin/istanbul report --dir ./coverage --include **/coverage/*.json lcov'
+  - 'cat ./coverage/lcov.info | ./node_modules/.bin/coveralls'
