@@ -1,6 +1,6 @@
 # honeycomb-info-middleware
 
-> Info-Endpoint for Honeycomb
+> Info endpoint for Honeycomb
 
 ## Installation
 
@@ -21,8 +21,6 @@ server.register([{
   if (err) {
     throw err;
   }
-
-  // ...
 });
 ```
 

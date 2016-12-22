@@ -1,6 +1,6 @@
 # honeycomb-health-middleware
 
-> Health-Endpoint for Honeycomb
+> Health endpoint for Honeycomb
 
 ## Installation
 
@@ -17,8 +17,6 @@ server.register([{
   if (err) {
     throw err;
   }
-
-  // ...
 });
 ```
 

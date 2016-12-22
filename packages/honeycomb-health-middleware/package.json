@@ -1,7 +1,7 @@
 {
   "name": "honeycomb-health-middleware",
   "version": "1.0.0",
-  "description": "honeycomb middleware for health-endpoint in hapi.js",
+  "description": "Health endpoint for Honeycomb",
   "main": "lib/index.js",
   "scripts": {
     "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
@@ -9,8 +9,7 @@
     "test:unit": "jest --coverage"
   },
   "repository": {
-    "type": "git",
-    "url": "github.com/danielbayerlein/honeycomb"
+    "url": "https://github.com/danielbayerlein/honeycomb.git"
   },
   "keywords": [
     "honeycomb",

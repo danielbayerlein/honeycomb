@@ -71,9 +71,7 @@ const defaultConfig = {
       },
     },
     {
-      plugin: {
-        register: 'honeycomb-health-middleware',
-      },
+      plugin: 'honeycomb-health-middleware',
     },
     {
       plugin: {

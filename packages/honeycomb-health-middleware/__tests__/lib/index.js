@@ -24,7 +24,7 @@ describe('honeycomb-health-middleware', () => {
     expect(typeof call.handler).toBe('function');
   });
 
-  it('the health-route should return on object with status: up', () => {
+  it('the health route should return an object with status: up', () => {
     register(server, options, next);
 
     const call = server.route.mock.calls[0][0];
