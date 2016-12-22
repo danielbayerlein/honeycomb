@@ -70,6 +70,18 @@ const defaultConfig = {
         },
       },
     },
+    {
+      plugin: 'honeycomb-health-middleware',
+    },
+    {
+      plugin: {
+        register: 'honeycomb-info-middleware',
+        options: {
+          pkg,
+          process,
+        },
+      },
+    },
   ],
 };
 

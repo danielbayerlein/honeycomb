@@ -1,17 +1,19 @@
 /* eslint-disable no-console */
 import { Suite } from 'benchmark';
-import infoController from '../../../../src/server/controllers/info';
+import indexController from '../../../../src/server/controllers/index';
 
 const suite = new Suite();
 
 suite
-  .add('infoController', {
+  .add('indexController', {
     defer: true,
     fn: (deferred) => {
       const request = {};
-      const resolve = () => { deferred.resolve(); };
+      const reply = {
+        view: () => { deferred.resolve(); },
+      };
 
-      infoController.info.handler(request, resolve);
+      indexController.index.handler(request, reply);
     },
   })
   .on('start', () => {
