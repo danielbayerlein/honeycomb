@@ -15,7 +15,7 @@ server.register([{
   register: require('honeycomb-info-middleware'),
   options: {
     pkg: require('./package.json'),
-    process: process,
+    process,
   },
 }], (err) => {
   if (err) {
