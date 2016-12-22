@@ -9,6 +9,7 @@
     "test:unit": "jest --coverage"
   },
   "repository": {
+    "type": "git",
     "url": "https://github.com/danielbayerlein/honeycomb.git"
   },
   "keywords": [
