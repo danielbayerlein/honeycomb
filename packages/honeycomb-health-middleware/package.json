@@ -19,6 +19,9 @@
     "middleware"
   ],
   "author": "Daniel Bayerlein",
+  "contributors": [
+    "Chris Helgert"
+  ],
   "license": "MIT",
   "devDependencies": {
     "eslint": "^3.12.2",
