@@ -1,0 +1,31 @@
+# honeycomb-info-middleware
+
+> Info-Endpoint for Honeycomb
+
+## Installation
+
+```bash
+npm install --save honeycomb-info-middleware
+```
+
+## Usage
+
+```javascript
+server.register([{
+  register: require('honeycomb-info-middleware'),
+  options: {
+    pkg: require('./package.json'),
+    process: process,
+  },
+}], (err) => {
+  if (err) {
+    throw err;
+  }
+
+  // ...
+});
+```
+
+## License
+
+Copyright (c) 2016 Daniel Bayerlein. See [LICENSE](../../LICENSE.md) for details.
