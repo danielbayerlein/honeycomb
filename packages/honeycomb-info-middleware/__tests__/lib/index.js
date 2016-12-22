@@ -1,7 +1,7 @@
 const register = require('../../lib/index').register;
 const pkg = require('../../package.json');
 
-describe('honeycomb-health-middleware', () => {
+describe('honeycomb-info-middleware', () => {
   let server;
   let options;
   let next;
