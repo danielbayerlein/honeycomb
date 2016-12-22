@@ -50,6 +50,8 @@
     "handlebars": "^4.0.6",
     <%_ } _%>
     "hoek": "^4.1.0",
+    "honeycomb-health-middleware": "^1.0.0",
+    "honeycomb-info-middleware": "^1.0.0",
     "honeycomb-registry-client": "^1.0.0",
     "inert": "^4.0.3",
     <%_ if (includeReact) { _%>
