@@ -25,6 +25,8 @@
 |------|-------------|
 | [eslint-config-honeycomb](./packages/eslint-config-honeycomb) | ESLint shareable config for Honeycomb |
 | [generator-honeycomb](./packages/generator-honeycomb) | Yeoman generator for Honeycomb services |
+| [honeycomb-health-middleware](./packages/honeycomb-health-middleware) | Health endpoint for Honeycomb |
+| [honeycomb-info-middleware](./packages/honeycomb-info-middleware) | Info endpoint for Honeycomb |
 | [honeycomb-layout](./packages/honeycomb-layout) | Layout service for Honeycomb |
 | [honeycomb-registry-client](./packages/honeycomb-registry-client) | Service registry client for Honeycomb |
 
