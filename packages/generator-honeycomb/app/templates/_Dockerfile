@@ -13,15 +13,12 @@ WORKDIR /code/<%= dir %>
 # Install app dependencies
 COPY package.json /code/<%= dir %>/
 RUN apk add --no-cache --virtual .app-deps python make g++ \
-  && yarn --pure-lockfile \
+  && yarn --pure-lockfile --production \
   && yarn cache clean \
   && apk del .app-deps
 
 # Bundle app source
 COPY . /code/<%= dir %>
-
-# Build
-RUN yarn run build
 
 # Set environment variable
 ENV NODE_ENV production

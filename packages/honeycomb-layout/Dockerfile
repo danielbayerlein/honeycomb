@@ -11,17 +11,14 @@ RUN mkdir -p /code/honeycomb-layout
 WORKDIR /code/honeycomb-layout
 
 # Install app dependencies
-COPY package.json /code/honeycomb-layout
+COPY package.json /code/honeycomb-layout/
 RUN apk add --no-cache --virtual .app-deps python make g++ \
-  && yarn --pure-lockfile \
+  && yarn --pure-lockfile --production \
   && yarn cache clean \
   && apk del .app-deps
 
 # Bundle app source
 COPY . /code/honeycomb-layout
-
-# Build
-RUN yarn run build
 
 # Set environment variable
 ENV NODE_ENV production
