@@ -1,8 +1,12 @@
+__tests__
 coverage
-logs
 node_modules
-pids
-dist
+src
+.babelrc
+.dockerignore
+.DS_Store
+.eslintignore
+.eslintrc.yml
 npm-debug.log
 Dockerfile
-.dockerignore
+README.md

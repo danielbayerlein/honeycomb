@@ -39,6 +39,13 @@
 | `npm run clean` | Remove the `node_modules` directory from all packages |
 | `npm run generate` | Generate example honeycomb services (`packages/example-*`) |
 
+### Docker
+
+| Command | Description |
+| --------|-------------|
+| `npm run docker:build` | Build the dist version for `packages/honeycomb-layout` and `packages/example-*` |
+| `docker-compose up` | Create and start containers |
+
 ## License
 
 Copyright (c) 2016 Daniel Bayerlein. See [LICENSE](./LICENSE.md) for details.
