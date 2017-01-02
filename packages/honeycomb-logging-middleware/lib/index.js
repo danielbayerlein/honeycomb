@@ -8,8 +8,11 @@ exports.register = function register(server, options, next) {
       ops: false,
       reporters: {
         console: [{
-          module: 'good-console',
+          module: 'good-squeeze',
+          name: 'Squeeze',
           args: [{ response: '*' }],
+        }, {
+          module: 'good-console',
         }, 'stdout'],
       },
     },

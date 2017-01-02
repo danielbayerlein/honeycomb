@@ -26,8 +26,11 @@ describe('honeycomb-logging-middleware', () => {
       ops: false,
       reporters: {
         console: [{
-          module: 'good-console',
+          module: 'good-squeeze',
+          name: 'Squeeze',
           args: [{ response: '*' }],
+        }, {
+          module: 'good-console',
         }, 'stdout'],
       },
     });
