@@ -8,6 +8,7 @@ describe('layoutService', () => {
   let path;
   let tailor;
   let Hoek;
+  let logging;
 
   function setup(port = '') {
     jest.resetModules();
@@ -17,6 +18,7 @@ describe('layoutService', () => {
     path = require('path');
     tailor = require('hapi-tailor-middleware');
     Hoek = require('hoek');
+    logging = require('honeycomb-logging-middleware');
 
     server = {
       connection: jest.fn(),
@@ -44,11 +46,17 @@ describe('layoutService', () => {
     expect(server.connection.mock.calls[0][0].port).toBe('9999');
   });
 
+  it('should register the honeycomb-logging-middleware', () => {
+    const call = server.register.mock.calls[0][0];
+
+    expect(call[0].register).toBe(logging);
+  });
+
   it('should register the hapi-tailor-middleware', () => {
     const call = server.register.mock.calls[0][0];
 
-    expect(call[0].register).toBe(tailor);
-    expect(call[0].options.templatesPath).toBe(path.join(__dirname, '..', '..', 'templates'));
+    expect(call[1].register).toBe(tailor);
+    expect(call[1].options.templatesPath).toBe(path.join(__dirname, '..', '..', 'templates'));
   });
 
   it('should check for registration-error', () => {
