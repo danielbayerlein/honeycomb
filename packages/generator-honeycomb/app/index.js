@@ -240,11 +240,6 @@ module.exports = class extends Generator {
   }
 
   _config() {
-    this.fs.copy(
-      this.templatePath('.config/log.js'),
-      this.destinationPath('.config/log.js')
-    );
-
     this.fs.copyTpl(
       this.templatePath('.config/_codecept.json'),
       this.destinationPath('.config/codecept.json'),

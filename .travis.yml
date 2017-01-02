@@ -7,6 +7,7 @@ cache:
     - packages/honeycomb-health-middleware/node_modules
     - packages/honeycomb-info-middleware/node_modules
     - packages/honeycomb-layout/node_modules
+    - packages/honeycomb-logging-middleware/node_modules
     - packages/honeycomb-registry-client/node_modules
     - packages/generator-honeycomb/node_modules
 after_success:

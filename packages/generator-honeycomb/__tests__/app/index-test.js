@@ -48,7 +48,6 @@ describe('generator-honeycomb', () => {
         assert.file([
           '.babelrc',
           '.config/codecept.json',
-          '.config/log.js',
           '.config/server.js',
           '.config/webpack.config.js',
           '.dockerignore',
