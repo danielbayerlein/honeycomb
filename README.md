@@ -28,6 +28,7 @@
 | [honeycomb-health-middleware](./packages/honeycomb-health-middleware) | Health endpoint for Honeycomb |
 | [honeycomb-info-middleware](./packages/honeycomb-info-middleware) | Info endpoint for Honeycomb |
 | [honeycomb-layout](./packages/honeycomb-layout) | Layout service for Honeycomb |
+| [honeycomb-logging-middleware](./packages/honeycomb-logging-middleware) | Logging middleware for Honeycomb |
 | [honeycomb-registry-client](./packages/honeycomb-registry-client) | Service registry client for Honeycomb |
 
 ## Development

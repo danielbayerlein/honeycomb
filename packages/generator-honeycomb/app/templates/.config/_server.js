@@ -1,6 +1,5 @@
 const path = require('path');
 const Hoek = require('hoek');
-const logConfig = require('./log');
 const webpackConfig = require('./webpack.config');
 const pkg = require('../package.json');
 
@@ -57,10 +56,7 @@ const defaultConfig = {
       plugin: 'inert',
     },
     {
-      plugin: {
-        register: 'good',
-        options: logConfig,
-      },
+      plugin: 'honeycomb-logging-middleware',
     },
     {
       plugin: {
