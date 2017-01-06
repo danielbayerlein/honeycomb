@@ -1058,9 +1058,9 @@ lcov-parse@0.0.10:
   version "0.0.10"
   resolved "https://registry.yarnpkg.com/lcov-parse/-/lcov-parse-0.0.10.tgz#1b0b8ff9ac9c7889250582b70b71315d9da6d9a3"
 
-lerna@^2.0.0-beta.31:
-  version "2.0.0-beta.31"
-  resolved "https://registry.yarnpkg.com/lerna/-/lerna-2.0.0-beta.31.tgz#68da53b860f8193d4653a6d0601ef300b8d7176d"
+lerna@^2.0.0-beta.32:
+  version "2.0.0-beta.32"
+  resolved "https://registry.yarnpkg.com/lerna/-/lerna-2.0.0-beta.32.tgz#67d51b1520ce57a27b8445160726b48f6dba3f1c"
   dependencies:
     async "^1.5.0"
     chalk "^1.1.1"
