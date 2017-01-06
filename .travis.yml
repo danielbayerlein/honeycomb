@@ -1,4 +1,9 @@
 language: node_js
+
+node_js:
+  - '6'
+  - '7'
+
 cache:
   yarn: true
   directories:
@@ -10,6 +15,7 @@ cache:
     - packages/honeycomb-logging-middleware/node_modules
     - packages/honeycomb-registry-client/node_modules
     - packages/generator-honeycomb/node_modules
+
 after_success:
   - './node_modules/.bin/istanbul report --dir ./coverage --include **/coverage/*.json lcov'
   - 'cat ./coverage/lcov.info | ./node_modules/.bin/coveralls'
