@@ -84,13 +84,13 @@
     <%_ if (includeHandlebars) { _%>
     "css-loader": "^0.26.1",
     <%_ } _%>
-    "eslint": "^3.12.2",
+    "eslint": "^3.13.1",
     "eslint-config-honeycomb": "^1.0.0",
     "eslint-formatter-pretty": "^1.1.0",
     "eslint-loader": "^1.6.1",
     "eslint-plugin-import": "^2.2.0",
     <%_ if (includeReact) { _%>
-    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.8.0",
     <%_ } _%>
     <%_ if (includeHandlebars) { _%>
@@ -104,7 +104,7 @@
     "nightmare-upload": "^0.1.1",
     "nodemon": "^1.11.0",
     <%_ if (includeHandlebars) { _%>
-    "postcss-loader": "^1.2.1",
+    "postcss-loader": "^1.2.2",
     <%_ } _%>
     <%_ if (includeReact) { _%>
     "react-test-renderer": "^15.4.1",
@@ -119,10 +119,10 @@
     "stylelint-processor-styled-components": "0.0.4",
     <%_ } _%>
     <%_ if (includeHandlebars) { _%>
-    "stylelint-webpack-plugin": "^0.4.2",
+    "stylelint-webpack-plugin": "^0.5.1",
     <%_ } _%>
     "style-loader": "^0.13.1",
-    "webpack": "^2.2.0-rc.3",
+    "webpack": "^2.2.0-rc.4",
     "webpack-dev-middleware": "^1.9.0",
     "webpack-hot-middleware": "^2.15.0"
   },

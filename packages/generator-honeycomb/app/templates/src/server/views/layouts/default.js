@@ -17,9 +17,9 @@ const Layout = ({ children, baseUrl, serviceName }) => (
 );
 
 Layout.propTypes = {
-  children: PropTypes.node,
-  baseUrl: PropTypes.string,
-  serviceName: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  baseUrl: PropTypes.string.isRequired,
+  serviceName: PropTypes.string.isRequired,
 };
 
 export default Layout;
