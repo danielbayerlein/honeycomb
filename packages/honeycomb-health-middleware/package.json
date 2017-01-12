@@ -24,7 +24,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^3.12.2",
+    "eslint": "^3.13.1",
     "eslint-config-honeycomb": "^1.0.0",
     "eslint-formatter-pretty": "^1.1.0",
     "eslint-plugin-import": "^2.2.0",
