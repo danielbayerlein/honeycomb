@@ -17,7 +17,7 @@ const Example = ({ name }) => (
 );
 
 Example.propTypes = {
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
 };
 
 export default Example;
