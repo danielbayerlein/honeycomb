@@ -1,7 +1,7 @@
 {
-  "name": "honeycomb-layout",
+  "name": "honeycomb-assets",
   "version": "1.0.0",
-  "description": "Layout service for Honeycomb",
+  "description": "Asset service for Honeycomb",
   "main": "dist/index.js",
   "scripts": {
     "build": "cross-env BABEL_ENV=production babel src/ --out-dir dist/ --source-maps",
@@ -15,14 +15,19 @@
     "test:unit:watch": "jest --coverage --watch"
   },
   "author": "Daniel Bayerlein",
+  "contributors": [
+    "Chris Helgert"
+  ],
   "license": "MIT",
   "dependencies": {
     "babel-runtime": "^6.20.0",
     "cross-env": "^3.1.4",
     "hapi": "^16.1.0",
-    "hapi-tailor-middleware": "^1.0.0",
     "hoek": "^4.1.0",
-    "honeycomb-logging-middleware": "^1.0.0"
+    "honeycomb-health-middleware": "^1.0.0",
+    "honeycomb-info-middleware": "^1.0.0",
+    "honeycomb-logging-middleware": "^1.0.0",
+    "honeycomb-registry-client": "^1.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
