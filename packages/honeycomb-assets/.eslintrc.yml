@@ -1,2 +1,4 @@
 extends:
   honeycomb/base
+env:
+  browser: true

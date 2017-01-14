@@ -1,15 +1,15 @@
 {
   "name": "honeycomb-assets",
   "version": "1.0.0",
-  "description": "Asset service for Honeycomb",
-  "main": "dist/index.js",
+  "description": "Assets service for Honeycomb",
+  "main": "dist/server/index.js",
   "scripts": {
-    "build": "cross-env BABEL_ENV=production babel src/ --out-dir dist/ --source-maps",
+    "build": "npm run build:server && npm run build:client",
+    "build:client": "cross-env NODE_ENV=production webpack -p",
+    "build:server": "cross-env BABEL_ENV=production babel src/server --out-dir dist/server --source-maps",
     "clean": "rimraf pids logs coverage dist",
     "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
-    "start": "npm run start:production",
-    "start:development": "cross-env NODE_ENV=development nodemon src/index.js --exec babel-node --watch src/ --ext js",
-    "start:production": "cross-env NODE_ENV=production node dist/index.js",
+    "start": "cross-env NODE_ENV=production node dist/server/index.js",
     "test": "npm run lint && npm run test:unit",
     "test:unit": "jest --coverage",
     "test:unit:watch": "jest --coverage --watch"
@@ -23,6 +23,7 @@
     "babel-runtime": "^6.20.0",
     "cross-env": "^3.1.4",
     "hapi": "^16.1.0",
+    "hapijs-status-monitor": "^0.5.0",
     "hoek": "^4.1.0",
     "honeycomb-health-middleware": "^1.0.0",
     "honeycomb-info-middleware": "^1.0.0",
@@ -31,14 +32,17 @@
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
+    "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.18.0",
     "eslint": "^3.13.1",
     "eslint-config-honeycomb": "^1.0.0",
     "eslint-formatter-pretty": "^1.1.0",
     "eslint-plugin-import": "^2.2.0",
     "jest": "^18.1.0",
-    "nodemon": "^1.11.0",
-    "rimraf": "^2.5.4"
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "rimraf": "^2.5.4",
+    "webpack": "^2.2.0-rc.4"
   },
   "jest": {
     "bail": true
