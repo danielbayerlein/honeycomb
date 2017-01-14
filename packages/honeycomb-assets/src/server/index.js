@@ -1,5 +1,7 @@
 import Hapi from 'hapi';
 import Hoek from 'hoek';
+import inert from 'inert';
+import path from 'path';
 import logging from 'honeycomb-logging-middleware';
 import info from 'honeycomb-info-middleware';
 import health from 'honeycomb-health-middleware';
@@ -13,6 +15,7 @@ server.connection({
 });
 
 server.register([
+  { register: inert },
   { register: logging },
   { register: health },
   {
@@ -30,6 +33,16 @@ server.register([
   },
 ], (registerError) => {
   Hoek.assert(!registerError, registerError);
+
+  server.route({
+    method: 'GET',
+    path: '/{param*}',
+    handler: {
+      directory: {
+        path: path.resolve(__dirname, '..', 'client'),
+      },
+    },
+  });
 
   server.start((startError) => {
     Hoek.assert(!startError, startError);

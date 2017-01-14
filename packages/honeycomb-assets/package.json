@@ -28,7 +28,8 @@
     "honeycomb-health-middleware": "^1.0.0",
     "honeycomb-info-middleware": "^1.0.0",
     "honeycomb-logging-middleware": "^1.0.0",
-    "honeycomb-registry-client": "^1.0.0"
+    "honeycomb-registry-client": "^1.0.0",
+    "inert": "^4.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
