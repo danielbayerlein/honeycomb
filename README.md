@@ -16,7 +16,8 @@
 
 <p align="center">
   <a href="https://travis-ci.org/danielbayerlein/honeycomb">
-    <img alt="Build Status" src="https://travis-ci.org/danielbayerlein/honeycomb.svg?branch=master"></a>
+    <img alt="Build Status" src="https://travis-ci.org/danielbayerlein/honeycomb.svg?branch=master">
+  </a>
   <a href="https://codecov.io/gh/danielbayerlein/honeycomb">
     <img alt="Coverage Status" src="https://codecov.io/gh/danielbayerlein/honeycomb/branch/master/graph/badge.svg">
   </a>
