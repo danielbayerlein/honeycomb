@@ -2,3 +2,10 @@ extends:
   honeycomb/base
 env:
   browser: true
+rules:
+  import/no-extraneous-dependencies:
+    - error
+    - devDependencies:
+      - "**/client/*.js"
+      - "**/*.test.js"
+      - "webpack.config.js"
