@@ -30,6 +30,7 @@
 | [honeycomb-layout](./packages/honeycomb-layout) | Layout service for Honeycomb |
 | [honeycomb-logging-middleware](./packages/honeycomb-logging-middleware) | Logging middleware for Honeycomb |
 | [honeycomb-registry-client](./packages/honeycomb-registry-client) | Service registry client for Honeycomb |
+| [honeycomb-server](./packages/honeycomb-server) | Server for Honeycomb |
 
 ## Development
 
