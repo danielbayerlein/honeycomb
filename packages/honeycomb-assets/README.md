@@ -8,16 +8,10 @@
 npm install
 ```
 
-### Development
-
-```bash
-npm run start:development
-```
-
 ### Production
 
 ```bash
-npm run start:production
+npm run start
 ```
 
 ## License

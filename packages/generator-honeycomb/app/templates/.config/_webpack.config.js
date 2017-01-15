@@ -103,6 +103,13 @@ const productionConfig = {
       sourceMap: true,
     }),
   ],
+  <%_ if (includeReact) { _%>
+  externals: {
+    // asssets from honeycomb-assets
+    react: 'react',
+    'react-dom': 'ReactDOM'
+  },
+  <%_ } _%>
 };
 
 module.exports = Hoek.merge(
