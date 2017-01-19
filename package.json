@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "clean": "lerna clean",
-    "docker:build": "lerna run build --scope '@(honeycomb-(assets|layout)|example-*)'",
+    "docker:build": "lerna run build --scope '@(honeycomb-assets|honeycomb-layout|example-*)'",
     "test": "lerna run test --scope *honeycomb*",
     "postinstall": "lerna bootstrap --scope *honeycomb*",
     "generate": "node scripts/generate-examples.js && lerna bootstrap",
