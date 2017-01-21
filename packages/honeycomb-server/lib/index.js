@@ -1,6 +1,15 @@
 const Hapi = require('hapi');
-const Hoek = require('hoek');
 const Joi = require('joi');
+
+// Schema object for Joi
+const schema = Joi.object({
+  server: Joi.object(),
+  connections: Joi.array().items(Joi.object()),
+  plugins: Joi.array().items(Joi.object({
+    module: Joi.string(),
+    options: Joi.object(),
+  })),
+});
 
 /**
  * Create a new web server
@@ -9,20 +18,9 @@ const Joi = require('joi');
  * @param  {function} callback Function executed when server is started
  * @return {void}
  */
-function start(options = {}, callback) {
+function start(options = {}) {
   // Validate parameters
-  Joi.assert(
-    options,
-    Joi.object({
-      server: Joi.object(),
-      connections: Joi.array().items(Joi.object()),
-      plugins: Joi.array().items(Joi.object({
-        module: Joi.string(),
-        options: Joi.object(),
-      })),
-    }),
-    'Invalid options'
-  );
+  Joi.assert(options, schema, 'Invalid options');
 
   // Set defaults
   const serverOptions = options.server || {};
@@ -42,23 +40,26 @@ function start(options = {}, callback) {
   // Register plugins
   plugins.forEach((plugin) => {
     server.register({
-      register: require.main.require(plugin.module),
+      // When a file is run directly from Node.js, require.main is set to its module.
+      // require.main will be undefined if there is no entry script.
+      // https://gist.github.com/branneman/8048520#7-the-wrapper
+      // eslint-disable-next-line global-require, import/no-dynamic-require
+      register: require.main ? require.main.require(plugin.module) : require(plugin.module),
       options: plugin.options,
     });
   });
 
-  // Start the web server
-  server.start((err) => {
-    Hoek.assert(!err, err);
-
-    // eslint-disable-next-line no-console
-    console.info('Server running at:', server.info.uri);
-
-    // Run the callback if exists
-    if (typeof callback === 'function') {
-      Hoek.nextTick(callback)(server);
-    }
-  });
+  // Return a Promise
+  return server.start()
+    .then(() => {
+      // eslint-disable-next-line no-console
+      console.info('Server running at:', server.info.uri);
+      return server;
+    }).catch(() => {
+      // eslint-disable-next-line no-console
+      console.error('There was an error starting the server');
+      return server.stop();
+    });
 }
 
 module.exports = {
