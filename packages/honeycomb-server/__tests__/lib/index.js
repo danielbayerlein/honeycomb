@@ -6,8 +6,6 @@ describe('honeycomb-server', () => {
   let server;
 
   beforeEach(() => {
-    jest.resetAllMocks();
-
     server = {
       connection: jest.fn(),
       register: jest.fn(),
@@ -22,6 +20,10 @@ describe('honeycomb-server', () => {
 
     console.info = jest.fn(); // eslint-disable-line no-console
     console.error = jest.fn(); // eslint-disable-line no-console
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
   });
 
   it('should have expected "start" export function', () => {
