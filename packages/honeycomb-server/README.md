@@ -16,7 +16,9 @@ import HoneycombServer from 'honeycomb-server';
 HoneycombServer.start();
 ```
 
-`start()` returns a promise resolving to the hapi.js server.
+### Returning a Promise object
+
+`start()` returns a promise object resolving to the hapi.js server.
 
 ```javascript
 import HoneycombServer from 'honeycomb-server';
@@ -103,7 +105,7 @@ An array of plugin objects with `module` (string) and `options` (object).
 ]
 ```
 
-### Example
+### Extended Example
 
 ```javascript
 import HoneycombServer from 'honeycomb-server';
