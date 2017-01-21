@@ -113,7 +113,7 @@ describe('generator-honeycomb', () => {
 
       describe('.config/server.js', () => {
         it('should have expected content', () => {
-          assert.fileContent('.config/server.js', 'port: process.env.PORT || 3001,');
+          assert.fileContent('.config/server.js', 'port: parseInt(process.env.PORT, 10) || 3001,');
         });
       });
 

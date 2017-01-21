@@ -27,11 +27,10 @@ compileOptionsProduction.layoutPath = path.resolve(__dirname, '../dist/server/vi
 <%_ } _%>
 
 /**
- * reads the server-info from the request
- * and pass the uri to the template.
+ * Read the server.info from the request and pass the uri to the template.
  *
  * @param  {object} request incoming request
- * @return {object}         template-variable
+ * @return {object}         template variable
  */
 function contextFunc(request) {
   const info = request.server.info;
@@ -45,99 +44,87 @@ function contextFunc(request) {
 const defaultConfig = {
   connections: [
     {
-      port: process.env.PORT || <%= port %>,
+      host: process.env.HOST,
+      address: process.env.HOST_IP || '0.0.0.0',
+      port: parseInt(process.env.PORT, 10) || <%= port %>,
     },
   ],
-  registrations: [
+  plugins: [
     {
-      plugin: 'vision',
+      module: 'vision',
     },
     {
-      plugin: 'inert',
+      module: 'inert',
     },
     {
-      plugin: 'honeycomb-logging-middleware',
+      module: 'honeycomb-logging-middleware',
     },
     {
-      plugin: {
-        register: 'hapijs-status-monitor',
-        options: {
-          title: 'Status',
-        },
+      module: 'hapijs-status-monitor',
+      options: {
+        title: 'Status',
       },
     },
     {
-      plugin: 'honeycomb-health-middleware',
+      module: 'honeycomb-health-middleware',
     },
     {
-      plugin: {
-        register: 'honeycomb-info-middleware',
-        options: {
-          pkg,
-          process,
-        },
+      module: 'honeycomb-info-middleware',
+      options: {
+        pkg,
+        process,
       },
     },
   ],
 };
 
 const developmentConfig = {
-  registrations: [
+  plugins: [
     {
-      plugin: {
-        register: 'hapi-router',
-        options: {
-          routes: 'src/server/routes/*.js',
+      module: 'hapi-router',
+      options: {
+        routes: 'src/server/routes/*.js',
+      },
+    },
+    {
+      module: '@danielbayerlein/hapi-webpack-middleware',
+      options: {
+        webpack: webpackConfig,
+        webpackDev: {
+          noInfo: true,
+          publicPath: webpackConfig.output.publicPath,
         },
       },
     },
     {
-      plugin: {
-        register: '@danielbayerlein/hapi-webpack-middleware',
-        options: {
-          webpack: webpackConfig,
-          webpackDev: {
-            noInfo: true,
-            publicPath: webpackConfig.output.publicPath,
-          },
-        },
-      },
-    },
-    {
-      plugin: {
-        register: 'visionary',
-        options: {
-          compileOptions: compileOptionsDevelopment,
-          context: contextFunc,
-          engines: viewEngines,
-          path: 'views',
-          relativeTo: path.resolve(__dirname, '../src/server'),
-        },
+      module: 'visionary',
+      options: {
+        compileOptions: compileOptionsDevelopment,
+        context: contextFunc,
+        engines: viewEngines,
+        path: 'views',
+        relativeTo: path.resolve(__dirname, '../src/server'),
       },
     },
   ],
 };
 
 const productionConfig = {
-  registrations: [
+  plugins: [
     {
-      plugin: {
-        register: 'hapi-router',
-        options: {
-          routes: 'dist/server/routes/*.js',
-        },
+      module: 'hapi-router',
+      options: {
+        routes: 'dist/server/routes/*.js',
       },
     },
     {
-      plugin: {
-        register: 'visionary',
-        options: {
-          compileOptions: compileOptionsProduction,
-          context: contextFunc,
-          engines: viewEngines,
-          path: 'views',
-          relativeTo: path.resolve(__dirname, '../dist/server'),
-        },
+      module: 'visionary',
+      options: {
+        compileOptions: compileOptionsProduction,
+        context: contextFunc,
+        engines: viewEngines,
+        path: 'views',
+        relativeTo: path.resolve(__dirname, '../dist/server'),
       },
     },
   ],
