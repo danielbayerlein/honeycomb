@@ -18,7 +18,7 @@ HoneycombServer.start();
 
 ### Returning a Promise object
 
-`start()` returns a promise object resolving to the hapi.js server.
+`start()` returns a Promise object resolving to the hapi.js server.
 
 ```javascript
 import HoneycombServer from 'honeycomb-server';
