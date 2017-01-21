@@ -1,8 +1,6 @@
 # honeycomb-server
 
-> Server for Honeycomb
-
-Simple web server for Honeycomb using [hapi.js](https://hapijs.com) atop [Node.js](https://nodejs.org/).
+> Simple web server for Honeycomb using [hapi.js](https://hapijs.com) atop [Node.js](https://nodejs.org/).
 
 ## Installation
 
