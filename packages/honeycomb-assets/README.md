@@ -16,4 +16,4 @@ npm run start
 
 ## License
 
-Copyright (c) 2016-2017 Daniel Bayerlein. See [LICENSE](../../LICENSE.md) for details.
+Copyright (c) 2017 Daniel Bayerlein. See [LICENSE](../../LICENSE.md) for details.

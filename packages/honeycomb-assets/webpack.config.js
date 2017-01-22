@@ -25,7 +25,7 @@ const config = {
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        // ExtractTextPlugin currently doesn´t support the newer use
+        // ExtractTextPlugin currently doesn't support the newer use
         loader: ExtractTextPlugin.extract({
           fallbackLoader: 'style-loader',
           loader: ['css-loader', 'postcss-loader'],

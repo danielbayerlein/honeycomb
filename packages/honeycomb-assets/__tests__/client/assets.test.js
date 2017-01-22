@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import * as assets from '../../src/client/assets';
 
-describe('assets', () => {
+describe('honeycomb-assets', () => {
   it('should contains react', () => {
     expect(assets.React).toBe(React);
   });
