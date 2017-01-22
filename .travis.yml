@@ -9,6 +9,7 @@ cache:
   directories:
     - node_modules
     - packages/eslint-config-honeycomb/node_modules
+    - packages/honeycomb-assets/node_modules
     - packages/honeycomb-health-middleware/node_modules
     - packages/honeycomb-info-middleware/node_modules
     - packages/honeycomb-layout/node_modules

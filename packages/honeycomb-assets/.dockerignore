@@ -1,0 +1,12 @@
+__tests__
+coverage
+node_modules
+src
+.babelrc
+.dockerignore
+.DS_Store
+.eslintignore
+.eslintrc.yml
+npm-debug.log
+Dockerfile
+README.md

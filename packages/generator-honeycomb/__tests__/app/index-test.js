@@ -264,6 +264,7 @@ describe('generator-honeycomb', () => {
           it('should have expected content', () => {
             assert.fileContent('.config/webpack.config.js', "'react-hot-loader/patch',");
             assert.fileContent('.config/webpack.config.js', "'styled-components$': 'styled-components/lib/index.js',");
+            assert.fileContent('.config/webpack.config.js', 'externals');
           });
         });
 

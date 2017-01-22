@@ -4,23 +4,31 @@ services:
   example-react:
     build: ./packages/example-react
     environment:
-      PORT: "3001"
-      FRAGMENT_URL: "//localhost:3001"
-    ports:
-      - "3001:3001"
-
-  example-handlebars:
-    build: ./packages/example-handlebars
-    environment:
       PORT: "3002"
       FRAGMENT_URL: "//localhost:3002"
     ports:
       - "3002:3002"
+
+  example-handlebars:
+    build: ./packages/example-handlebars
+    environment:
+      PORT: "3003"
+      FRAGMENT_URL: "//localhost:3003"
+    ports:
+      - "3003:3003"
+
+  assets:
+    build: ./packages/honeycomb-assets
+    environment:
+      PORT: "3001"
+    ports:
+      - "3001:3001"
 
   layout:
     build: ./packages/honeycomb-layout
     ports:
       - "3000:3000"
     links:
+      - assets
       - example-react
       - example-handlebars

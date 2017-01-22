@@ -2,7 +2,7 @@
   "name": "honeycomb-layout",
   "version": "1.0.0",
   "description": "Layout service for Honeycomb",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "cross-env BABEL_ENV=production babel src/ --out-dir dist/ --source-maps",
     "clean": "rimraf pids logs coverage dist",

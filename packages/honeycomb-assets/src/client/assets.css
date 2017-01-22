@@ -1,0 +1,9 @@
+@import "normalize.css";
+
+body {
+  font-family: "Helvetica Neue", "Calibri Light", "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -mox-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  letter-spacing: 0.02em;
+}
