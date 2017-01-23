@@ -67,19 +67,21 @@ describe('honeycomb-server', () => {
 
     // eslint-disable-next-line arrow-body-style
     it('should be return the server', () => {
-      return HoneycombServer.start().then((serverInstance) => {
-        expect(server).toEqual(serverInstance);
-      });
+      return HoneycombServer.start()
+        .then((serverInstance) => {
+          expect(server).toEqual(serverInstance);
+        });
     });
 
     // eslint-disable-next-line arrow-body-style
     it('should have been called console.info()', () => {
-      return HoneycombServer.start().then(() => {
-        // eslint-disable-next-line no-console
-        expect(console.info).toBeCalledWith(
-          'Server running at:', 'http://honeycomb.example.com:3000'
-        );
-      });
+      return HoneycombServer.start()
+        .then(() => {
+          // eslint-disable-next-line no-console
+          expect(console.info).toBeCalledWith(
+            'Server running at:', 'http://honeycomb.example.com:3000'
+          );
+        });
     });
   });
 
