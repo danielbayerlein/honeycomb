@@ -11,9 +11,9 @@ npm install --save honeycomb-registry-client
 ## Usage
 
 ```javascript
-const HoneycombRegistryClient = require('honeycomb-registry-client');
+const honeycombRegistryClient = require('honeycomb-registry-client');
 
-HoneycombRegistryClient.register(
+honeycombRegistryClient.register(
   'test',      // Name
   '127.0.0.1', // Host
   3000         // Port

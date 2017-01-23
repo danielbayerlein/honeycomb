@@ -10,19 +10,18 @@
     "start": "npm run start:production",
     "start:development": "cross-env NODE_ENV=development nodemon src/index.js --exec babel-node --watch src/ --ext js",
     "start:production": "cross-env NODE_ENV=production node dist/index.js",
-    "test": "npm run lint && npm run test:unit",
     "test:unit": "jest --coverage",
-    "test:unit:watch": "jest --coverage --watch"
+    "test:unit:watch": "jest --coverage --watch",
+    "test": "npm run lint && npm run test:unit"
   },
   "author": "Daniel Bayerlein",
   "license": "MIT",
   "dependencies": {
     "babel-runtime": "^6.20.0",
     "cross-env": "^3.1.4",
-    "hapi": "^16.1.0",
     "hapi-tailor-middleware": "^1.0.0",
-    "hoek": "^4.1.0",
-    "honeycomb-logging-middleware": "^1.0.0"
+    "honeycomb-logging-middleware": "^1.0.0",
+    "honeycomb-server": "^1.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
@@ -34,8 +33,5 @@
     "jest": "^18.1.0",
     "nodemon": "^1.11.0",
     "rimraf": "^2.5.4"
-  },
-  "jest": {
-    "bail": true
   }
 }
