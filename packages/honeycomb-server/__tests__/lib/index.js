@@ -1,6 +1,6 @@
 jest.mock('hapi');
 const Hapi = require('hapi');
-const HoneycombServer = require('../../lib/');
+const honeycombServer = require('../../lib/');
 
 describe('honeycomb-server', () => {
   let server;
@@ -27,47 +27,47 @@ describe('honeycomb-server', () => {
   });
 
   it('should have expected "start" export function', () => {
-    expect(Object.keys(HoneycombServer)).toEqual(['start']);
+    expect(Object.keys(honeycombServer)).toEqual(['start']);
   });
 
   describe('start', () => {
     it('should be an instance of function', () => {
-      expect(HoneycombServer.start).toBeInstanceOf(Function);
+      expect(honeycombServer.start).toBeInstanceOf(Function);
     });
 
     it('should have been called with expected options', () => {
-      HoneycombServer.start();
+      honeycombServer.start();
       expect(Hapi.Server).toHaveBeenCalledWith({});
     });
 
     it('should have been called with expected server options', () => {
       const options = { load: { sampleInterval: 1000 } };
-      HoneycombServer.start({ server: options });
+      honeycombServer.start({ server: options });
       expect(Hapi.Server).toHaveBeenCalledWith(options);
     });
 
     it('should have been called server.start()', () => {
-      HoneycombServer.start();
+      honeycombServer.start();
       expect(server.start).toHaveBeenCalled();
     });
 
     it('should have been called server.connection()', () => {
-      HoneycombServer.start();
+      honeycombServer.start();
       expect(server.connection).toHaveBeenCalled();
     });
 
     it('should have been called server.register()', () => {
-      HoneycombServer.start({ plugins: [{ module: 'inert' }] });
+      honeycombServer.start({ plugins: [{ module: 'inert' }] });
       expect(server.register).toHaveBeenCalled();
     });
 
     it('should be return a Promise', () => {
-      expect(HoneycombServer.start().constructor.name).toBe('Promise');
+      expect(honeycombServer.start().constructor.name).toBe('Promise');
     });
 
     // eslint-disable-next-line arrow-body-style
     it('should be return the server', () => {
-      return HoneycombServer.start()
+      return honeycombServer.start()
         .then((serverInstance) => {
           expect(server).toEqual(serverInstance);
         });
@@ -75,7 +75,7 @@ describe('honeycomb-server', () => {
 
     // eslint-disable-next-line arrow-body-style
     it('should have been called console.info()', () => {
-      return HoneycombServer.start()
+      return honeycombServer.start()
         .then(() => {
           // eslint-disable-next-line no-console
           expect(console.info).toBeCalledWith(
@@ -95,7 +95,7 @@ describe('honeycomb-server', () => {
         }],
       };
 
-      HoneycombServer.start(options);
+      honeycombServer.start(options);
 
       expect(server.connection.mock.calls[0][0].port).toBe(options.connections[0].port);
       expect(server.connection.mock.calls[0][0].address).toBe(options.connections[0].address);
@@ -103,35 +103,35 @@ describe('honeycomb-server', () => {
     });
 
     it('should have expected default port', () => {
-      HoneycombServer.start();
+      honeycombServer.start();
       expect(server.connection.mock.calls[0][0].port).toBe(3000);
     });
 
     it('should have expected port by process.env.PORT', () => {
       process.env.PORT = 3003;
-      HoneycombServer.start();
+      honeycombServer.start();
       expect(server.connection.mock.calls[0][0].port).toBe(3003);
     });
 
     it('should have expected default address', () => {
-      HoneycombServer.start();
+      honeycombServer.start();
       expect(server.connection.mock.calls[0][0].address).toBe('0.0.0.0');
     });
 
     it('should have expected address by process.env.HOST_IP', () => {
       process.env.HOST_IP = '127.0.0.1';
-      HoneycombServer.start();
+      honeycombServer.start();
       expect(server.connection.mock.calls[0][0].address).toBe('127.0.0.1');
     });
 
     it('should have expected default host', () => {
-      HoneycombServer.start();
+      honeycombServer.start();
       expect(server.connection.mock.calls[0][0].host).toBe(undefined);
     });
 
     it('should have expected host by process.env.HOST', () => {
       process.env.HOST = 'honeycomb.example.com';
-      HoneycombServer.start();
+      honeycombServer.start();
       expect(server.connection.mock.calls[0][0].host).toBe('honeycomb.example.com');
     });
   });
@@ -143,7 +143,7 @@ describe('honeycomb-server', () => {
       server.start = jest.fn(() => new Promise((resolve, reject) => { reject(); }));
       Hapi.Server.mockImplementation(() => server);
 
-      myServer = HoneycombServer.start({
+      myServer = honeycombServer.start({
         server: {
           cache: {
             engine: {

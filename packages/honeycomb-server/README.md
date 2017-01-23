@@ -11,9 +11,9 @@ npm install --save honeycomb-server
 ## Usage
 
 ```javascript
-import HoneycombServer from 'honeycomb-server';
+import honeycombServer from 'honeycomb-server';
 
-HoneycombServer.start();
+honeycombServer.start();
 ```
 
 ### Returning a Promise object
@@ -21,13 +21,13 @@ HoneycombServer.start();
 `start()` returns a Promise object resolving to the hapi.js server.
 
 ```javascript
-import HoneycombServer from 'honeycomb-server';
-import HoneycombRegistryClient from 'honeycomb-registry-client';
+import honeycombServer from 'honeycomb-server';
+import honeycombRegistryClient from 'honeycomb-registry-client';
 import options from '../../.config/server';
 
-HoneycombServer.start(options)
+honeycombServer.start(options)
   .then((server) => {
-    HoneycombRegistryClient.register(pkg.name, server.info.host, server.info.port);
+    honeycombRegistryClient.register(pkg.name, server.info.host, server.info.port);
   })
   .catch((err) => {
     console.error('Error:', err);
@@ -108,7 +108,7 @@ An array of plugin objects with `module` (string) and `options` (object).
 ### Extended Example
 
 ```javascript
-import HoneycombServer from 'honeycomb-server';
+import honeycombServer from 'honeycomb-server';
 
 const options = {
   server: {
@@ -133,7 +133,7 @@ const options = {
   ],
 };
 
-HoneycombServer.start(options);
+honeycombServer.start(options);
 ```
 
 ## License

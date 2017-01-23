@@ -1,7 +1,7 @@
-import HoneycombServer from 'honeycomb-server';
-import Path from 'path';
+import honeycombServer from 'honeycomb-server';
+import path from 'path';
 
-HoneycombServer.start({
+honeycombServer.start({
   plugins: [
     {
       module: 'honeycomb-logging-middleware',
@@ -9,7 +9,7 @@ HoneycombServer.start({
     {
       module: 'hapi-tailor-middleware',
       options: {
-        templatesPath: Path.join(__dirname, '..', 'templates'),
+        templatesPath: path.join(__dirname, '..', 'templates'),
       },
     },
   ],
