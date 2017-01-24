@@ -1,40 +1,52 @@
-jest.mock('hapi');
+jest.mock('honeycomb-server');
 
-const Hapi = require('hapi');
 const path = require('path');
+const honeycombServer = require('honeycomb-server');
+const pkg = require('../../package.json');
 
 describe('server', () => {
-  let server;
+  const server = { route: jest.fn() };
 
-  beforeEach(() => {
-    server = {
-      connection: jest.fn(),
-      register: jest.fn(),
-      start: jest.fn(),
-      route: jest.fn(),
-      info: { uri: 'localhost:12345' },
-    };
+  honeycombServer.start = jest.fn();
+  honeycombServer.start.mockImplementation(() => new Promise(resolve => resolve(server)));
 
-    Hapi.Server.mockImplementation(() => server);
+  // eslint-disable-next-line global-require
+  require('../../src/server/index');
+
+  it('should call honeycomb.start with all required plugins', () => {
+    expect(honeycombServer.start).toBeCalledWith({
+      plugins: [
+        { module: 'inert' },
+        { module: 'honeycomb-logging-middleware' },
+        { module: 'honeycomb-health-middleware' },
+        {
+          module: 'honeycomb-info-middleware',
+          options: { pkg, process },
+        },
+        {
+          module: 'hapijs-status-monitor',
+          options: { title: 'Status' },
+        },
+      ],
+    });
   });
 
-  afterEach(() => {
-    jest.resetAllMocks();
-  });
+  it('should create an endpoint for the assets', () => (
+    // testing an "async operation" needs a little timeout to get server.route called
+    new Promise((resolve) => {
+      setTimeout(() => {
+        expect(server.route).toBeCalledWith({
+          method: 'GET',
+          path: '/{param*}',
+          handler: {
+            directory: {
+              path: path.resolve(__dirname, '..', '..', 'src', 'client'),
+            },
+          },
+        });
 
-  // TODO Unit-Test for Honeycomb-Server initialisation
-
-  it('should have a endpoint for the assets', () => {
-    require('../../src/server/index'); // eslint-disable-line global-require
-
-    // server.register - callback
-    server.register.mock.calls[0][1]();
-
-    // test route-config for assets
-    const routeConfig = server.route.mock.calls[0][0];
-
-    expect(routeConfig.method).toBe('GET');
-    expect(routeConfig.path).toBe('/{param*}');
-    expect(routeConfig.handler.directory.path).toBe(path.join(__dirname, '..', '..', 'src', 'client'));
-  });
+        resolve();
+      }, 10);
+    })
+  ));
 });
