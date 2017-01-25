@@ -27,12 +27,13 @@ const defaultConfig = {
     rules: [
       {
         test: /\.js$/,
-        loader: 'babel-loader!eslint-loader',
+        use: ['babel-loader', 'eslint-loader'],
         exclude: /node_modules/,
       },
       <%_ if (includeHandlebars) { _%>
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         loader: ExtractTextPlugin.extract({
           fallbackLoader: 'style-loader',
           loader: ['css-loader', 'postcss-loader'],
