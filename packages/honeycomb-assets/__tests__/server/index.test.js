@@ -1,40 +1,88 @@
-jest.mock('hapi');
+jest.mock('honeycomb-server');
 
-const Hapi = require('hapi');
 const path = require('path');
+const pkg = require('../../package.json');
 
-describe('server', () => {
+describe('honeycomb-assets', () => {
   let server;
+  let honeycombServer;
 
-  beforeEach(() => {
-    server = {
-      connection: jest.fn(),
-      register: jest.fn(),
-      start: jest.fn(),
-      route: jest.fn(),
-      info: { uri: 'localhost:12345' },
-    };
+  function setup(success = true) {
+    // eslint-disable-next-line global-require
+    honeycombServer = require('honeycomb-server');
 
-    Hapi.Server.mockImplementation(() => server);
-  });
+    server = { route: jest.fn() };
+
+    console.error = jest.fn(); // eslint-disable-line no-console
+
+    honeycombServer.start = jest.fn(() => (
+      new Promise((resolve, reject) => (
+        success ? resolve(server) : reject('Failed to start server')
+      ))
+    ));
+
+    require('../../src/server/index'); // eslint-disable-line global-require
+  }
 
   afterEach(() => {
+    jest.resetModules();
     jest.resetAllMocks();
   });
 
-  // TODO Unit-Test for Honeycomb-Server initialisation
+  it('should called "honeycombServer.start()" with options', () => {
+    setup();
 
-  it('should have a endpoint for the assets', () => {
-    require('../../src/server/index'); // eslint-disable-line global-require
+    expect(honeycombServer.start).toBeCalledWith({
+      plugins: [
+        {
+          module: 'inert',
+        },
+        {
+          module: 'honeycomb-logging-middleware',
+        },
+        {
+          module: 'honeycomb-health-middleware',
+        },
+        {
+          module: 'honeycomb-info-middleware',
+          options: {
+            pkg,
+            process,
+          },
+        },
+        {
+          module: 'hapijs-status-monitor',
+          options: {
+            title: 'Status',
+          },
+        },
+      ],
+    });
+  });
 
-    // server.register - callback
-    server.register.mock.calls[0][1]();
+  it('should created an static assets endpoint', () => {
+    setup();
 
-    // test route-config for assets
-    const routeConfig = server.route.mock.calls[0][0];
+    return honeycombServer.start()
+      .then((serverInstance) => {
+        expect(serverInstance.route).toBeCalledWith({
+          method: 'GET',
+          path: '/{param*}',
+          handler: {
+            directory: {
+              path: path.resolve(__dirname, '..', '..', 'src', 'client'),
+            },
+          },
+        });
+      });
+  });
 
-    expect(routeConfig.method).toBe('GET');
-    expect(routeConfig.path).toBe('/{param*}');
-    expect(routeConfig.handler.directory.path).toBe(path.join(__dirname, '..', '..', 'src', 'client'));
+  it('should log the error message', () => {
+    setup(false);
+
+    return honeycombServer.start()
+      .catch((error) => {
+        expect(error).toBe('Failed to start server');
+      });
   });
 });
