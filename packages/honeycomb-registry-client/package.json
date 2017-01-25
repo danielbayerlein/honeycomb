@@ -11,10 +11,10 @@
   "author": "Daniel Bayerlein",
   "license": "MIT",
   "dependencies": {
-    "eureka-js-client": "^4.1.3"
+    "eureka-js-client": "^4.2.0"
   },
   "devDependencies": {
-    "eslint": "^3.13.1",
+    "eslint": "^3.14.0",
     "eslint-config-honeycomb": "^1.0.0",
     "eslint-formatter-pretty": "^1.1.0",
     "eslint-plugin-import": "^2.2.0",
