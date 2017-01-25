@@ -65,24 +65,22 @@ describe('honeycomb-server', () => {
       expect(honeycombServer.start().constructor.name).toBe('Promise');
     });
 
-    // eslint-disable-next-line arrow-body-style
-    it('should be return the server', () => {
-      return honeycombServer.start()
+    it('should be return the server', () => (
+      honeycombServer.start()
         .then((serverInstance) => {
           expect(server).toEqual(serverInstance);
-        });
-    });
+        })
+    ));
 
-    // eslint-disable-next-line arrow-body-style
-    it('should have been called console.info()', () => {
-      return honeycombServer.start()
+    it('should have been called console.info()', () => (
+      honeycombServer.start()
         .then(() => {
           // eslint-disable-next-line no-console
           expect(console.info).toBeCalledWith(
             'Server running at:', 'http://honeycomb.example.com:3000'
           );
-        });
-    });
+        })
+    ));
   });
 
   describe('connection', () => {
@@ -154,19 +152,17 @@ describe('honeycomb-server', () => {
       });
     });
 
-    // eslint-disable-next-line arrow-body-style
-    it('should have been called console.error()', () => {
-      return myServer.then(() => {
+    it('should have been called console.error()', () => (
+      myServer.then(() => {
         // eslint-disable-next-line no-console
-        expect(console.error).toBeCalledWith('There was an error starting the server');
-      });
-    });
+        expect(console.error).toBeCalledWith(
+          'There was an error starting the server'
+        );
+      })
+    ));
 
-    // eslint-disable-next-line arrow-body-style
-    it('should have been called server.stop()', () => {
-      return myServer.then(() => {
-        expect(server.stop).toHaveBeenCalled();
-      });
-    });
+    it('should have been called server.stop()', () => (
+      myServer.then(() => expect(server.stop).toHaveBeenCalled())
+    ));
   });
 });

@@ -70,7 +70,7 @@ describe('honeycomb-assets', () => {
           path: '/{param*}',
           handler: {
             directory: {
-              path: path.resolve(__dirname, '..', '..', 'src', 'client'),
+              path: path.resolve('src', 'client'),
             },
           },
         });
