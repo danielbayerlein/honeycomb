@@ -106,9 +106,9 @@ const productionConfig = {
   ],
   <%_ if (includeReact) { _%>
   externals: {
-    // assets from honeycomb-assets
+    // Assets from honeycomb-assets
     react: 'react',
-    'react-dom': 'ReactDOM'
+    'react-dom': 'ReactDOM',
   },
   <%_ } _%>
 };
