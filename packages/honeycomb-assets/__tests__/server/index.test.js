@@ -1,41 +1,71 @@
 jest.mock('honeycomb-server');
 
 const path = require('path');
-const honeycombServer = require('honeycomb-server');
 const pkg = require('../../package.json');
 
-describe('server', () => {
-  const server = { route: jest.fn() };
+describe('honeycomb-assets', () => {
+  let server;
+  let honeycombServer;
 
-  honeycombServer.start = jest.fn();
-  honeycombServer.start.mockImplementation(() => new Promise(resolve => resolve(server)));
+  function setup(success = true) {
+    // eslint-disable-next-line global-require
+    honeycombServer = require('honeycomb-server');
 
-  // eslint-disable-next-line global-require
-  require('../../src/server/index');
+    server = { route: jest.fn() };
 
-  it('should call honeycomb.start with all required plugins', () => {
+    console.error = jest.fn(); // eslint-disable-line no-console
+
+    honeycombServer.start = jest.fn(() => (
+      new Promise((resolve, reject) => (
+        success ? resolve(server) : reject('Failed to start server')
+      ))
+    ));
+
+    require('../../src/server/index'); // eslint-disable-line global-require
+  }
+
+  afterEach(() => {
+    jest.resetModules();
+    jest.resetAllMocks();
+  });
+
+  it('should called "honeycombServer.start()" with options', () => {
+    setup();
+
     expect(honeycombServer.start).toBeCalledWith({
       plugins: [
-        { module: 'inert' },
-        { module: 'honeycomb-logging-middleware' },
-        { module: 'honeycomb-health-middleware' },
+        {
+          module: 'inert',
+        },
+        {
+          module: 'honeycomb-logging-middleware',
+        },
+        {
+          module: 'honeycomb-health-middleware',
+        },
         {
           module: 'honeycomb-info-middleware',
-          options: { pkg, process },
+          options: {
+            pkg,
+            process,
+          },
         },
         {
           module: 'hapijs-status-monitor',
-          options: { title: 'Status' },
+          options: {
+            title: 'Status',
+          },
         },
       ],
     });
   });
 
-  it('should create an endpoint for the assets', () => (
-    // testing an "async operation" needs a little timeout to get server.route called
-    new Promise((resolve) => {
-      setTimeout(() => {
-        expect(server.route).toBeCalledWith({
+  it('should created an static assets endpoint', () => {
+    setup();
+
+    return honeycombServer.start()
+      .then((serverInstance) => {
+        expect(serverInstance.route).toBeCalledWith({
           method: 'GET',
           path: '/{param*}',
           handler: {
@@ -44,9 +74,15 @@ describe('server', () => {
             },
           },
         });
+      });
+  });
 
-        resolve();
-      }, 10);
-    })
-  ));
+  it('should log the error message', () => {
+    setup(false);
+
+    return honeycombServer.start()
+      .catch((error) => {
+        expect(error).toBe('Failed to start server');
+      });
+  });
 });

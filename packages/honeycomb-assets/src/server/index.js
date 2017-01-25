@@ -28,4 +28,7 @@ honeycombServer
         },
       },
     });
+  })
+  .catch((error) => {
+    console.error('Error:', error); // eslint-disable-line no-console
   });
