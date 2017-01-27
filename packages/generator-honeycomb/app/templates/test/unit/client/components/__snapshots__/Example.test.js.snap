@@ -1,7 +1,7 @@
 exports[`test should render correctly 1`] = `
 <h2
   className="dGjojK">
-  Hi 
+  Hi
   World
   , this is an example for rendering React on the client.
 </h2>
