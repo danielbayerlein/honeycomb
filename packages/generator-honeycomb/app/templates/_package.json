@@ -41,7 +41,6 @@
     "hapi-react-views": "^9.2.1",
     <%_ } _%>
     "hapi-router": "^3.5.0",
-    "hapijs-status-monitor": "^0.5.0",
     <%_ if (includeHandlebars) { _%>
     "handlebars": "^4.0.6",
     <%_ } _%>
@@ -51,6 +50,7 @@
     "honeycomb-logging-middleware": "^1.0.0",
     "honeycomb-registry-client": "^1.0.0",
     "honeycomb-server": "^1.0.0",
+    "honeycomb-status-middleware": "^1.0.0",
     "inert": "^4.1.0",
     <%_ if (includeReact) { _%>
     "react": "^15.4.2",
