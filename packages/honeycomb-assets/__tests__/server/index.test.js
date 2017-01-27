@@ -34,27 +34,13 @@ describe('honeycomb-assets', () => {
 
     expect(honeycombServer.start).toBeCalledWith({
       plugins: [
-        {
-          module: 'inert',
-        },
-        {
-          module: 'honeycomb-logging-middleware',
-        },
-        {
-          module: 'honeycomb-health-middleware',
-        },
+        { module: 'inert' },
+        { module: 'honeycomb-logging-middleware' },
+        { module: 'honeycomb-health-middleware' },
+        { module: 'honeycomb-status-middleware' },
         {
           module: 'honeycomb-info-middleware',
-          options: {
-            pkg,
-            process,
-          },
-        },
-        {
-          module: 'hapijs-status-monitor',
-          options: {
-            title: 'Status',
-          },
+          options: { pkg, process },
         },
       ],
     });
