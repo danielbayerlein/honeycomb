@@ -25,6 +25,7 @@
     "yeoman-test": "^1.6.0"
   },
   "jest": {
-    "bail": true
+    "bail": true,
+    "testPathIgnorePatterns": ["<rootDir>/app/"]
   }
 }
