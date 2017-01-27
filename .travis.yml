@@ -16,6 +16,7 @@ cache:
     - packages/honeycomb-logging-middleware/node_modules
     - packages/honeycomb-registry-client/node_modules
     - packages/honeycomb-server/node_modules
+    - packages/honeycomb-status-middleware/node_modules
     - packages/generator-honeycomb/node_modules
 
 after_success:
