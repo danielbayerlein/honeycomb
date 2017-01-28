@@ -50,24 +50,11 @@ const defaultConfig = {
     },
   ],
   plugins: [
-    {
-      module: 'vision',
-    },
-    {
-      module: 'inert',
-    },
-    {
-      module: 'honeycomb-logging-middleware',
-    },
-    {
-      module: 'hapijs-status-monitor',
-      options: {
-        title: 'Status',
-      },
-    },
-    {
-      module: 'honeycomb-health-middleware',
-    },
+    { module: 'vision' },
+    { module: 'inert' },
+    { module: 'honeycomb-logging-middleware' },
+    { module: 'honeycomb-health-middleware' },
+    { module: 'honeycomb-status-middleware' },
     {
       module: 'honeycomb-info-middleware',
       options: {

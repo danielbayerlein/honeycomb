@@ -8,13 +8,10 @@ honeycombServer
       { module: 'inert' },
       { module: 'honeycomb-logging-middleware' },
       { module: 'honeycomb-health-middleware' },
+      { module: 'honeycomb-status-middleware' },
       {
         module: 'honeycomb-info-middleware',
         options: { pkg, process },
-      },
-      {
-        module: 'hapijs-status-monitor',
-        options: { title: 'Status' },
       },
     ],
   })
