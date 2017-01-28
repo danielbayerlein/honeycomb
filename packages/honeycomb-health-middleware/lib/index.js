@@ -3,7 +3,7 @@ const pkg = require('../package.json');
 exports.register = function register(server, options, next) {
   server.route({
     method: 'GET',
-    path: '/health',
+    path: '/admin/health',
     handler: (request, reply) => {
       reply({ status: 'UP' });
     },

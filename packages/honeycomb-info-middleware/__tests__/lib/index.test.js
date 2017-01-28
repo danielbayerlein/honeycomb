@@ -35,7 +35,7 @@ describe('honeycomb-info-middleware', () => {
     const call = server.route.mock.calls[0][0];
 
     expect(call.method).toBe('GET');
-    expect(call.path).toBe('/info');
+    expect(call.path).toBe('/admin/info');
     expect(typeof call.handler).toBe('function');
   });
 

@@ -20,7 +20,7 @@ describe('honeycomb-health-middleware', () => {
     const call = server.route.mock.calls[0][0];
 
     expect(call.method).toBe('GET');
-    expect(call.path).toBe('/health');
+    expect(call.path).toBe('/admin/health');
     expect(typeof call.handler).toBe('function');
   });
 
