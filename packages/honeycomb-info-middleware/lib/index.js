@@ -3,7 +3,7 @@ const pkg = require('../package.json');
 exports.register = function register(server, options, next) {
   server.route({
     method: 'GET',
-    path: '/info',
+    path: '/admin/info',
     handler: (request, reply) => {
       reply({
         name: options.pkg.name,

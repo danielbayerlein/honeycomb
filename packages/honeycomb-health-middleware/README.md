@@ -8,6 +8,10 @@
 npm install --save honeycomb-health-middleware
 ```
 
+## Endpoint
+
+`/admin/health`
+
 ## Usage
 
 ```javascript

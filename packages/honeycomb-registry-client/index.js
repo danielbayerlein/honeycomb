@@ -17,8 +17,8 @@ function register(name, host, port) {
     app: name,
     hostName: host,
     vipAddress: process.env.EUREKA_VIP || host,
-    statusPageUrl: `http://${host}:${port}/info`,
-    healthCheckUrl: `http://${host}:${port}/health`,
+    statusPageUrl: `http://${host}:${port}/admin/info`,
+    healthCheckUrl: `http://${host}:${port}/admin/health`,
     homePageUrl: `http://${host}:${port}/`,
     dataCenterInfo: {
       '@class': 'com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo',

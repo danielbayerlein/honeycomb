@@ -8,6 +8,10 @@
 npm install --save honeycomb-info-middleware
 ```
 
+## Endpoint
+
+`/admin/info`
+
 ## Usage
 
 ```javascript

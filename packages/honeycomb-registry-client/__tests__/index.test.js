@@ -27,14 +27,14 @@ describe('honeycomb-registry-client', () => {
           '@class': 'com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo',
           name: 'MyOwn',
         },
-        healthCheckUrl: 'http://127.0.0.1:3000/health',
+        healthCheckUrl: 'http://127.0.0.1:3000/admin/health',
         homePageUrl: 'http://127.0.0.1:3000/',
         hostName: '127.0.0.1',
         port: {
           '$': 3000, // eslint-disable-line quote-props
           '@enabled': 'true',
         },
-        statusPageUrl: 'http://127.0.0.1:3000/info',
+        statusPageUrl: 'http://127.0.0.1:3000/admin/info',
         vipAddress: '127.0.0.1',
       },
     });
