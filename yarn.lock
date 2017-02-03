@@ -1054,9 +1054,9 @@ lazy-cache@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/lazy-cache/-/lazy-cache-1.0.4.tgz#a1d78fc3a50474cb80845d3b3b6e1da49a446e8e"
 
-lerna@^2.0.0-beta.35:
-  version "2.0.0-beta.35"
-  resolved "https://registry.yarnpkg.com/lerna/-/lerna-2.0.0-beta.35.tgz#52509e4864288195fe5866890aed2244c345eb23"
+lerna@^2.0.0-beta.36:
+  version "2.0.0-beta.36"
+  resolved "https://registry.yarnpkg.com/lerna/-/lerna-2.0.0-beta.36.tgz#ca1e57d74da780a8c9a06ae3e04a22bf28914b80"
   dependencies:
     async "^1.5.0"
     chalk "^1.1.1"
