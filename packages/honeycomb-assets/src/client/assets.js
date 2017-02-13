@@ -1,9 +1,7 @@
-const React = require('react');
-const ReactDom = require('react-dom');
+const preact = require('preact');
 
 require('./assets.css');
 
 module.exports = {
-  React,
-  ReactDom,
+  preact,
 };
