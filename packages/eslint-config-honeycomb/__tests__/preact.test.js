@@ -1,12 +1,12 @@
-const react = require('../react');
+const preact = require('../preact');
 
-describe('honeycomb/react', () => {
+describe('honeycomb/preact', () => {
   it('should extends eslint-config-airbnb', () => {
-    expect(react.extends[0]).toMatch(/eslint-config-airbnb\/index\.js/);
+    expect(preact.extends[0]).toMatch(/eslint-config-airbnb\/index\.js/);
   });
 
   it('should have expected jest environment', () => {
-    expect(react.env).toEqual({ jest: true });
+    expect(preact.env).toEqual({ jest: true });
   });
 
   it('should have expected rules', () => {
@@ -23,6 +23,6 @@ describe('honeycomb/react', () => {
       }],
     };
 
-    expect(react.rules).toEqual(rules);
+    expect(preact.rules).toEqual(rules);
   });
 });

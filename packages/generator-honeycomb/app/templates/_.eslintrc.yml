@@ -1,2 +1,2 @@
 extends:
-  honeycomb/<%= includeReact ? 'react' : 'base' %>
+  honeycomb/<%= includePreact ? 'preact' : 'base' %>

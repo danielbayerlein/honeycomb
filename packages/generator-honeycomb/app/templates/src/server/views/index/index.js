@@ -1,24 +1,21 @@
-import React, { PropTypes } from 'react';
+/** @jsx h */
+import { h } from 'preact';
 
-import styled from 'styled-components';
+const Index = ({ name, baseUrl, serviceName }) => (
+  <main>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href={`${baseUrl}/stylesheets/${serviceName}.bundle.css`}
+    />
 
-const DIV = styled.div`
-  border: 1px solid tomato;
-  padding: 20px;
-`;
-
-const Index = ({ name }) => (
-  <DIV>
     <h1 className="qa-info">
       Hello {name}
     </h1>
 
     <div className="js-app" />
-  </DIV>
+    <script src={`${baseUrl}/javascripts/${serviceName}.bundle.js`} />
+  </main>
 );
-
-Index.propTypes = {
-  name: PropTypes.string.isRequired,
-};
 
 export default Index;

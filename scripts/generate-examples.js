@@ -6,7 +6,7 @@ const rimraf = require('rimraf').sync;
 const packagesDirectory = path.join(__dirname, '..', 'packages');
 const honeycombGenerator = path.join(packagesDirectory, 'generator-honeycomb');
 
-['handlebars', 'react'].forEach((variation) => {
+['handlebars', 'preact'].forEach((variation) => {
   const exampleDirectory = path.join(packagesDirectory, `example-${variation}`);
 
   rimraf(exampleDirectory);

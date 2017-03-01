@@ -1,8 +1,8 @@
 version: '2'
 
 services:
-  example-react:
-    build: ./packages/example-react
+  example-preact:
+    build: ./packages/example-preact
     environment:
       PORT: "3002"
       FRAGMENT_URL: "//localhost:3002"
@@ -30,5 +30,5 @@ services:
       - "3000:3000"
     links:
       - assets
-      - example-react
+      - example-preact
       - example-handlebars

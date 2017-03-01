@@ -186,16 +186,16 @@ describe('generator-honeycomb', () => {
         });
       });
 
-      describe('and react templates', () => {
+      describe('and preact templates', () => {
         beforeAll((done) => {
           if (type === 'prompts') {
-            prompts.templateEngine = 'react';
+            prompts.templateEngine = 'preact';
             helpers
               .run(appPath)
               .withPrompts(prompts)
               .on('end', done);
           } else if (type === 'options') {
-            options.template = 'react';
+            options.template = 'preact';
             helpers
               .run(appPath)
               .withOptions(options)
@@ -220,14 +220,12 @@ describe('generator-honeycomb', () => {
               ['package.json', '"clean": "rimraf pids logs coverage dist output public/javascripts/*.bundle.js"'],
               ['package.json', '"lint:styles": "stylelint src/server/views/**/*.js src/client/components/**/*.js",'],
               ['package.json', '"start:development": "cross-env NODE_ENV=development nodemon src/server/server.js --exec babel-node --watch src/server --ext js",'],
-              ['package.json', /"hapi-react-views": ".*",/],
-              ['package.json', /"react": ".*",/],
-              ['package.json', /"react-dom": ".*",/],
-              ['package.json', /"react-hot-loader": ".*",/],
-              ['package.json', /"babel-preset-react": ".*",/],
+              ['package.json', /"hapi-preact-views": ".*",/],
+              ['package.json', /"preact": ".*",/],
+              ['package.json', /"babel-plugin-transform-react-jsx": ".*",/],
               ['package.json', /"eslint-plugin-jsx-a11y": ".*",/],
               ['package.json', /"eslint-plugin-react": ".*",/],
-              ['package.json', /"react-test-renderer": ".*",/],
+              ['package.json', /"preact-render-to-string": ".*",/],
               ['package.json', /"styled-components": ".*",/],
               ['package.json', /"stylelint-processor-styled-components": ".*"/],
             ]);
@@ -236,7 +234,7 @@ describe('generator-honeycomb', () => {
 
         describe('.eslintrc.yml', () => {
           it('should have expected content', () => {
-            assert.fileContent('.eslintrc.yml', 'honeycomb/react');
+            assert.fileContent('.eslintrc.yml', 'honeycomb/preact');
           });
         });
 
@@ -249,20 +247,18 @@ describe('generator-honeycomb', () => {
 
         describe('.babelrc', () => {
           it('should have expected content', () => {
-            assert.fileContent('.babelrc', '"react"');
-            assert.fileContent('.babelrc', '"react-hot-loader/babel"');
+            assert.fileContent('.babelrc', '[ "transform-react-jsx", { "pragma": "h" } ]');
           });
         });
 
         describe('.config/server.js', () => {
           it('should have expected content', () => {
-            assert.fileContent('.config/server.js', "js: 'hapi-react-views'");
+            assert.fileContent('.config/server.js', "js: 'hapi-preact-views'");
           });
         });
 
         describe('.config/webpack.config.js', () => {
           it('should have expected content', () => {
-            assert.fileContent('.config/webpack.config.js', "'react-hot-loader/patch',");
             assert.fileContent('.config/webpack.config.js', "'styled-components$': 'styled-components/lib/index.js',");
             assert.fileContent('.config/webpack.config.js', 'externals');
           });
@@ -270,7 +266,7 @@ describe('generator-honeycomb', () => {
 
         describe('src/client/client.js', () => {
           it('should have expected content', () => {
-            assert.fileContent('src/client/client.js', "import React from 'react';");
+            assert.fileContent('src/client/client.js', "import { h, render } from 'preact';");
           });
         });
       });
