@@ -14,7 +14,7 @@
     <%_ } _%>
     "build:babel": "cross-env BABEL_ENV=production babel src/ --out-dir dist/ --source-maps --only src/server/",
     "build:webpack": "cross-env NODE_ENV=production webpack --config .config/webpack.config.js",
-    "clean": "rimraf pids logs coverage dist output <%= includePreact ? 'public/javascripts/*.bundle.js' : 'public/**/*.bundle.*' %>",
+    "clean": "rimraf pids logs coverage dist output public/**/*.bundle.*",
     "lint": "npm run lint:js && npm run lint:styles",
     "lint:js": "eslint --format=node_modules/eslint-formatter-pretty .",
     "lint:styles": "stylelint src/client/**/*.css",
