@@ -4,6 +4,7 @@ module.exports = {
   ].map(require.resolve),
   env: {
     jest: true,
+    browser: true,
   },
   rules: {
     'comma-dangle': ['error', {

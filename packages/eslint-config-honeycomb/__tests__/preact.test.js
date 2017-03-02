@@ -6,7 +6,10 @@ describe('honeycomb/preact', () => {
   });
 
   it('should have expected jest environment', () => {
-    expect(preact.env).toEqual({ jest: true });
+    expect(preact.env).toEqual({
+      jest: true,
+      browser: true,
+    });
   });
 
   it('should have expected rules', () => {
@@ -21,6 +24,7 @@ describe('honeycomb/preact', () => {
       'react/jsx-filename-extension': ['error', {
         extensions: ['.js'],
       }],
+      'react/prop-types': 'off',
     };
 
     expect(preact.rules).toEqual(rules);

@@ -6,7 +6,10 @@ describe('honeycomb/base', () => {
   });
 
   it('should have expected jest environment', () => {
-    expect(base.env).toEqual({ jest: true });
+    expect(base.env).toEqual({
+      jest: true,
+      browser: true,
+    });
   });
 
   it('should have expected rules', () => {
