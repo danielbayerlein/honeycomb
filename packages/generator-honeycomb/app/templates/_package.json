@@ -33,7 +33,7 @@
     "babel-runtime": "^6.22.0",
     "cross-env": "^3.1.4",
     <%_ if (includePreact) { _%>
-    "hapi-preact-views": "^1.0.1",
+    "hapi-preact-views": "^1.0.2",
     <%_ } _%>
     "hapi-router": "^3.5.0",
     <%_ if (includeHandlebars) { _%>
@@ -55,9 +55,7 @@
   },
   "devDependencies": {
     "@danielbayerlein/hapi-webpack-middleware": "^1.0.1",
-    <%_ if (includeHandlebars) { _%>
     "autoprefixer": "^6.7.0",
-    <%_ } _%>
     "babel-cli": "^6.22.2",
     "babel-core": "^6.22.1",
     "babel-jest": "^18.0.0",

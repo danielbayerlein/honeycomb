@@ -60,6 +60,7 @@ describe('generator-honeycomb', () => {
           'public/javascripts/.gitkeep',
           'public/stylesheets/.gitkeep',
           'src/client/client.js',
+          'src/client/client.css',
           'src/shared/.gitkeep',
           'src/server/controllers/index.js',
           'src/server/models/.gitkeep',
@@ -83,12 +84,6 @@ describe('generator-honeycomb', () => {
             ['package.json', '"description": "Example package",'],
             ['package.json', '"version": "1.2.3",'],
           ]);
-        });
-      });
-
-      describe('.stylelintrc.yml', () => {
-        it('should have expected content', () => {
-          assert.fileContent('.stylelintrc.yml', '"stylelint-config-standard"');
         });
       });
 
@@ -130,7 +125,6 @@ describe('generator-honeycomb', () => {
 
         it('creates expected files', () => {
           assert.file('src/server/views/index/index.html');
-          assert.file('src/client/client.css');
         });
 
         describe('package.json', () => {
