@@ -4,27 +4,19 @@ const webpackConfig = require('./webpack.config');
 const pkg = require('../package.json');
 
 const viewEngines = {
-  <%_ if (includeReact) { _%>
-  js: 'hapi-react-views',
+  <%_ if (includePreact) { _%>
+  js: 'hapi-preact-views',
   <%_ } _%>
   <%_ if (includeHandlebars) { _%>
   html: 'handlebars',
   <%_ } _%>
 };
 
-const compileOptionsDevelopment = {
+const compileOptions = {
+  <%_ if (includeHandlebars) { _%>
   doctype: '',
-  <%_ if (includeReact) { _%>
-  layout: 'default',
-  layoutPath: path.resolve(__dirname, '../src/server/views/layouts'),
-  renderMethod: 'renderToString',
   <%_ } _%>
 };
-
-const compileOptionsProduction = Object.assign({}, compileOptionsDevelopment);
-<%_ if (includeReact) { _%>
-compileOptionsProduction.layoutPath = path.resolve(__dirname, '../dist/server/views/layouts');
-<%_ } _%>
 
 /**
  * Read the server.info from the request and pass the uri to the template.
@@ -86,7 +78,7 @@ const developmentConfig = {
     {
       module: 'visionary',
       options: {
-        compileOptions: compileOptionsDevelopment,
+        compileOptions,
         context: contextFunc,
         engines: viewEngines,
         path: 'views',
@@ -107,7 +99,7 @@ const productionConfig = {
     {
       module: 'visionary',
       options: {
-        compileOptions: compileOptionsProduction,
+        compileOptions,
         context: contextFunc,
         engines: viewEngines,
         path: 'views',

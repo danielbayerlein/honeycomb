@@ -2,11 +2,9 @@ const path = require('path');
 /* eslint-disable import/no-extraneous-dependencies */
 const eslintFormatter = require('eslint-formatter-pretty');
 const webpack = require('webpack');
-<%_ if (includeHandlebars) { _%>
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
-<%_ } _%>
 /* eslint-enable import/no-extraneous-dependencies */
 const Hoek = require('hoek');
 const serviceName = require('../package.json').name;
@@ -30,7 +28,6 @@ const defaultConfig = {
         use: ['babel-loader', 'eslint-loader'],
         exclude: /node_modules/,
       },
-      <%_ if (includeHandlebars) { _%>
       {
         test: /\.css$/,
         exclude: /node_modules/,
@@ -39,7 +36,6 @@ const defaultConfig = {
           loader: ['css-loader', 'postcss-loader'],
         }),
       },
-      <%_ } _%>
     ],
   },
   plugins: [
@@ -54,38 +50,21 @@ const defaultConfig = {
         eslint: {
           formatter: eslintFormatter,
         },
-        <%_ if (includeHandlebars) { _%>
         postcss: [autoprefixer()],
-        <%_ } _%>
       },
     }),
-    <%_ if (includeHandlebars) { _%>
     new ExtractTextPlugin(`stylesheets/${serviceName}.bundle.css`),
     new StyleLintPlugin({
       configFile: path.join(__dirname, '..', '.stylelintrc.yml'),
       files: ['src/**/*.css'],
     }),
-    <%_ } _%>
   ],
-  <%_ if (includeReact) { _%>
-  // temporary workaround see https://github.com/styled-components/styled-components/issues/115
-  resolve: {
-    alias: {
-      'styled-components$': 'styled-components/lib/index.js',
-    },
-  },
-  <%_ } _%>
 };
 
 const developmentConfig = {
   devtool: 'eval',
   entry: {
-    [`javascripts/${serviceName}`]: [
-      'webpack-hot-middleware/client?reload=true&noInfo=true',
-      <%_ if (includeReact) { _%>
-      'react-hot-loader/patch',
-      <%_ } _%>
-    ],
+    [`javascripts/${serviceName}`]: ['webpack-hot-middleware/client?reload=true&noInfo=true'],
   },
   output: {
     pathinfo: true,
@@ -104,11 +83,10 @@ const productionConfig = {
       sourceMap: true,
     }),
   ],
-  <%_ if (includeReact) { _%>
+  <%_ if (includePreact) { _%>
   externals: {
     // Assets from honeycomb-assets
-    react: 'react',
-    'react-dom': 'ReactDOM',
+    preact: 'preact',
   },
   <%_ } _%>
 };

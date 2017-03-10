@@ -6,7 +6,7 @@ const yosay = require('yosay');
 
 const DEFAULT_PORT = 3000;
 const DEFAULT_VERSION = '1.0.0';
-const TEMPLATE_ENGINE_REACT = 'react';
+const TEMPLATE_ENGINE_PREACT = 'preact';
 const TEMPLATE_ENGINE_HANDLEBARS = 'handlebars';
 
 const globOptions = { dot: true };
@@ -48,7 +48,7 @@ module.exports = class extends Generator {
     });
 
     this.option('template', {
-      desc: 'Template system of the service (react|handlebars)',
+      desc: 'Template system of the service (preact|handlebars)',
       type: String,
       required: true,
     });
@@ -59,7 +59,7 @@ module.exports = class extends Generator {
     this.templateEngine = this.options.template;
 
     if (this.templateEngine) {
-      this.includeReact = this.templateEngine === TEMPLATE_ENGINE_REACT;
+      this.includePreact = this.templateEngine === TEMPLATE_ENGINE_PREACT;
       this.includeHandlebars = this.templateEngine === TEMPLATE_ENGINE_HANDLEBARS;
     }
 
@@ -107,8 +107,8 @@ module.exports = class extends Generator {
       message: 'Which template system do you want?',
       choices: [
         {
-          name: 'React',
-          value: TEMPLATE_ENGINE_REACT,
+          name: 'Preact',
+          value: TEMPLATE_ENGINE_PREACT,
         },
         {
           name: 'Handlebars',
@@ -116,7 +116,7 @@ module.exports = class extends Generator {
         },
       ],
       when: () => {
-        const templateEngines = [TEMPLATE_ENGINE_REACT, TEMPLATE_ENGINE_HANDLEBARS];
+        const templateEngines = [TEMPLATE_ENGINE_PREACT, TEMPLATE_ENGINE_HANDLEBARS];
         return templateEngines.indexOf(this.templateEngine) === -1;
       },
     }];
@@ -143,7 +143,7 @@ module.exports = class extends Generator {
       }
 
       if (props.templateEngine) {
-        this.includeReact = props.templateEngine === TEMPLATE_ENGINE_REACT;
+        this.includePreact = props.templateEngine === TEMPLATE_ENGINE_PREACT;
         this.includeHandlebars = props.templateEngine === TEMPLATE_ENGINE_HANDLEBARS;
       }
     });
@@ -180,7 +180,7 @@ module.exports = class extends Generator {
         packageName: this.packageName,
         packageDescription: this.packageDescription,
         packageVersion: this.packageVersion,
-        includeReact: this.includeReact,
+        includePreact: this.includePreact,
         includeHandlebars: this.includeHandlebars,
       }
     );
@@ -211,15 +211,14 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('_.eslintrc.yml'),
       this.destinationPath('.eslintrc.yml'),
-      { includeReact: this.includeReact }
+      { includePreact: this.includePreact }
     );
   }
 
   _stylelint() {
-    this.fs.copyTpl(
-      this.templatePath('_.stylelintrc.yml'),
-      this.destinationPath('.stylelintrc.yml'),
-      { includeReact: this.includeReact }
+    this.fs.copy(
+      this.templatePath('.stylelintrc.yml'),
+      this.destinationPath('.stylelintrc.yml')
     );
   }
 
@@ -235,7 +234,7 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('_.babelrc'),
       this.destinationPath('.babelrc'),
-      { includeReact: this.includeReact }
+      { includePreact: this.includePreact }
     );
   }
 
@@ -253,7 +252,7 @@ module.exports = class extends Generator {
       this.templatePath('.config/_server.js'),
       this.destinationPath('.config/server.js'),
       {
-        includeReact: this.includeReact,
+        includePreact: this.includePreact,
         includeHandlebars: this.includeHandlebars,
         port: this.applicationPort,
       }
@@ -263,7 +262,7 @@ module.exports = class extends Generator {
       this.templatePath('.config/_webpack.config.js'),
       this.destinationPath('.config/webpack.config.js'),
       {
-        includeReact: this.includeReact,
+        includePreact: this.includePreact,
         includeHandlebars: this.includeHandlebars,
       }
     );
@@ -299,7 +298,7 @@ module.exports = class extends Generator {
       { globOptions }
     );
 
-    if (this.includeReact) {
+    if (this.includePreact) {
       this.fs.copy(
         this.templatePath('test/unit/client/**'),
         this.destinationPath('test/unit/client'),
@@ -338,16 +337,21 @@ module.exports = class extends Generator {
       this.destinationPath('src/server/server.js')
     );
 
+    this.fs.copy(
+      this.templatePath('src/client/client.css'),
+      this.destinationPath('src/client/client.css')
+    );
+
     this.fs.copyTpl(
       this.templatePath('src/client/_.client.js'),
       this.destinationPath('src/client/client.js'),
       {
-        includeReact: this.includeReact,
+        includePreact: this.includePreact,
         includeHandlebars: this.includeHandlebars,
       }
     );
 
-    if (this.includeReact) {
+    if (this.includePreact) {
       this.fs.copy(
         this.templatePath('src/client/components/Example.js'),
         this.destinationPath('src/client/components/Example.js')
@@ -357,19 +361,9 @@ module.exports = class extends Generator {
         this.templatePath('src/server/views/index/index.js'),
         this.destinationPath('src/server/views/index/index.js')
       );
-
-      this.fs.copy(
-        this.templatePath('src/server/views/layouts/default.js'),
-        this.destinationPath('src/server/views/layouts/default.js')
-      );
     }
 
     if (this.includeHandlebars) {
-      this.fs.copy(
-        this.templatePath('src/client/client.css'),
-        this.destinationPath('src/client/client.css')
-      );
-
       this.fs.copy(
         this.templatePath('src/server/views/index/index.html'),
         this.destinationPath('src/server/views/index/index.html')

@@ -4,6 +4,7 @@ module.exports = {
   ].map(require.resolve),
   env: {
     jest: true,
+    browser: true,
   },
   rules: {
     'comma-dangle': ['error', {
@@ -16,5 +17,6 @@ module.exports = {
     'react/jsx-filename-extension': ['error', {
       extensions: ['.js'],
     }],
+    'react/prop-types': 'off',
   },
 };

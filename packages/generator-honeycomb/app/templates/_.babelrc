@@ -1,13 +1,10 @@
 {
   "presets": [
-    <%_ if (includeReact) { _%>
-    "react",
-    <%_ } _%>
     "es2015"
   ],
   "plugins": [
-    <%_ if (includeReact) { _%>
-    "react-hot-loader/babel",
+    <%_ if (includePreact) { _%>
+    [ "transform-react-jsx", { "pragma": "h" } ],
     <%_ } _%>
     "transform-runtime",
     "transform-class-properties",
