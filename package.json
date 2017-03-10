@@ -14,10 +14,10 @@
   "author": "Daniel Bayerlein",
   "license": "MIT",
   "devDependencies": {
-    "husky": "^0.13.1",
+    "husky": "^0.13.2",
     "istanbul": "^0.4.5",
     "lerna": "^2.0.0-beta.38",
-    "rimraf": "^2.5.4",
+    "rimraf": "^2.6.1",
     "yo": "^1.8.5"
   }
 }
