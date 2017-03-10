@@ -17,7 +17,7 @@ Add the extends attribute to your `.eslintrc.yml`:
     honeycomb/base
 ```
 
-### honeycomb-react
+### honeycomb-preact
 
 ```bash
 npm install --save-dev eslint-config-honeycomb eslint eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react
@@ -27,7 +27,7 @@ Add the extends attribute to your `.eslintrc.yml`:
 
 ```yaml
 extends:
-  honeycomb/react
+  honeycomb/preact
 ```
 
 ## License
