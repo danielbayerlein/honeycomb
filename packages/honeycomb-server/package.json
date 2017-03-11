@@ -20,16 +20,16 @@
   "author": "Daniel Bayerlein",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^3.14.0",
+    "eslint": "^3.17.1",
     "eslint-config-honeycomb": "^1.0.0",
     "eslint-formatter-pretty": "^1.1.0",
     "eslint-plugin-import": "^2.2.0",
     "inert": "^4.1.0",
-    "jest": "^18.1.0"
+    "jest": "^19.0.2"
   },
   "dependencies": {
     "hapi": "^16.1.0",
-    "joi": "^10.2.0"
+    "joi": "^10.2.2"
   },
   "jest": {
     "bail": true
