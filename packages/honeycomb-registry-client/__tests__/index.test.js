@@ -14,7 +14,7 @@ describe('honeycomb-registry-client', () => {
     register('test', '127.0.0.1', 3000);
   });
 
-  it('should passed expected options to Eureka', () => {
+  test('passes expected options to Eureka', () => {
     expect(Eureka.mock.calls[0][0]).toEqual({
       eureka: {
         host: 'localhost',
@@ -40,7 +40,7 @@ describe('honeycomb-registry-client', () => {
     });
   });
 
-  it('should print a info about successful registration', () => {
+  test('prints a info about successful registration', () => {
     const call = client.on.mock.calls[0];
     expect(call[0]).toBe('started');
 
@@ -49,7 +49,7 @@ describe('honeycomb-registry-client', () => {
     expect(console.info).toBeCalledWith('test registered to eureka on "localhost:8761"');
   });
 
-  it('should print a info about successful deregistration', () => {
+  test('prints a info about successful deregistration', () => {
     const call = client.on.mock.calls[1];
     expect(call[0]).toBe('deregistered');
 
@@ -58,7 +58,7 @@ describe('honeycomb-registry-client', () => {
     expect(console.info).toBeCalledWith('test deregistered from eureka');
   });
 
-  it('should be called the start function', () => {
+  test('calls the start function', () => {
     expect(client.start).toHaveBeenCalled();
   });
 });

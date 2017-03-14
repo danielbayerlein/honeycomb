@@ -29,7 +29,7 @@ describe('honeycomb-assets', () => {
     jest.resetAllMocks();
   });
 
-  it('should called "honeycombServer.start()" with options', () => {
+  test('calls "honeycombServer.start()" with options', () => {
     setup();
 
     expect(honeycombServer.start).toBeCalledWith({
@@ -46,7 +46,7 @@ describe('honeycomb-assets', () => {
     });
   });
 
-  it('should created an static assets endpoint', () => {
+  test('creates an static assets endpoint', () => {
     setup();
 
     return honeycombServer.start()
@@ -63,7 +63,7 @@ describe('honeycomb-assets', () => {
       });
   });
 
-  it('should log the error message', () => {
+  test('logs the error message', () => {
     setup(false);
 
     return honeycombServer.start()

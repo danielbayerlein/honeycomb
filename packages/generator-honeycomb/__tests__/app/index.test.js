@@ -44,7 +44,7 @@ describe('generator-honeycomb', () => {
         }
       });
 
-      it('creates expected files', () => {
+      test('creates expected files', () => {
         assert.file([
           '.babelrc',
           '.config/codecept.json',
@@ -77,7 +77,7 @@ describe('generator-honeycomb', () => {
       });
 
       describe('package.json', () => {
-        it('should have expected content', () => {
+        test('has expected content', () => {
           assert.fileContent([
             ['package.json', '"author": "Chuck Norris",'],
             ['package.json', '"name": "honeycomb-example",'],
@@ -88,7 +88,7 @@ describe('generator-honeycomb', () => {
       });
 
       describe('Dockerfile', () => {
-        it('should have expected content', () => {
+        test('has expected content', () => {
           assert.fileContent([
             ['Dockerfile', 'RUN mkdir -p /code/honeycomb-example'],
             ['Dockerfile', 'WORKDIR /code/honeycomb-example'],
@@ -100,14 +100,14 @@ describe('generator-honeycomb', () => {
       });
 
       describe('.config/codecept.json', () => {
-        it('should have expected content', () => {
+        test('has expected content', () => {
           assert.fileContent('.config/codecept.json', '"url": "http://localhost:3001"');
           assert.fileContent('.config/codecept.json', '"name": "honeycomb-example test suite"');
         });
       });
 
       describe('.config/server.js', () => {
-        it('should have expected content', () => {
+        test('has expected content', () => {
           assert.fileContent('.config/server.js', 'port: parseInt(process.env.PORT, 10) || 3001,');
         });
       });
@@ -128,7 +128,7 @@ describe('generator-honeycomb', () => {
         });
 
         describe('package.json', () => {
-          it('should have expected content', () => {
+          test('has expected content', () => {
             assert.fileContent([
               ['package.json', '"build": "npm run build:babel && npm run build:views && npm run build:webpack",'],
               ['package.json', '"build:views": "ncp src/server/views dist/server/views",'],
@@ -140,19 +140,19 @@ describe('generator-honeycomb', () => {
         });
 
         describe('.eslintrc.yml', () => {
-          it('should have expected content', () => {
+          test('has expected content', () => {
             assert.fileContent('.eslintrc.yml', 'honeycomb/base');
           });
         });
 
         describe('.config/server.js', () => {
-          it('should have expected content', () => {
+          test('has expected content', () => {
             assert.fileContent('.config/server.js', "html: 'handlebars',");
           });
         });
 
         describe('src/client/client.js', () => {
-          it('should have expected content', () => {
+          test('has expected content', () => {
             assert.fileContent('src/client/client.js', "console.log('DOM has been loaded');");
           });
         });
@@ -175,7 +175,7 @@ describe('generator-honeycomb', () => {
           }
         });
 
-        it('creates expected files', () => {
+        test('creates expected files', () => {
           assert.file([
             'src/client/components/Example.js',
             'src/server/views/index/index.js',
@@ -185,7 +185,7 @@ describe('generator-honeycomb', () => {
         });
 
         describe('package.json', () => {
-          it('should have expected content', () => {
+          test('has expected content', () => {
             assert.fileContent([
               ['package.json', '"build": "npm run build:babel && npm run build:webpack",'],
               ['package.json', '"start:development": "cross-env NODE_ENV=development nodemon src/server/server.js --exec babel-node --watch src/server --ext js",'],
@@ -200,31 +200,31 @@ describe('generator-honeycomb', () => {
         });
 
         describe('.eslintrc.yml', () => {
-          it('should have expected content', () => {
+          test('has expected content', () => {
             assert.fileContent('.eslintrc.yml', 'honeycomb/preact');
           });
         });
 
         describe('.babelrc', () => {
-          it('should have expected content', () => {
+          test('has expected content', () => {
             assert.fileContent('.babelrc', '[ "transform-react-jsx", { "pragma": "h" } ]');
           });
         });
 
         describe('.config/server.js', () => {
-          it('should have expected content', () => {
+          test('has expected content', () => {
             assert.fileContent('.config/server.js', "js: 'hapi-preact-views'");
           });
         });
 
         describe('.config/webpack.config.js', () => {
-          it('should have expected content', () => {
+          test('has expected content', () => {
             assert.fileContent('.config/webpack.config.js', 'externals');
           });
         });
 
         describe('src/client/client.js', () => {
-          it('should have expected content', () => {
+          test('has expected content', () => {
             assert.fileContent('src/client/client.js', "import { h, render } from 'preact';");
           });
         });

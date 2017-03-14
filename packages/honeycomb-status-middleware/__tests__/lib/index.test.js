@@ -19,7 +19,7 @@ describe('honeycomb-status-middleware', () => {
     };
   });
 
-  it('should have been called server.register with expected options', () => {
+  test('has been called server.register with expected options', () => {
     register(server, options, next);
     expect(server.register).toHaveBeenCalledWith({
       options: { path, title },
@@ -27,7 +27,7 @@ describe('honeycomb-status-middleware', () => {
     });
   });
 
-  it('should have been called server.register with custom title', () => {
+  test('has been called server.register with custom title', () => {
     title = 'My Status Monitor';
     register(server, { title }, next);
     expect(server.register).toHaveBeenCalledWith({
@@ -36,12 +36,12 @@ describe('honeycomb-status-middleware', () => {
     });
   });
 
-  it('should have been called next()', () => {
+  test('has been called next()', () => {
     register(server, options, next);
     expect(next).toBeCalled();
   });
 
-  it('should return the package as register.attributes.pkg', () => {
+  test('returns the package as register.attributes.pkg', () => {
     expect(register.attributes.pkg).toBe(pkg);
   });
 });

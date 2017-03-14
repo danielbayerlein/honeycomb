@@ -14,7 +14,7 @@ describe('honeycomb-logging-middleware', () => {
     };
   });
 
-  it('should extend the server with register good', () => {
+  test('extends the server with register good', () => {
     register(server, options, next);
 
     const call = server.register.mock.calls[0][0];
@@ -36,12 +36,12 @@ describe('honeycomb-logging-middleware', () => {
     });
   });
 
-  it('should call the next-cb', () => {
+  test('calls the next-cb', () => {
     register(server, options, next);
     expect(next).toBeCalled();
   });
 
-  it('should return the package as register.attributes.pkg', () => {
+  test('returns the package as register.attributes.pkg', () => {
     expect(register.attributes.pkg).toBe(pkg);
   });
 });

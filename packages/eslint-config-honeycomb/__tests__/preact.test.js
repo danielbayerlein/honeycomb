@@ -1,18 +1,18 @@
 const preact = require('../preact');
 
 describe('honeycomb/preact', () => {
-  it('should extends eslint-config-airbnb', () => {
+  test('extends eslint-config-airbnb', () => {
     expect(preact.extends[0]).toMatch(/eslint-config-airbnb\/index\.js/);
   });
 
-  it('should have expected jest environment', () => {
+  test('has expected jest environment', () => {
     expect(preact.env).toEqual({
       jest: true,
       browser: true,
     });
   });
 
-  it('should have expected rules', () => {
+  test('has expected rules', () => {
     const rules = {
       'comma-dangle': ['error', {
         arrays: 'always-multiline',
