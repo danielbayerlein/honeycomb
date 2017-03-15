@@ -13,7 +13,7 @@ describe('honeycomb-layout', () => {
     jest.resetAllMocks();
   });
 
-  it('should called "honeycombServer.start()" with options', () => {
+  test('calls "honeycombServer.start()" with options', () => {
     expect(honeycombServer.start).toBeCalledWith({
       plugins: [
         {

@@ -1,13 +1,15 @@
 import controller from '../../../../src/server/controllers/index';
 
-it('index.Controller.handler should set the template and name to the callback-reply', () => {
-  const reply = {
-    view: (template, config) => {
-      expect(template).toBe('index/index');
-      expect(typeof config === 'object').toBeTruthy();
-      expect(config.name).toBe('World');
-    },
-  };
+describe('index controller', () => {
+  test('sets the template and name to the reply callback', () => {
+    const reply = {
+      view: (template, config) => {
+        expect(template).toBe('index/index');
+        expect(typeof config === 'object').toBeTruthy();
+        expect(config.name).toBe('World');
+      },
+    };
 
-  controller.index.handler({}, reply);
+    controller.index.handler({}, reply);
+  });
 });

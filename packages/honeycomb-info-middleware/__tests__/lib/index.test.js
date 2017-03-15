@@ -29,7 +29,7 @@ describe('honeycomb-info-middleware', () => {
     };
   });
 
-  it('should extend the server with an info-route', () => {
+  test('extends the server with an info-route', () => {
     register(server, options, next);
 
     const call = server.route.mock.calls[0][0];
@@ -39,7 +39,7 @@ describe('honeycomb-info-middleware', () => {
     expect(typeof call.handler).toBe('function');
   });
 
-  it('the info-route should return the info-object', () => {
+  test('returns the info-object for the info route', () => {
     register(server, options, next);
 
     const call = server.route.mock.calls[0][0];
@@ -61,12 +61,12 @@ describe('honeycomb-info-middleware', () => {
     expect(replied.node).toBe(VERSION);
   });
 
-  it('should call the next-cb', () => {
+  test('calls the next-cb', () => {
     register(server, options, next);
     expect(next).toBeCalled();
   });
 
-  it('should return the package as register.attributes.pkg', () => {
+  test('returns the package as register.attributes.pkg', () => {
     expect(register.attributes.pkg).toBe(pkg);
   });
 });
