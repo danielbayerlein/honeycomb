@@ -40,7 +40,7 @@ describe('honeycomb-registry-client', () => {
     });
   });
 
-  test('prints a info about successful registration', () => {
+  test('prints an info about successful registration', () => {
     const call = client.on.mock.calls[0];
     expect(call[0]).toBe('started');
 
@@ -49,7 +49,7 @@ describe('honeycomb-registry-client', () => {
     expect(console.info).toBeCalledWith('test registered to eureka on "localhost:8761"');
   });
 
-  test('prints a info about successful deregistration', () => {
+  test('prints an info about successful deregistration', () => {
     const call = client.on.mock.calls[1];
     expect(call[0]).toBe('deregistered');
 
