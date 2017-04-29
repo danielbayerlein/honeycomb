@@ -21,7 +21,7 @@
   "author": "Daniel Bayerlein",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^3.17.1",
+    "eslint": "^3.19.0",
     "eslint-config-honeycomb": "^1.0.0",
     "eslint-formatter-pretty": "^1.1.0",
     "eslint-plugin-import": "^2.2.0",
@@ -30,7 +30,7 @@
   "dependencies": {
     "good": "^7.1.0",
     "good-console": "^6.4.0",
-    "good-squeeze": "^5.0.1"
+    "good-squeeze": "^5.0.2"
   },
   "peerDependencies": {
     "hapi": "^16.0.0"
