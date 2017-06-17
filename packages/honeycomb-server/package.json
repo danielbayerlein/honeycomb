@@ -23,13 +23,13 @@
     "eslint": "^3.19.0",
     "eslint-config-honeycomb": "^1.0.0",
     "eslint-formatter-pretty": "^1.1.0",
-    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-import": "^2.3.0",
     "inert": "^4.2.0",
-    "jest": "^19.0.2"
+    "jest": "^20.0.4"
   },
   "dependencies": {
-    "hapi": "^16.1.1",
-    "joi": "^10.4.1"
+    "hapi": "^16.4.3",
+    "joi": "^10.6.0"
   },
   "jest": {
     "bail": true
