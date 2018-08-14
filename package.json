@@ -16,7 +16,7 @@
   "devDependencies": {
     "husky": "^0.14.3",
     "istanbul": "^0.4.5",
-    "lerna": "^2.0.0",
+    "lerna": "^3.0.4",
     "rimraf": "^2.6.1",
     "yo": "^2.0.0"
   }
